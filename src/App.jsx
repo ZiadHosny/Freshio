@@ -8,10 +8,11 @@ import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Account from './pages/auth/Account';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
   return (
-    <>
+    <AuthContextProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,7 +20,7 @@ function App() {
         <Route path="auth/signup" element={<Signup />} />
         <Route path="auth/account" element={<Account />} />
       </Routes>
-    </>
+    </AuthContextProvider>
   );
 }
 
