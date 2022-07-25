@@ -13,10 +13,16 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import {Link} from 'react-router-dom';
 
-const Navbar = () => {
+
+const pages = ['login', 'signup', 'Blog'];
+const settings = ['Profile', 'signup', 'Login', 'Logout'];
+
+const Navbar = ({handleLoginClick}) => {
+  const handleClick=()=>{
+    handleLoginClick()
+  }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -44,7 +50,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            as ={Link} to='/'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -89,7 +95,10 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"><Link style={{textDecoration:"none",color:"white"}} to={`/auth/${page}`} >
+                  {page}
+                  </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -120,10 +129,13 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link style={{textDecoration:"none",color:"white"}} to={`/${page}`} >
+                  {page}
+                  </Link>
               </Button>
             ))}
           </Box>
+          <span onClick={handleClick} className="loginicon">SignIN</span>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -149,7 +161,9 @@ const Navbar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center"><Link style={{textDecoration:"none",color:"#b2b0b0"}} to={`/${setting}`} >
+                  {setting}
+                  </Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
