@@ -7,6 +7,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Account from './pages/auth/Account';
 import { useState } from 'react';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
   const[isShowLogin , setIsShowLogin]=useState(false);
@@ -27,7 +28,7 @@ function App() {
   }
 
   return (
-    <>
+    <AuthContextProvider>
       <Navbar handleLoginClick={handleLoginClick} />
       <Login close={close} switchSign={switchSign} isShowLogin={isShowLogin}/>
       <Signup close={close} switchSign={switchSign} isShowSignup={isShowSignup}/>
@@ -37,7 +38,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="account" element={<Account />} />
       </Routes>
-    </>
+    </AuthContextProvider>
   );
 }
 
