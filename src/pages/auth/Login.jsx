@@ -42,10 +42,12 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
 
   const handleSwitch = () => {
     switchSign();
+    reset();
   };
 
   const closeIt = ()=>{
     close() ;
+    reset();
   }
 
 
@@ -58,7 +60,6 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
 
 
   const onSubmit = (data) => {
-    console.log(data);
     reset();
   };
  
@@ -73,6 +74,8 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
         >
           <CssBaseline />
           <Box
+           onSubmit={handleSubmit(onSubmit)}
+           noValidate
             sx={{
               marginTop: 4,
               display: "flex",
@@ -88,8 +91,7 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
+
               style={{ width: "100%" }}
               sx={{ mt: 1 }}
             >
@@ -106,6 +108,7 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
                   required: true,
                 })}
               />
+
               {errors.email && errors.email.type === "required" && (
                 <p className="text-danger">Email is Required</p>
               )}

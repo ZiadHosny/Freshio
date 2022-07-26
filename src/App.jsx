@@ -23,6 +23,7 @@ function App() {
   const close =()=>{
     setIsShowLogin(false)
     setisShowSignup(false)
+    
   }
 
   return (
