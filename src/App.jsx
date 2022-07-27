@@ -13,7 +13,14 @@ function App() {
   const[isShowSignup , setisShowSignup]=useState(false);
   const handleLoginClick=()=>{
     setIsShowLogin((isShowLogin)=>!isShowLogin)
+    setisShowSignup(false)
   };
+
+  const handleSignUp=()=>{
+    setisShowSignup((isShowSignup)=>!isShowSignup)
+    setIsShowLogin(false)
+
+  }
 
   const switchSign =()=> {
     setisShowSignup((isShowSignup)=>!isShowSignup)
@@ -23,12 +30,12 @@ function App() {
   const close =()=>{
     setIsShowLogin(false)
     setisShowSignup(false)
-    
+
   }
 
   return (
     <>
-      <Navbar handleLoginClick={handleLoginClick} />
+      <Navbar handleLoginClick={handleLoginClick} handleSignUpClick={handleSignUp} />
       <Login close={close} switchSign={switchSign} isShowLogin={isShowLogin}/>
       <Signup close={close} switchSign={switchSign} isShowSignup={isShowSignup}/>
       <Routes>
