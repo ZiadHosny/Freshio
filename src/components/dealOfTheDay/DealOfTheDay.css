@@ -1,0 +1,96 @@
+.ContainerDeal {
+  margin: 100px 0;
+  width: 100%;
+  padding: 100px 20px;
+  background: url('https://freebw.com/templates/oragnive-v1/images/bg-01.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  font-family: Arial, sans-serif;
+}
+
+.imgTop {
+  position: absolute;
+  right: 0;
+}
+
+.ContainerDeal .best {
+  color: #81b03f;
+  font-family: PlayfairDisplay;
+  font-style: italic;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+.ContainerDeal h2 {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+  margin: 20px 0 20px 0;
+}
+
+.ContainerDeal .link {
+  font-size: 30px;
+  color: #666;
+  margin: 20px 0 20px 0;
+}
+
+.ContainerDeal .link:hover {
+  color: #81b03f;
+}
+
+.ContainerDeal .sale {
+  font-weight: 900;
+  font-size: 35px;
+  margin: 30px 0 30px;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  color: #81b03f;
+}
+.ContainerDeal .span1 {
+  color: gray;
+}
+
+.ContainerDeal .Prag {
+  color: gray;
+  font-size: 30px;
+}
+
+.ContainerDeal .time {
+  margin: 70px 0 70px;
+}
+.time {
+  display: flex;
+}
+
+.time > div {
+  margin-right: 15px;
+  border-radius: 50%;
+  color: #666;
+  text-align: center;
+  border: 5px solid white;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.num {
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+}
+
+.shop-now {
+  color: #666;
+  font-size: 20px;
+  border: 2px solid #666;
+  padding: 15px 30px 15px 30px;
+  text-align: center;
+}
+.shop-now:hover {
+  color: white;
+  background-color: #81b03f;
+}

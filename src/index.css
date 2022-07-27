@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Koulen&family=Poppins:wght@100;300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,10 +9,6 @@
 }
 
 body {
-  background-color: bisque;
+  background-color: white;
   font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-
-

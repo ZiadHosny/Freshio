@@ -1,7 +1,14 @@
 import React from 'react';
+import Header from '../components/header/Header';
+import DealOfTheDay from '../components/dealOfTheDay/DealOfTheDay';
 
 const Home = () => {
-  return <div className="text-center m-5">Home</div>;
+  return (
+    <div>
+      <Header />
+      <DealOfTheDay />
+    </div>
+  );
 };
 
 export default Home;
