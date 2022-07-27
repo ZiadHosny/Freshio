@@ -17,6 +17,12 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { Button, Grid, Stack } from '@mui/material';
+import ReorderIcon from '@mui/icons-material/Reorder';
+import { TbMeat } from 'react-icons/tb';
+import { GiChickenOven } from 'react-icons/gi';
+import { GiAvocado } from 'react-icons/gi';
+import { GiTomato } from 'react-icons/gi';
 
 const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
   const handleClick = () => {
@@ -28,6 +34,7 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
   };
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,6 +49,13 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+  const open = Boolean(anchorEl);
+  const handleClicks = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -174,7 +188,7 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
       <AppBar position="static" maxWidth="lg">
         <Container maxWidth="lg">
           <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', lg: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -200,25 +214,104 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: 'block', md: 'none' },
+                  display: { xs: 'block', lg: 'none' },
                 }}
               >
-                <MenuItem>
-                  <Typography onClick={handleClick} className="loginicon">
-                    Login
-                  </Typography>
+                <MenuItem onClick={handleClose}>
+                  <GiAvocado className="icon-style" />
+                  Keto
                 </MenuItem>
-                <MenuItem>
-                  <Typography onClick={handleSignUp} className="loginicon">
-                    Sign Up
-                  </Typography>
+                <MenuItem onClick={handleClose}>
+                  <GiChickenOven className="icon-style" /> Chicken
                 </MenuItem>
-                <MenuItem>
-                  <Typography className="loginicon">Account</Typography>
+                <MenuItem onClick={handleClose}>
+                  <GiTomato className="icon-style" /> Vegetables
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {' '}
+                  <TbMeat className="icon-style" />
+                  Meat
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {' '}
+                  <TbMeat className="icon-style" />
+                  Meat
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {' '}
+                  <TbMeat className="icon-style" />
+                  Meat
                 </MenuItem>
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+            <Stack sx={{ display: { xs: 'none', lg: 'block' } }}>
+              <div>
+                <Button
+                  style={{ color: 'white' }}
+                  id="basic-button"
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClicks}
+                >
+                  <ReorderIcon
+                    style={{ color: 'white', fontSize: 40, paddingRight: 10 }}
+                  />{' '}
+                  Open Category
+                </Button>
+
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <GiAvocado className="icon-style" />
+                    Keto
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <GiChickenOven className="icon-style" /> Chicken
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <GiTomato className="icon-style" /> Vegetables
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    {' '}
+                    <TbMeat className="icon-style" />
+                    Meat
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    {' '}
+                    <TbMeat className="icon-style" />
+                    Meat
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    {' '}
+                    <TbMeat className="icon-style" />
+                    Meat
+                  </MenuItem>
+                </Menu>
+              </div>
+            </Stack>
+
+            <Stack
+              style={{ marginLeft: 40 }}
+              sx={{ display: { xs: 'none', lg: 'block' } }}
+              direction="row"
+              spacing={2}
+            >
+              <Button className="bt-style">Home</Button>
+              <Button className="bt-style">Shop</Button>
+              <Button className="bt-style">Page</Button>
+              <Button className="bt-style">Bolg</Button>
+              <Button className="bt-style">contact</Button>
+            </Stack>
+
             <Typography
               variant="h5"
               noWrap
@@ -226,23 +319,24 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
               href=""
               sx={{
                 mr: 2,
-                display: { xs: 'flex', md: 'none' },
+                display: { xs: 'flex', lg: 'none' },
                 flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
+                pointerEvents: 'none',
               }}
             >
-              LOGO
+              Freshio
             </Typography>
 
             <Box
               sx={{
                 flexGrow: 1,
                 marginLeft: 50,
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', lg: 'flex' },
               }}
             ></Box>
           </Toolbar>
