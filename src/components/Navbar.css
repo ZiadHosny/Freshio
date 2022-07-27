@@ -1,17 +1,4 @@
-/* .box 
-{
-    font-size: 14px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    cursor: pointer;
-    padding: 12px 35px;
-    padding-top: 14px;
-    background-color: #80891b;
-    border-radius: 30px;
-}
- */
+
 
 
 
@@ -53,11 +40,11 @@
     right: -2px;
     top: 0;
     width: 50px;
-    background: #FFF;
+    background: #0a472e;
     height: 100%;
     text-align: center;
     line-height: 50px;
-    color: #0a472e;
+    color: #fff;
     font-size: 20px;
     border-radius: 25px;
 }
