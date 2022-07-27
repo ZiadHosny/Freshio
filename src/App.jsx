@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Account from './pages/auth/Account';
+import Footer from './components/footer';
 import { useState } from 'react';
 import { AuthContextProvider } from './context/AuthContext';
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="account" element={<Account />} />
       </Routes>
+      <Footer/>
     </AuthContextProvider>
   );
 }
