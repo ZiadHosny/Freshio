@@ -9,6 +9,8 @@ import Account from './pages/auth/Account';
 import Footer from './components/footer';
 import { useState } from 'react';
 import { AuthContextProvider } from './context/AuthContext';
+import Contact from './pages/Contact';
+
 
 function App() {
   const[isShowLogin , setIsShowLogin]=useState(false);
@@ -41,10 +43,12 @@ function App() {
       <Login close={close} switchSign={switchSign} isShowLogin={isShowLogin}/>
       <Signup close={close} switchSign={switchSign} isShowSignup={isShowSignup}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Contact />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="account" element={<Account />} />
+        <Route path="contact" element={<Contact />} />
       </Routes>
       <Footer/>
     </AuthContextProvider>
