@@ -13,7 +13,7 @@ import Signup from './pages/auth/Signup';
 import Account from './pages/auth/Account';
 
 import Home from './pages/Home';
-import Contact from './pages/Contact';
+import Contact from './pages/contact';
 import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList';
 

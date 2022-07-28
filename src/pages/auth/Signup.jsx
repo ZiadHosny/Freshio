@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import logo from '../../assets/logo.svg';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -76,9 +76,7 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <img src={logo} alt="/" className="w-25" />
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
@@ -223,6 +221,7 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                className="btn-bg"
               >
                 Sign Up
               </Button>
@@ -232,7 +231,11 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
               </button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <RouterLink to="/" onClick={handleSwitch}>
+                  <RouterLink
+                    className="text-color"
+                    to="/"
+                    onClick={handleSwitch}
+                  >
                     Already have an account? Sign in
                   </RouterLink>
                 </Grid>

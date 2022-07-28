@@ -41,3 +41,10 @@ p {
   transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
     transform 200ms ease-in-out 0ms;
 }
+
+.btn-bg {
+  background-color: #0a472e !important;
+}
+.text-color {
+  color: #0a472e !important;
+}
