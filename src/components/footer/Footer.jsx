@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.css';
+import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaFacebook } from 'react-icons/fa';
 import { BsTwitter, BsInstagram, BsTelephone } from 'react-icons/bs';
@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-                <p class="h1">logo</p>
+                <p className="h1">logo</p>
               </h6>
               <div className="phone d-flex">
                 <div className="phoneIcon d-flex justify-content-center align-items-center">

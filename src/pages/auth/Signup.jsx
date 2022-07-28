@@ -133,7 +133,7 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                   <TextField
                     required
                     fullWidth
-                    id="email"
+                    id="signEmail"
                     label="Email Address"
                     name="email"
                     autoComplete="email"
@@ -159,7 +159,7 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                     name="password"
                     label="Password"
                     type="password"
-                    id="password"
+                    id="signPassword"
                     autoComplete="new-password"
                     {...register('password', {
                       required: true,

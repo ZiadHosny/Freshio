@@ -28,32 +28,32 @@ const slides = [
 const Header = () => {
   const [index, setIndex] = useState(0);
 
-  const transitions = useTransition(
-    slides[index],
-    (item) => console.log(item),
-    {
-      from: { opacity: 0 },
-      enter: { opacity: 1 },
-      leave: { opacity: 0 },
-      config: config.molasses,
-    }
-  );
+  const transitions = useTransition(slides[index], (item) => item.id, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.wobbly,
+  });
   useEffect(
     () => void setInterval(() => setIndex((state) => (state + 1) % 4), 4000),
     []
   );
-  return transitions.map(({ item, props, key }) => (
-    <animated.div
-      key={key}
-      className="bg"
-      style={{
-        ...props,
-        backgroundImage: `url(${item.url})`,
-      }}
-    >
-      <h1>{item.content}</h1>
-    </animated.div>
-  ));
+  return (
+    <div className="headerContainer">
+      {transitions.map(({ item, props, key }) => (
+        <animated.div
+          key={key}
+          className="bg"
+          style={{
+            ...props,
+            backgroundImage: `url(${item.url})`,
+          }}
+        >
+          <h1>{item.content}</h1>
+        </animated.div>
+      ))}
+    </div>
+  );
 };
 
 export default Header;
