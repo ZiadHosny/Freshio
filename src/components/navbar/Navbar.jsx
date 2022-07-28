@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import { Button, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { TbMeat } from 'react-icons/tb';
@@ -158,16 +159,26 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
             </Stack>
 
             <Stack
-              style={{ marginLeft: 40 }}
+              style={{ marginLeft: 'auto' }}
               sx={{ display: { xs: 'none', lg: 'block' } }}
               direction="row"
               spacing={2}
             >
-              <Button className="bt-style">Home</Button>
-              <Button className="bt-style">Shop</Button>
-              <Button className="bt-style">Page</Button>
-              <Button className="bt-style">Bolg</Button>
-              <Button className="bt-style">contact</Button>
+              <Link to="/" className="bt-style">
+                Home
+              </Link>
+              <Link to="/" className="bt-style">
+                Shop
+              </Link>
+              <Link to="/" className="bt-style">
+                Page
+              </Link>
+              <Link to="/" className="bt-style">
+                Bolg
+              </Link>
+              <Link to="/contact" className="bt-style">
+                Contact
+              </Link>
             </Stack>
 
             <Typography

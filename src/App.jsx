@@ -52,6 +52,7 @@ function App() {
         isShowSignup={isShowSignup}
       />
       <Routes>
+        <Route path="/freshio" element={<Home />}></Route>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
