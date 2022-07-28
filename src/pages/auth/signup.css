@@ -8,19 +8,6 @@
     bottom: 0;
 }
 
-.close-btn
-{
-    background-color: #1565C0;
-    border: none;
-    color: white;
-    width: 40PX;
-    height: 40px;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
 .sign {
 
     display: block;
@@ -32,8 +19,7 @@
     transform: translate(-50%) scale(1);
     transition: opacity 200ms ease-in-out 100ms,
       transform 500ms ease-in-out 0ms;
-    border-radius: 10px;
-  
+    border-radius: 10px; 
   }
 
   .sign.active {
@@ -41,6 +27,13 @@
     transition: top 0ms ease-in-out 0ms,
       opacity 200ms ease-in-out 0ms,
       transform 200ms ease-in-out 0ms;
-  
+  }
+  .btn-bg
+  {
+      background-color: #0a472e !important;
+  }
+  .text-color
+  {
+      color: #0a472e !important;
   }
   

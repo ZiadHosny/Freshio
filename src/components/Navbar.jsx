@@ -98,7 +98,7 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
 
                 <MenuItem onClick={handleSignUp}>
                   <Typography  className="loginicon">
-                    Sgin Up
+                    Sign Up
                   </Typography>
                 </MenuItem>
 

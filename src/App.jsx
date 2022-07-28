@@ -21,18 +21,15 @@ function App() {
   const handleSignUp=()=>{
     setisShowSignup((isShowSignup)=>!isShowSignup)
     setIsShowLogin(false)
-
   }
 
   const switchSign =()=> {
     setisShowSignup((isShowSignup)=>!isShowSignup)
     setIsShowLogin((isShowLogin)=>!isShowLogin)
-
   }
   const close =()=>{
     setIsShowLogin(false)
     setisShowSignup(false)
-
   }
 
   return (

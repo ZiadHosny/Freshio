@@ -15,7 +15,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import "./login.css";
+import logo from '../../assets/logo.svg';
 
 function Copyright(props) {
   return (
@@ -27,7 +29,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Freshio
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -43,14 +45,7 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
   const handleSwitch = () => {
     switchSign();
     reset();
-  };
-
-  const closeIt = ()=>{
-    close() ;
-    reset();
   }
-
-
   const {
     register,
     handleSubmit,
@@ -59,15 +54,17 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
   } = useForm();
 
 
+
   const onSubmit = (data) => {
     reset();
   };
  
 
   return (
-    <div className={`${!isShowLogin ? "" : "conta"}`}>
+    <div id="loginScreen" className={`${!isShowLogin ? "" : "conta"}`}>
     <ThemeProvider theme={theme}>
         <Container
+        id="login"
           className={`${!isShowLogin ? "active" : ""} show`}
           component="main"
           maxWidth="xs"
@@ -83,9 +80,7 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <img src={logo} alt="" className="w-25 py-2" />
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -139,20 +134,20 @@ export default function SignIn({ isShowLogin, switchSign , close }) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                className='btn-bg'
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" className="text-color">
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <RouterLink to="/" onClick={handleSwitch}>
+                  <RouterLink to="/signup" className="text-color" onClick={handleSwitch}>
                     {"Don't have an account? Sign Up"}
                   </RouterLink>
-                  <button className='close-btn' onClick={closeIt}>X</button>
                 </Grid>
               </Grid>
             </Box>
