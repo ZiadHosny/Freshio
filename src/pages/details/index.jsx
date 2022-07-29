@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./details.css";
 import {BsHeart,BsCart} from "react-icons/bs"
+import { chickenApiContext } from "../../context/ApiContext";
+import { useParams } from "react-router-dom";
+
+
 
 export const Details = () => {
+  let params=useParams()
+  let { chickens } = useContext(chickenApiContext);
+  const [singleProduct, setsingleProduct] = useState({});
+    
+    useEffect(()=>{setsingleProduct(chickens[params.id-1])},[])
+
   return (
     <div className="container">
       <div class="row border shadow mt-5 mb-5 p-5 rounded">
         <div className="col-md-4">
           <img
-            src="https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg"
+            src={singleProduct.image}
             className="w-100 "
             alt="/"
           />
         </div>
 
         <div className="col-md-7 ml-5  offset-md-1 col-12">
-          <p className="h2 fw-bold">product title product title</p>
-          <p className="mt-3">50 EGP</p>
+          <p className="h2 fw-bold">{singleProduct.title}</p>
+          <p className="mt-3">{singleProduct.price}</p>
           <button className="btn btn-outline-success addBtn px-5 my-3 ">Add</button>
           <div className="mt-3" >
           <BsHeart className=" fs-3"/>
@@ -26,7 +36,7 @@ export const Details = () => {
           </div>
           <p className="h5 mt-4 fw-bold">Description</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, harum.
+          {singleProduct.body}
           </p>
         </div>
       </div>

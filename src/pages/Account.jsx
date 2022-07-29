@@ -1,7 +1,6 @@
 import React from 'react';
 import "./auth/account.scss";
 
-import { ProSidebar, Menu, MenuItem, SubMenu , SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
 import logo from '../assets/logo.svg';
 import { GiChickenOven } from "react-icons/gi";
 import { GiAvocado } from "react-icons/gi";
