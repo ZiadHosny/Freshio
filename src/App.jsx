@@ -10,7 +10,8 @@ import ProdectedRoute from './components/ProdectedRoute';
 import Home from './pages/Home';
 import Contact from './pages/contact';
 import FavoritesList from './pages/FavoritesList';
-import CartList from './pages/CartList'; 
+import CartList from './pages/CartList';
+import Details from './pages/details';
 import Chicken from './pages/chicken';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="chicken" element={<Chicken />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="details" element={<Details />} />
+
         <Route
           path="favoritesList"
           element={
