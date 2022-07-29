@@ -9,6 +9,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { Link } from 'react-router-dom';
+import { ModalContext } from '../../context/ModalContext';
+import { UserAuth } from '../../context/AuthContext';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -17,7 +19,10 @@ import { BiSearchAlt } from 'react-icons/bi';
 import './MenuBar.css';
 import logo from '../../assets/logo.svg';
 
-const MenuBar = ({ handleLoginClick, handleSignUpClick }) => {
+const MenuBar = () => {
+  const { setModal } = ModalContext();
+  const { user, logOut } = UserAuth();
+
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -28,18 +33,27 @@ const MenuBar = ({ handleLoginClick, handleSignUpClick }) => {
     setAnchorElUser(null);
   };
 
-  const handleClick = () => {
-    handleLoginClick();
+  const handleLogin = () => {
+    handleCloseUserMenu();
+    setModal('login');
   };
 
   const handleSignUp = () => {
-    handleSignUpClick();
+    handleCloseUserMenu();
+    setModal('signUp');
+  };
+
+  const handleLogout = () => {
+    handleCloseUserMenu();
+    logOut();
   };
 
   return (
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
-        <img src={logo} className="w-50" alt="/" />
+        <Link to="/">
+          <img src={logo} className="w-50" alt="/" />
+        </Link>
       </div>
 
       <div className="box pe-5">
@@ -61,30 +75,58 @@ const MenuBar = ({ handleLoginClick, handleSignUpClick }) => {
               />
             </IconButton>
           </Tooltip>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            <MenuItem onClick={handleClick}>
-              <Typography className="loginicon">Login</Typography>
-            </MenuItem>
 
-            <MenuItem onClick={handleSignUp}>
-              <Typography className="loginicon">Sign Up</Typography>
-            </MenuItem>
-          </Menu>
+          {user?.email ? (
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <Link to="/account">
+                <MenuItem>
+                  <Typography className="text-color">Account</Typography>
+                </MenuItem>
+              </Link>
+              <MenuItem onClick={handleLogout}>
+                <Typography className="text-color">Logout</Typography>
+              </MenuItem>
+            </Menu>
+          ) : (
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleLogin}>
+                <Typography className="text-color">Login</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleSignUp}>
+                <Typography className="text-color">Sign Up</Typography>
+              </MenuItem>
+            </Menu>
+          )}
         </Box>
 
         <Box sx={{ flexGrow: 0 }}>

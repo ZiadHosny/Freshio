@@ -12,3 +12,11 @@ body {
   background-color: white;
   font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.text-color {
+  color: #0a472e !important;
+}
+
+.bg-color {
+  background-color: #0a472e !important;
+}

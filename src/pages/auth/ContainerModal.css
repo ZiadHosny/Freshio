@@ -1,0 +1,10 @@
+.ContainerModal {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  background-color: #fff;
+  left: 50%;
+  transform: translate(-50%) scale(1);
+  transition: opacity 200ms ease-in-out 100ms, transform 500ms ease-in-out 0ms;
+  border-radius: 10px;
+}
