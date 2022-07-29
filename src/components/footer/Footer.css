@@ -1,0 +1,43 @@
+h6 {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+footer {
+  font-family: barlow, sans-serif;
+}
+
+.footer-bg {
+  background-color: #658f00;
+  /* background-image: linear-gradient(326deg, rgb(111, 2, 2) 0%, #180000 50%); */
+  background-image: url(https://demo.casethemes.net/organio/wp-content/uploads/2021/07/h7-bg-footer.png);
+  background-size: cover;
+  /* position: absolute;
+  bottom: 0px; */
+}
+
+a {
+  text-decoration: none;
+}
+.cobyRight {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.phoneIcon {
+  background-color: orange;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 10px;
+}
+.socialIcon {
+  background-color: #80b500;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 10px;
+}
+.socialIcon:hover {
+  background-color: orange;
+}
+.galleryItem {
+  border-radius: 10%;
+}

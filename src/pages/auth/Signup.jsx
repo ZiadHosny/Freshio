@@ -1,20 +1,20 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link as RouterLink } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import "./signup.css";
+import * as React from 'react';
+
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import logo from '../../assets/logo.svg';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import './signup.css';
 
 function Copyright(props) {
   return (
@@ -24,12 +24,12 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }
@@ -44,9 +44,8 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
     handleSubmit,
     reset,
     formState: { errors },
-    control,
+
     watch,
-    
   } = useForm();
 
   const handleSwitch = () => {
@@ -60,33 +59,28 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={`${!isShowSignup ? "" : "signCont"}`}>
+      <div className={`${!isShowSignup ? '' : 'signCont'}`}>
         <Container
-          className={`${!isShowSignup ? "active" : ""} sign`}
+          className={`${!isShowSignup ? 'active' : ''} sign`}
           component="main"
           maxWidth="xs"
         >
           <CssBaseline />
           <Box
-           onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
             noValidate
             sx={{
               marginTop: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <img src={logo} alt="/" className="w-25" />
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
-            <Box
-              component="form"
-              sx={{ mt: 3 }}
-            >
+            <Box component="form" sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -97,15 +91,15 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                     id="firstName"
                     label="First Name"
                     autoFocus
-                    {...register("firstName", {
+                    {...register('firstName', {
                       required: true,
                       pattern: /^[A-Za-z]+$/,
                     })}
                   />
-                  {errors.firstName && errors.firstName.type === "required" && (
+                  {errors.firstName && errors.firstName.type === 'required' && (
                     <p className="text-danger">first name is required</p>
                   )}
-                  {errors.firstName && errors.firstName.type === "pattern" && (
+                  {errors.firstName && errors.firstName.type === 'pattern' && (
                     <p className="text-danger">
                       first name is (shouldn't have space or number)
                     </p>
@@ -119,15 +113,15 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                     label="Last Name"
                     name="lastName"
                     autoComplete="family-name"
-                    {...register("lastName", {
+                    {...register('lastName', {
                       required: true,
                       pattern: /^[A-Za-z]+$/,
                     })}
                   />
-                  {errors.lastName && errors.lastName.type === "required" && (
+                  {errors.lastName && errors.lastName.type === 'required' && (
                     <p className="text-danger">last name is required</p>
                   )}
-                  {errors.lastName && errors.lastName.type === "pattern" && (
+                  {errors.lastName && errors.lastName.type === 'pattern' && (
                     <p className="text-danger">
                       last name is unvalid (shouldn't have space or number)
                     </p>
@@ -137,83 +131,81 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                   <TextField
                     required
                     fullWidth
-                    id="email"
+                    id="signEmail"
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    {...register("email", {
+                    {...register('email', {
                       required: true,
-                      pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                      pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
                     })}
                   />
 
-                  {errors.email && errors.email.type === "required" && (
+                  {errors.email && errors.email.type === 'required' && (
                     <p className="text-danger">email is required</p>
                   )}
-                  {errors.email && errors.email.type === "pattern" && (
+                  {errors.email && errors.email.type === 'pattern' && (
                     <p className="text-danger">
                       email is unvalid ex: aa@gmail.com
                     </p>
                   )}
                 </Grid>
-                           <Grid item xs={12}>
-                 <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  {...register('password', { required: true, pattern: /^(?=.[A-Za-z])(?=.\d)(?=.[$@$!%#?&])[A-Za-z\d$@$!%*#?&]{8,}$/ })}
-
-                />
-                {
-                  (errors.password && errors.password.type === "required")
-                  &&
-                  <p className='text-danger'>password is required</p>
-                }
-                {
-                  (errors.password && errors.password.type === "pattern")
-                  &&
-                  <p className='text-danger'>should have upercase and numbers and special character mon length is 8</p>
-                }
-
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="signPassword"
+                    autoComplete="new-password"
+                    {...register('password', {
+                      required: true,
+                      pattern:
+                        /^(?=.[A-Za-z])(?=.\d)(?=.[$@$!%#?&])[A-Za-z\d$@$!%*#?&]{8,}$/,
+                    })}
+                  />
+                  {errors.password && errors.password.type === 'required' && (
+                    <p className="text-danger">password is required</p>
+                  )}
+                  {errors.password && errors.password.type === 'pattern' && (
+                    <p className="text-danger">
+                      should have upercase and numbers and special character mon
+                      length is 8
+                    </p>
+                  )}
                 </Grid>
 
                 <Grid item xs={12}>
-                 <TextField
-                  required
-                  fullWidth
-                  name="confirm password"
-                  label="confirm Password"
-                  type="password"
-                  id="confirmPassword"
-                  autoComplete="new-password"
-                  {...register("confirmPassword", {
-                    required: true,
-                    validate: (val) => {
+                  <TextField
+                    required
+                    fullWidth
+                    name="confirm password"
+                    label="confirm Password"
+                    type="password"
+                    id="confirmPassword"
+                    autoComplete="new-password"
+                    {...register('confirmPassword', {
+                      required: true,
+                      validate: (val) => {
+                        if (watch('password') !== val) {
+                          return 'your password do not match';
+                        }
+                      },
+                    })}
+                  />
+                  {errors.confirmPassword &&
+                    errors.confirmPassword.type === 'required' && (
+                      <p className="text-danger">
+                        confirm password is Required
+                      </p>
+                    )}
 
-                      if (watch("password") !== val) {
-                        return "your password do not match";
-                      }
-                    },
-
-                  })}
-
-                />
-                {errors.confirmPassword && errors.confirmPassword.type === "required" && (
-
-                  <p className="text-danger">confirm password is Required</p>
-
-                )}
-
-                {errors.confirmPassword && errors.confirmPassword.type === "validate" && (
-
-                  <p className="text-danger">Password Not Match</p>
-
-                 )}
-              </Grid>
+                  {errors.confirmPassword &&
+                    errors.confirmPassword.type === 'validate' && (
+                      <p className="text-danger">Password Not Match</p>
+                    )}
+                </Grid>
 
                 <Grid item xs={12}>
                   <FormControlLabel
@@ -229,6 +221,7 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                className="btn-bg"
               >
                 Sign Up
               </Button>
@@ -238,7 +231,11 @@ export default function SignUp({ isShowSignup, switchSign, close }) {
               </button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <RouterLink to="/" onClick={handleSwitch}>
+                  <RouterLink
+                    className="text-color"
+                    to="/"
+                    onClick={handleSwitch}
+                  >
                     Already have an account? Sign in
                   </RouterLink>
                 </Grid>
