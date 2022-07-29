@@ -43,10 +43,7 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
 
   return (
     <>
-      <MenuBar
-        handleLoginClick={handleLoginClick}
-        handleSignUpClick={handleSignUpClick}
-      />
+      <MenuBar />
       <AppBar position="static">
         <Container maxWidth="lg">
           <Toolbar disableGutters>
@@ -200,14 +197,6 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
             >
               Freshio
             </Typography>
-
-            {/* <Box
-              sx={{
-                flexGrow: 1,
-                marginLeft: 50,
-                display: { xs: 'none', lg: 'flex' },
-              }}
-            ></Box> */}
           </Toolbar>
         </Container>
       </AppBar>
