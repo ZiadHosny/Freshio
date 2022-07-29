@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext ,useEffect } from 'react';
 import { chickenApiContext } from '../context/ApiContext';
-import Account from './auth/Account';
+import Account from "./Account"
 import {HiOutlineArrowsExpand} from "react-icons/hi";
 import {BsHeart} from "react-icons/bs";
 import "./chicken.css"

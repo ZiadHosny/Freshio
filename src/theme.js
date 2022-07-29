@@ -1,9 +1,9 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material';
 
-export const theme =  createTheme({
-    palette:{
-        primary:{
-            main:"#0a472e"
-        }
-    }
-})
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0a472e',
+    },
+  },
+});
