@@ -8,10 +8,11 @@ import Footer from './components/footer/Footer';
 import Modal from './components/modal/Modal';
 import ProdectedRoute from './components/ProdectedRoute';
 import Home from './pages/Home';
-import Contact from './pages/contact';
+import Contact from './pages/Contact';
 import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList'; 
-import Chicken from './pages/chicken';
+import Chicken from './pages/Chicken';
+import Account from './pages/auth/Account';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="chicken" element={<Chicken />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="account" element={<Account />} />
         <Route
           path="favoritesList"
           element={

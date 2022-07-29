@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header/Header';
 import DealOfTheDay from '../components/dealOfTheDay/DealOfTheDay';
-import Chicken from './chicken';
+import Chicken from './Chicken';
 import ApiContext from '../context/ApiContext';
 
 const Home = () => {
