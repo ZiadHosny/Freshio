@@ -12,9 +12,10 @@ import ProdectedRoute from './components/ProdectedRoute';
 
 import Account from './pages/Account';
 import Home from './pages/Home';
-import Contact from './pages/Contact';
+import Contact from './pages/contact';
 import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList';
+import Details from './pages/details';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="account" element={<Account />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="details" element={<Details />} />
+
         <Route
           path="favoritesList"
           element={
