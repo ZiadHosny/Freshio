@@ -69,3 +69,39 @@
 .bt-style:hover {
   color: #658f00 !important;
 }
+
+.count-parent 
+{
+   color: #0a472e;
+   font-Size: 40px;
+    position: relative;
+
+
+}
+.cart-count 
+{
+  position: absolute;
+  top: -17px;
+  right: 3px;
+  font-size: 16px;
+  color: white;
+  background-color:#DFB178 ;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+
+
+}
+
+.wish-count 
+{
+  position: absolute;
+  top: -17px;
+  right: -10px;
+  font-size: 16px;
+  color: white;
+  background-color:#DFB178 ;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+}
