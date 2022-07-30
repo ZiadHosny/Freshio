@@ -1,36 +1,48 @@
 import React from 'react'
-import { createContext , useEffect , useState ,  } from "react";
+import { createContext, useEffect, useState, } from "react";
 import axios from "axios";
 
-
-export let chickenApiContext = createContext([]);
+export let dataApiContext = createContext([]);
 
 export default function ApiContext(props) {
 
-    const [chickens, setChickens] = useState([]);
+  let params = window.location.pathname;
 
-  async function getChickens() {
+  const [category, setCategory] = useState([]);
 
-    let {data}  = await axios.get(
+  async function getData() {
 
-      "https://freshio.mocklab.io/chicken"
+    if (params == "/") {
+      let { data } = await axios.get(
 
-    );
+        `https://freshfreshio.mocklab.io/home`
 
-    setChickens(data);
+      );
+      setCategory(data);
+    }
+
+    else {
+      let { data } = await axios.get(
+
+        `https://freshfreshio.mocklab.io${params}`
+
+      );
+      setCategory(data);
+    }
 
   }
 
   useEffect(() => {
 
-    getChickens();
+    getData();
+
 
   }, []);
-    
+
 
 
   return (
-    <chickenApiContext.Provider value={{chickens}}>{props.children}</chickenApiContext.Provider>
+    <dataApiContext.Provider value={{ category }}>{props.children}</dataApiContext.Provider>
   )
 }
 

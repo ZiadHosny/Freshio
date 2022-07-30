@@ -1,9 +1,8 @@
 import React from 'react';
 import Category from '../shared/Category';
 
-export default function Chicken() {
- 
+export default function Snacks() {
   return (
-<Category/>
+    <Category/>
   )
 }

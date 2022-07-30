@@ -161,16 +161,16 @@ const Navbar = ({ handleLoginClick, handleSignUpClick }) => {
               direction="row"
               spacing={2}
             >
-              <Link to="/" className="bt-style">
+              <Link to="/home" className="bt-style">
                 Home
               </Link>
-              <Link to="/" className="bt-style">
+              <Link to="/shop" className="bt-style">
                 Shop
               </Link>
-              <Link to="/" className="bt-style">
+              <Link to="/page" className="bt-style">
                 Page
               </Link>
-              <Link to="/" className="bt-style">
+              <Link to="/blog" className="bt-style">
                 Bolg
               </Link>
               <Link to="/contact" className="bt-style">

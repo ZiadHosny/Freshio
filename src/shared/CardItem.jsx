@@ -15,7 +15,7 @@ export default function CardItem({item}) {
     </div>
     <img src={item.image} className='w-75 d-block m-auto img-height '/>
     <h5 className='text-height '>{item.title}</h5>
-    <h5>{item.price}</h5>
+    <h5>{item.price} EGP</h5>
     <button type="button" className="btn btn-outline-success d-block w-75 m-auto my-4">Add to Cart</button>
     </div>
   </div>
