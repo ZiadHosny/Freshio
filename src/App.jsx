@@ -13,6 +13,7 @@ import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList'; 
 import Chicken from './pages/Chicken';
 import Account from './pages/auth/Account';
+import Details from './pages/details';
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
         <Route path="chicken" element={<Chicken />} />
         <Route path="contact" element={<Contact />} />
         <Route path="account" element={<Account />} />
+        <Route path="details" element={<Details />} />
+
         <Route
           path="favoritesList"
           element={
