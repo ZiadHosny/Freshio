@@ -18,6 +18,7 @@ import Vegetables from './pages/Vegetables';
 import Supplements from './pages/Supplements';
 import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
+import Details from './pages/details';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
         <Route path="vegetables" element={<Vegetables />} />
         <Route path="contact" element={<Contact />} />
         <Route path="account" element={<Account />} />
+        <Route path="details" element={<Details />} />
+
         <Route
           path="favoritesList"
           element={
