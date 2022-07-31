@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/header/Header';
 import DealOfTheDay from '../components/dealOfTheDay/DealOfTheDay';
 import Chicken from './Chicken';
@@ -8,21 +8,50 @@ import AdCard from '../components/adCard/AdCard'
 import FeedBack from '../components/feedBack/FeedBack'
 import { useContext } from 'react';
 import { dataApiContext } from '../context/ApiContext';
-
+import  axios  from 'axios';
 
 
 const Home = () => {
 
-  let {category} = useContext(dataApiContext);
-  console.log(category)
+  const [products, setProducts] = useState([]);
 
-  console.log(window.location.pathname)
+  // const [allCategory, setAllCategory] = useState([]);
+  // const [topProducts, setTopProducts] = useState([]);
+  // const [topArrival, setTopArrival] = useState([]);
+  
+  async function getProducts() {
+    let {data} = await axios.get("https://freshhome.mocklab.io/home");
+    setProducts(data)
+    console.log('dataaaaa',data.allCategory)
+    console.log("productsssssss",products)
+  }
+
+  useEffect(() => {
+    getProducts()
+  },[]);
+
   return (
     <div>
       <Header />
       <DealOfTheDay />
-      <Section title="Featured Products"/>
+      
+      {products ? 
+      <Section
+      title="Featured Products"
+      data={products.allCategory}
+    />
+    :<p>Loading...</p>  
+    }
+      <Section
+        title="Top Products"
+        data={products.topProducts}/>
+
       <AdCard />
+
+      <Section
+        title="New Arrival"
+        data={products.topArrival}/>
+
       <FeedBack />
     </div>
   );

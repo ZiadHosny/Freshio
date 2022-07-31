@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -25,246 +25,35 @@ function SamplePrevArrow(props) {
     />
     );
   }
-const Section = ({title}) => {
-  const [products,setProducts] = useState([
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
-    },
-    {
-      title: 'item3',
-      category: 'category3'
-    },
-    {
-      title: 'item1',
-      category: 'category1'
-    },
-    {
-      title: 'item2',
-      category: 'category2'
+//to reset product in random order
+  function randomArrayShuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
     }
-  ]);
+    return array;
+  }
 
 
-  const [items, setItems]= useState(products);
+const Section = ({title, data}) => {
+  const [items, setItems]= useState(data);
 
   function filterItem(e) {
    if (e.target.name === 'all') {
-      return setItems(products);
-    };
-
-    const updatedItems = products.filter((elem) => {
-      return elem.category === e.target.name;
-    });
-    setItems(updatedItems);
-    
+       setItems(data);
+      console.log("items",items)
+    }else{
+      const updatedItems = data.filter((elem) => {
+        return elem.category === e.target.name;
+      });
+      setItems(updatedItems);
+      console.log("update items",updatedItems)
+    }
   }
-  console.log("items",items)
-  console.log(products)
 
   const settingss = {
     dots: false,
@@ -309,25 +98,34 @@ const Section = ({title}) => {
     ]
   };
 
+  useEffect(() => {
+    setItems(data);
+},[data]);
   return (<div className='container-lg my-5'>
     <div className='container-lg text-center d-md-flex justify-content-between mb-4'>
       <div>
-        <h1 className='container-lg p-0 fw-bolder'>Featured Products</h1>
+        {/* <h1 className='container-lg p-0 fw-bolder'>Featured Products</h1> */}
+        <h1 className='container-lg p-0 fw-bolder'>{title}</h1>
       </div>
-      <div>
-        <button onClick={filterItem} name="all" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">All</button>
-        <button onClick={filterItem} name="category1" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">Catgery1</button>
-        <button onClick={filterItem} name="category2" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">Catgery2</button>
-        <button onClick={filterItem} name="category3" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">Catgery3</button>
-      </div>
+      {title === "Featured Products"
+        ?<div>
+          <button onClick={filterItem} name="all" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">All</button>
+          <button onClick={filterItem} name="fruits" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">fruits</button>
+          <button onClick={filterItem} name="chicken" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">chicken</button>
+          <button onClick={filterItem} name="vegetables" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">vegetables</button>
+          <button onClick={filterItem} name="keto" className="btn btn-outline-success btn-rounded m-2" data-mdb-ripple-color="dark">keto</button>
+        </div>
+       :"" 
+      }
     </div>
     <div>
       <Slider {...settingss}>
-        {
-          items.map((item,i)=>{
-            return <Card title={item.title} category={item.category} price="60.99 EG" url="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"/>
-          })
-        }
+          {items ?
+            items.map((item,i)=>{
+              return <Card key={i} title={item.title} category={item.category} price={item.price} url={item.image} amount={item.amount}/>
+            })
+            : null
+          }
       </Slider>
     </div>
   
