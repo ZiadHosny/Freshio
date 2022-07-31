@@ -5,10 +5,16 @@
 
 .text-height 
 {
-    height: 70px;
+    height: 50px;
+    cursor: pointer;
 }
 
 .icon-color 
 {
     color: #0a472e ;
 }
+
+.text-height:hover 
+{
+    color: #658f00 ;
+} 

@@ -52,6 +52,7 @@ const MenuBar = () => {
   };
 
   return (
+    
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
         <Link to="/">

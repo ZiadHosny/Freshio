@@ -19,7 +19,11 @@ import Supplements from './pages/Supplements';
 import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
 import Details from './pages/details';
+import LowCarb from './pages/LowCarb';
+import SubCategoryContext from './context/SubCategoryContext';
+import Meals from './pages/Meals';
 import { FavoritesProvider } from './context/FavoritesContext';
+
 
 function App() {
   return (
@@ -39,6 +43,8 @@ function App() {
         <Route path="fruits" element={<Fruit />} />
         <Route path="keto" element={<Keto />} />
         <Route path="vegetables" element={<Vegetables />} />
+        <Route path="lowcarb" element={<SubCategoryContext><LowCarb /></SubCategoryContext>} />
+        <Route path="meals" element={<SubCategoryContext><Meals/></SubCategoryContext>} />
         <Route path="contact" element={<Contact />} />
 
         <Route path="account" element={<Account />} />

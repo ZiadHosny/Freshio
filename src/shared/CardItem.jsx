@@ -4,9 +4,12 @@ import { BsHeart } from 'react-icons/bs';
 import { BsHeartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { DetailsContext } from '../context/DetailsContext';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 import { UserAuth } from '../context/AuthContext';
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+
 
 export default function CardItem({ item, params }) {
   const [isFav, setIsFav] = useState(false);
@@ -78,8 +81,12 @@ export default function CardItem({ item, params }) {
             )}
           </div>
         </div>
-        <img src={item.image} className="w-75 d-block m-auto img-height " />
-        <h5 className="text-height ">{item.title}</h5>
+        <img src={item.image} className='w-75 d-block m-auto img-height ' />
+        <h5 className='text-height '>{item.title}</h5>
+        <h5>Rate Item :</h5>
+        <Stack spacing={1}>
+      <Rating name="half-rating" defaultValue={3} precision={0.5} />
+    </Stack>
         <h5>{item.price} EGP</h5>
         <button
           type="button"

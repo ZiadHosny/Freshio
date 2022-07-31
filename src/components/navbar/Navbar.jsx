@@ -55,6 +55,8 @@ const Navbar = () => {
               >
                 <MenuIcon />
               </IconButton>
+
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -73,31 +75,82 @@ const Navbar = () => {
                   display: { xs: 'block', lg: 'none' },
                 }}
               >
-                <MenuItem onClick={handleClose}>
-                  <GiAvocado className="icon-style" />
-                  Keto
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <GiChickenOven className="icon-style" /> Chicken
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <GiTomato className="icon-style" /> Vegetables
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {' '}
-                  <TbMeat className="icon-style" />
-                  Meat
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {' '}
-                  <TbMeat className="icon-style" />
-                  Meat
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {' '}
-                  <TbMeat className="icon-style" />
-                  Meat
-                </MenuItem>
+                <div className="row">
+                    <div className="">
+                
+                    <MenuItem onClick={handleClose}>
+                      <Link to='/keto' className="text-color ">
+                      <GiAvocado className="icon-style" />
+                      Keto
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                    <Link to='/chicken' className="text-color">
+                        <GiChickenOven className="icon-style" />
+                        Chicken
+                        </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to='/vegetables' className="text-color">
+                      <GiTomato className="icon-style" /> 
+                          Vegetables
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to='/meals' className="text-color">
+                      <MdNoMealsOuline className="icon-style" /> 
+                          Meals
+                      </Link>
+                    </MenuItem>
+                  </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div className="">
+                      <MenuItem onClick={handleClose}>
+                      <Link to='/snacks' className="text-color">
+                        <MdFastfood className="icon-style" />
+                        Snacks
+                      </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <Link to='/fruits' className='text-color'>
+                          <GiFruitTree className="icon-style" />
+                          Fruits
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                      <Link to='/meat' className="text-color">
+                        <GiBroccoli className="icon-style" />
+                       Meat
+                      </Link>
+                      </MenuItem>
+                    </div>
+                  </div>
+                  <div className='col-md-4'>
+                    <div className="">
+                      <MenuItem onClick={handleClose}>
+                      <Link to='/vegan' className="text-color">
+                        <GiBroccoli className="icon-style" />
+                        Vegan
+                      </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <Link to='/lowcarb' className='text-color'>
+                          <GiSugarCane className="icon-style" />
+                          Low Carb
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <Link to='/supplements' className='text-color'>
+                          <GiStrongMan className="icon-style" />
+                          Supplements
+                        </Link>
+                      </MenuItem>
+                    </div>
+
+                  </div>
+                  
+                 
               </Menu>
             </Box>
 
@@ -148,7 +201,7 @@ const Navbar = () => {
                       </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
-                      <Link to='/vegetables' className="text-color">
+                      <Link to='/meals' className="text-color">
                       <MdNoMealsOuline className="icon-style" /> 
                           Meals
                       </Link>
@@ -170,21 +223,23 @@ const Navbar = () => {
                         </Link>
                       </MenuItem>
                       <MenuItem onClick={handleClose}>
-                        <TbMeat className="icon-style" />
+                      <Link to='/meat' className="text-color">
+                        <GiBroccoli className="icon-style" />
                         Meat
+                      </Link>
                       </MenuItem>
                     </div>
                   </div>
                   <div className='col-md-4'>
                     <div className="">
                       <MenuItem onClick={handleClose}>
-                      <Link to='/snacks' className="text-color">
+                      <Link to='/vegan' className="text-color">
                         <GiBroccoli className="icon-style" />
                         Vegan
                       </Link>
                       </MenuItem>
                       <MenuItem onClick={handleClose}>
-                        <Link to='/fruits' className='text-color'>
+                        <Link to='/lowcarb' className='text-color'>
                           <GiSugarCane className="icon-style" />
                           Low Carb
                         </Link>

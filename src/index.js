@@ -17,7 +17,7 @@ root.render(
         <ApiContext>
           <DetailsProvider>
             <App />
-          </DetailsProvider>
+          </DetailsProvider> 
         </ApiContext>
       </WishListContext>
     </ThemeProvider>
