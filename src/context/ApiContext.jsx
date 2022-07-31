@@ -38,13 +38,11 @@ export default function ApiContext(props) {
 
 
   }, []);
-
-
-
   return (
-    <dataApiContext.Provider value={{ category }}>{props.children}</dataApiContext.Provider>
+    <dataApiContext.Provider value={{ category,params }}>{props.children}</dataApiContext.Provider>
   )
 }
+
 
 
 

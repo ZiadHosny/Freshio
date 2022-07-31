@@ -8,6 +8,8 @@ import CardItem from '../shared/CardItem';
 export default function Category() {
     
   let {category} = useContext(dataApiContext);
+  let {params} = useContext(dataApiContext);
+
 
   return (
     
@@ -20,7 +22,7 @@ export default function Category() {
         <div className='row p-3 g-3'>
      {category.map((item)=> (
     
-        <CardItem key={item.id} item={item}/>
+        <CardItem key={item.id} item={item} params={params} />
      ))}
       </div>
         </div>
