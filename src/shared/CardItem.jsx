@@ -4,6 +4,8 @@ import { BsHeart } from "react-icons/bs";
 import { BsHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { DetailsContext } from '../context/DetailsContext';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 export default function CardItem({ item,params },) {
   const [favicon, setfavicon] = useState(false);
   let {setitem} =useContext(DetailsContext);
@@ -20,6 +22,10 @@ export default function CardItem({ item,params },) {
         </div>
         <img src={item.image} className='w-75 d-block m-auto img-height ' />
         <h5 className='text-height '>{item.title}</h5>
+        <h5>Rate Item :</h5>
+        <Stack spacing={1}>
+      <Rating name="half-rating" defaultValue={3} precision={0.5} />
+    </Stack>
         <h5>{item.price} EGP</h5>
         <button type="button" className="btn btn-outline-success d-block w-75 m-auto my-4">Add to Cart</button>
       </div>

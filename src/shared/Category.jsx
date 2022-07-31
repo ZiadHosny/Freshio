@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { useContext } from 'react';
 import { dataApiContext } from '../context/ApiContext';
 import Sidebar from "../shared/sidebar/Sidebar";
@@ -8,9 +8,14 @@ import CardItem from '../shared/CardItem';
 export default function Category() {
   let params = window.location.pathname;
   let {category , getData} = useContext(dataApiContext);
+
+
   useEffect(() => {
+   
     getData(params);
   }, []);
+
+
   return (
     
         <div className='container-fluid'>
@@ -24,11 +29,13 @@ export default function Category() {
      category.map((item)=> (
         <CardItem key={item.id} item={item} params={params} />
      ))   :
-    console.log(category)}
+    console.log(category)
+    }
       </div>
         </div>
         </div>
         </div>
       )
+    
   
 }
