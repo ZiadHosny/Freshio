@@ -8,7 +8,6 @@ export let dataApiContext = createContext([]);
 export default function ApiContext(props) {
 
  
-
   const [category, setCategory] = useState([]);
 
   async function getData(path , ) {
