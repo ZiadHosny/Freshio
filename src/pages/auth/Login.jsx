@@ -17,21 +17,30 @@ import { UserAuth } from '../../context/AuthContext';
 
 import Copyright from '../../shared/Copyright';
 import { ModalContext } from '../../context/ModalContext';
+import { Alert, Snackbar } from '@mui/material';
 
 export default function SignIn({ onClick }) {
   const { login } = UserAuth();
   const { setModal } = ModalContext();
-  const [error, setError] = useState('');
+  const [open, setOpen] = useState(false);
+  const [snackData, setSnackData] = useState({
+    msg: 'Login Successfully',
+    severity: 'success',
+  });
+
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    setError('');
     try {
       await login(data.email, data.password);
-      setModal('');
-      navigate('/');
+      setOpen(true);
+      setTimeout(() => {
+        setModal('');
+        navigate('/');
+      }, 1000);
     } catch (error) {
-      setError(error.message);
+      setSnackData({ msg: error.message, severity: 'error' });
+      setOpen(true);
     }
     reset();
   };
@@ -40,7 +49,12 @@ export default function SignIn({ onClick }) {
     setModal('signUp');
   };
 
-  const { handleSubmit, reset } = useForm();
+  const {
+    handleSubmit,
+    reset,
+    register,
+    formState: { errors },
+  } = useForm();
 
   return (
     <>
@@ -74,7 +88,15 @@ export default function SignIn({ onClick }) {
               name="email"
               autoComplete="email"
               autoFocus
+              {...register('email', {
+                required: true,
+                pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              })}
             />
+
+            {errors.email && errors.email.type === 'pattern' && (
+              <p className="text-danger">email is unvalid ex: aa@gmail.com</p>
+            )}
 
             <TextField
               margin="normal"
@@ -85,7 +107,18 @@ export default function SignIn({ onClick }) {
               type="password"
               id="password"
               autoComplete="current-password"
+              {...register('password', {
+                required: true,
+                pattern:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+              })}
             />
+            {errors.password && errors.password.type === 'pattern' && (
+              <p className="text-danger">
+                Should have Uppercase and Numbers and special character mon
+                length is 8
+              </p>
+            )}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -110,6 +143,16 @@ export default function SignIn({ onClick }) {
           </Box>
         </Box>
         <Copyright />
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          open={open}
+          onClose={() => setOpen(false)}
+          autoHideDuration={3000}
+        >
+          <Alert severity={snackData.severity} sx={{ width: '100%' }}>
+            {snackData.msg}
+          </Alert>
+        </Snackbar>
       </Container>
     </>
   );
