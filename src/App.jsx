@@ -22,12 +22,16 @@ import Details from './pages/details';
 import LowCarb from './pages/LowCarb';
 import SubCategoryContext from './context/SubCategoryContext';
 import Meals from './pages/Meals';
+import { FavoritesProvider } from './context/FavoritesContext';
+
 
 function App() {
   return (
     <AuthContextProvider>
       <ModalContextProvider>
-        <Navbar />
+        <FavoritesProvider>
+          <Navbar />
+        </FavoritesProvider>
         <Modal />
       </ModalContextProvider>
       <Routes>
@@ -42,9 +46,10 @@ function App() {
         <Route path="lowcarb" element={<SubCategoryContext><LowCarb /></SubCategoryContext>} />
         <Route path="meals" element={<SubCategoryContext><Meals/></SubCategoryContext>} />
         <Route path="contact" element={<Contact />} />
+
         <Route path="account" element={<Account />} />
-        <Route path="details" element={<Details />} >
-          <Route path=":category" element={<Details />} >
+        <Route path="details" element={<Details />}>
+          <Route path=":category" element={<Details />}>
             <Route path=":id" element={<Details />} />
           </Route>
         </Route>
@@ -52,7 +57,9 @@ function App() {
           path="favoritesList"
           element={
             <ProdectedRoute>
-              <FavoritesList />
+              <FavoritesProvider>
+                <FavoritesList />
+              </FavoritesProvider>
             </ProdectedRoute>
           }
         />

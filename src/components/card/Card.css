@@ -1,0 +1,14 @@
+.imageContainer{
+    height: 200px;
+}
+.image{
+    height: 100%
+}
+.heading{
+    height: 55px !important;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

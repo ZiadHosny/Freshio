@@ -1,4 +1,4 @@
-import React, { useState ,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
@@ -18,9 +18,11 @@ import { BiSearchAlt } from 'react-icons/bi';
 import './MenuBar.css';
 import logo from '../../assets/logo.svg';
 import { wishListContext } from '../../context/wishList';
+import { FavoritesContext } from '../../context/FavoritesContext';
 
 const MenuBar = () => {
-  let {wishList , addToCart} =  useContext(wishListContext) ;
+  let { addToCart } = useContext(wishListContext);
+  const { favoritesItems } = useContext(FavoritesContext);
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
 
@@ -136,10 +138,10 @@ const MenuBar = () => {
             <Link to="cartList">
               <IconButton sx={{ p: 0 }}>
                 <ShoppingCartIcon
-                className='count-parent'
+                  className="count-parent"
                   style={{ color: '#0a472e', fontSize: 40, paddingRight: 10 }}
                 />
-                <div className='cart-count'>{addToCart}</div>
+                <div className="cart-count">{addToCart}</div>
               </IconButton>
             </Link>
           </Tooltip>
@@ -149,7 +151,7 @@ const MenuBar = () => {
             <Link to="favoritesList">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteIcon style={{ color: '#0a472e', fontSize: 40 }} />
-                <div className='wish-count'>{wishList}</div>
+                <div className="wish-count">{favoritesItems.length}</div>
               </IconButton>
             </Link>
           </Tooltip>
