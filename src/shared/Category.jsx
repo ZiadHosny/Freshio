@@ -5,7 +5,6 @@ import Sidebar from "../shared/sidebar/Sidebar";
 import "./Category.css";
 import CardItem from '../shared/CardItem';
 
-
 export default function Category() {
   let params = window.location.pathname;
   let {category , getData} = useContext(dataApiContext);
@@ -21,14 +20,11 @@ export default function Category() {
         </div>
         <div className='col-md-9'>
         <div className='row p-3 g-3'>
-     {
-     category?
+     { category? 
      category.map((item)=> (
-        <CardItem key={item.id} item={item}/>
-     ))
-    :
-    console.log(category)
-    }
+        <CardItem key={item.id} item={item} params={params} />
+     ))   :
+    console.log(category)}
       </div>
         </div>
         </div>
