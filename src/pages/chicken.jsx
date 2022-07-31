@@ -4,7 +4,7 @@ import { chickenApiContext } from '../context/ApiContext';
 import Account from "./Account"
 import {HiOutlineArrowsExpand} from "react-icons/hi";
 import {BsHeart} from "react-icons/bs";
-import "./chicken.css"
+import "./Chicken.css"
 
 export default function Chicken() {
 

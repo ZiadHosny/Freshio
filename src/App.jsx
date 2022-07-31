@@ -8,11 +8,11 @@ import Footer from './components/footer/Footer';
 import Modal from './components/modal/Modal';
 import ProdectedRoute from './components/ProdectedRoute';
 import Home from './pages/Home';
-import Contact from './pages/contact';
+import Contact from './pages/Contact';
 import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList';
 import Details from './pages/details';
-import Chicken from './pages/chicken';
+import Chicken from './pages/Chicken';
 
 function App() {
   return (
