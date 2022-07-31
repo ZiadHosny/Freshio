@@ -38,19 +38,19 @@ const DealOfTheDay = () => {
             </p>
             <div className="time  justify-content-sm-center justify-content-md-start">
               <div>
-                <span className="num">13</span>
+                <span className="num">{13}</span>
                 <span>days</span>
               </div>
               <div>
-                <span className="num">15</span>
+                <span className="num">{9}</span>
                 <span>hours</span>
               </div>
               <div>
-                <span className="num">55</span>
+                <span className="num">{55}</span>
                 <span>min</span>
               </div>
               <div>
-                <span className="num">41</span>
+                <span className="num">{5}</span>
                 <span>sec</span>
               </div>
             </div>

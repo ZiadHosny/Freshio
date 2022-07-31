@@ -14,21 +14,32 @@ import { UserAuth } from '../../context/AuthContext';
 import { ModalContext } from '../../context/ModalContext';
 
 import Copyright from '../../shared/Copyright';
+import Snackbar from '@mui/material/Snackbar';
+import { Alert } from '@mui/material';
 
 export default function SignUp({ onClick }) {
   const { signUp } = UserAuth();
   const { setModal } = ModalContext();
-  const [error, setError] = useState('');
+
+  const [open, setOpen] = useState(false);
+  const [snackData, setSnackData] = useState({
+    msg: 'SignUp Successfully',
+    severity: 'success',
+  });
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    setError('');
     try {
       await signUp(data.email, data.password);
-      setModal('');
-      navigate('/');
+
+      setOpen(true);
+      setTimeout(() => {
+        setModal('');
+        navigate('/');
+      }, 1000);
     } catch (error) {
-      setError(error.message);
+      setSnackData({ msg: error.message, severity: 'error' });
+      setOpen(true);
     }
   };
 
@@ -195,6 +206,15 @@ export default function SignUp({ onClick }) {
         </Box>
       </Box>
       <Copyright />
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Alert severity={snackData.severity} sx={{ width: '100%' }}>
+          {snackData.msg}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
