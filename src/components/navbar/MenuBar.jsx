@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext } from 'react';
 
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
@@ -15,11 +15,12 @@ import { UserAuth } from '../../context/AuthContext';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { BiSearchAlt } from 'react-icons/bi';
-
 import './MenuBar.css';
 import logo from '../../assets/logo.svg';
+import { wishListContext } from '../../context/wishList';
 
 const MenuBar = () => {
+  let {wishList , addToCart} =  useContext(wishListContext) ;
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
 
@@ -134,8 +135,10 @@ const MenuBar = () => {
             <Link to="cartList">
               <IconButton sx={{ p: 0 }}>
                 <ShoppingCartIcon
+                className='count-parent'
                   style={{ color: '#0a472e', fontSize: 40, paddingRight: 10 }}
                 />
+                <div className='cart-count'>{addToCart}</div>
               </IconButton>
             </Link>
           </Tooltip>
@@ -145,6 +148,7 @@ const MenuBar = () => {
             <Link to="favoritesList">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteIcon style={{ color: '#0a472e', fontSize: 40 }} />
+                <div className='wish-count'>{wishList}</div>
               </IconButton>
             </Link>
           </Tooltip>
