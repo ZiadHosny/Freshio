@@ -19,12 +19,15 @@ import Supplements from './pages/Supplements';
 import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
 import Details from './pages/details';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 function App() {
   return (
     <AuthContextProvider>
       <ModalContextProvider>
-        <Navbar />
+        <FavoritesProvider>
+          <Navbar />
+        </FavoritesProvider>
         <Modal />
       </ModalContextProvider>
       <Routes>
@@ -48,7 +51,9 @@ function App() {
           path="favoritesList"
           element={
             <ProdectedRoute>
-              <FavoritesList />
+              <FavoritesProvider>
+                <FavoritesList />
+              </FavoritesProvider>
             </ProdectedRoute>
           }
         />

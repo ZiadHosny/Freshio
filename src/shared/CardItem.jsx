@@ -40,6 +40,26 @@ export default function CardItem({ item, params }) {
     }
   };
 
+  const find = async () => {
+    if (user?.email) {
+      let dataFromDB = await getDoc(itemID);
+      let find = dataFromDB.data().favorites.find((e) => {
+        return e.id === item.id;
+      });
+      if (find) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
+  useEffect(() => {
+    find().then((e) => {
+      setIsFav(e);
+    });
+  }, [find]);
+
   return (
     <div className=" col-md-3">
       <div className="border rounded p-3">
