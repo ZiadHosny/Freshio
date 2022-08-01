@@ -16,7 +16,7 @@ export const FavoritesProvider = (props) => {
     onSnapshot(itemID, (doc) => {
       setFavoritesItems(doc.data()?.favorites);
     });
-  }, [user.email]);
+  }, [user?.email]);
   return (
     <FavoritesContext.Provider value={{ favoritesItems }}>
       {props.children}

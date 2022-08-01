@@ -151,7 +151,7 @@ const MenuBar = () => {
             <Link to="favoritesList">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteIcon style={{ color: '#0a472e', fontSize: 40 }} />
-                <div className="wish-count">{favoritesItems.length}</div>
+                <div className="wish-count">{favoritesItems?favoritesItems.length:0}</div>
               </IconButton>
             </Link>
           </Tooltip>
