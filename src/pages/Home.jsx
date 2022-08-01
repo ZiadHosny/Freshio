@@ -21,9 +21,7 @@ const Home = () => {
   
   async function getProducts() {
     let {data} = await axios.get("https://freshhome.mocklab.io/home");
-    setProducts(data)
-    console.log('dataaaaa',data.allCategory)
-    console.log("productsssssss",products)
+    setProducts(data);
   }
 
   useEffect(() => {
