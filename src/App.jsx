@@ -23,14 +23,16 @@ import LowCarb from './pages/LowCarb';
 import SubCategoryContext from './context/SubCategoryContext';
 import Meals from './pages/Meals';
 import { FavoritesProvider } from './context/FavoritesContext';
-
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
   return (
     <AuthContextProvider>
       <ModalContextProvider>
         <FavoritesProvider>
-          <Navbar />
+          <CartContextProvider>
+            <Navbar />
+          </CartContextProvider>
         </FavoritesProvider>
         <Modal />
       </ModalContextProvider>
@@ -43,10 +45,23 @@ function App() {
         <Route path="fruits" element={<Fruit />} />
         <Route path="keto" element={<Keto />} />
         <Route path="vegetables" element={<Vegetables />} />
-        <Route path="lowcarb" element={<SubCategoryContext><LowCarb /></SubCategoryContext>} />
-        <Route path="meals" element={<SubCategoryContext><Meals/></SubCategoryContext>} />
+        <Route
+          path="lowcarb"
+          element={
+            <SubCategoryContext>
+              <LowCarb />
+            </SubCategoryContext>
+          }
+        />
+        <Route
+          path="meals"
+          element={
+            <SubCategoryContext>
+              <Meals />
+            </SubCategoryContext>
+          }
+        />
         <Route path="contact" element={<Contact />} />
-
         <Route path="account" element={<Account />} />
         <Route path="details" element={<Details />}>
           <Route path=":category" element={<Details />}>
@@ -67,7 +82,9 @@ function App() {
           path="cartList"
           element={
             <ProdectedRoute>
-              <CartList />
+              <CartContextProvider>
+                <CartList />
+              </CartContextProvider>
             </ProdectedRoute>
           }
         />

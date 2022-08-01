@@ -17,11 +17,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { BiSearchAlt } from 'react-icons/bi';
 import './MenuBar.css';
 import logo from '../../assets/logo.svg';
-import { wishListContext } from '../../context/wishList';
+import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
 
 const MenuBar = () => {
-  let { addToCart } = useContext(wishListContext);
+  let { cart } = useContext(CartContext);
   const { favoritesItems } = useContext(FavoritesContext);
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
@@ -52,7 +52,6 @@ const MenuBar = () => {
   };
 
   return (
-    
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
         <Link to="/">
@@ -141,7 +140,7 @@ const MenuBar = () => {
                   className="count-parent"
                   style={{ color: '#0a472e', fontSize: 40, paddingRight: 10 }}
                 />
-                <div className="cart-count">{addToCart}</div>
+                <div className="cart-count">{cart ? cart.length : 0}</div>
               </IconButton>
             </Link>
           </Tooltip>
@@ -151,7 +150,9 @@ const MenuBar = () => {
             <Link to="favoritesList">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteIcon style={{ color: '#0a472e', fontSize: 40 }} />
-                <div className="wish-count">{favoritesItems?favoritesItems.length:0}</div>
+                <div className="wish-count">
+                  {favoritesItems ? favoritesItems.length : 0}
+                </div>
               </IconButton>
             </Link>
           </Tooltip>
