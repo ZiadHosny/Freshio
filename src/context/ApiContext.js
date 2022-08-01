@@ -8,11 +8,15 @@ export default function ApiContext(props) {
   const [category, setCategory] = useState(null);
 
   async function getData(path) {
-    if (path == '/') {
-      let { data } = await axios.get(`https://freshfreshio.mocklab.io/home`);
+    if (path === '/') {
+      let { data } = await axios.get(
+        `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/home.json`
+      );
       setCategory(data);
     } else {
-      let { data } = await axios.get(`https://foodfresh.mocklab.io${path}`);
+      let { data } = await axios.get(
+        `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/${path}.json`
+      );
 
       setCategory(data);
     }
