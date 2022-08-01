@@ -11,7 +11,7 @@ export default function SubCategoryContext(props) {
   let allProduct = [];
 
   async function getSubData(path) {
-    if (path == '/') {
+    if (path === '/') {
       let { data } = await axios.get(
         `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/home.json`
       );

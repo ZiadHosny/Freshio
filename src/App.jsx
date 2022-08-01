@@ -5,6 +5,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { ModalContextProvider } from './context/ModalContext';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
+import ScrollArrow from './components/scrollArrow/ScrollArrow';
 import Modal from './components/modal/Modal';
 import ProdectedRoute from './components/ProdectedRoute';
 import Home from './pages/Home';
@@ -36,6 +37,7 @@ function App() {
         </FavoritesProvider>
         <Modal />
       </ModalContextProvider>
+      <ScrollArrow />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />} />
