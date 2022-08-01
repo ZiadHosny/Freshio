@@ -4,19 +4,24 @@ import { BsHeart } from 'react-icons/bs';
 import { BsHeartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { DetailsContext } from '../context/DetailsContext';
+import { CartContext } from '../context/CartContext';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import { UserAuth } from '../context/AuthContext';
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
-
 export default function CardItem({ item, params }) {
   const [isFav, setIsFav] = useState(false);
   let { setitem } = useContext(DetailsContext);
+  const { addToCartInFirebase } = useContext(CartContext);
 
   const { user } = UserAuth();
   const itemID = doc(db, 'users', `${user?.email}`);
+
+  const addToCart = () => {
+    addToCartInFirebase(item);
+  };
 
   const saveItem = async () => {
     if (user?.email) {
@@ -81,8 +86,12 @@ export default function CardItem({ item, params }) {
             )}
           </div>
         </div>
-        <img src={item.image} className='w-75 d-block m-auto img-height ' />
-        <h5 className='text-height '>{item.title}</h5>
+        <img
+          src={item.image}
+          className="w-75 d-block m-auto img-height "
+          alt="img"
+        />
+        <h5 className="text-height ">{item.title}</h5>
         <h5>Rate Item :</h5>
         <Stack className='text-center' spacing={1}>
           <Rating name="half-rating" defaultValue={3} precision={0.5} />
@@ -97,9 +106,11 @@ export default function CardItem({ item, params }) {
       :
       <h5 className='text-center'>{item.price} EGP</h5>
     }
+
         <button
           type="button"
           className="btn btn-outline-success d-block w-75 m-auto my-4"
+          onClick={addToCart}
         >
           Add to Cart
         </button>

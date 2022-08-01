@@ -1,20 +1,16 @@
-.img-height 
-{
-    height: 150px;
+.img-height {
+  height: 150px;
 }
 
-.text-height 
-{
-    height: 50px;
-    cursor: pointer;
+.text-height {
+  height: 50px;
+  cursor: pointer;
 }
 
-.icon-color 
-{
-    color: #0a472e ;
+.icon-color {
+  color: #0a472e;
 }
 
-.text-height:hover 
-{
-    color: #658f00 ;
-} 
+.text-height:hover {
+  color: #658f00;
+}

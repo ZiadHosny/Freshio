@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState} from 'react';
 import { useContext } from 'react';
 import { subApiContext } from '../context/SubCategoryContext';
@@ -9,8 +10,7 @@ import { BsExclamationSquare } from 'react-icons/bs';
 
 export default function SubCategory() {
   let params = window.location.pathname;
-  let {subCategory , getSubData} = useContext(subApiContext);
-
+  let { subCategory, getSubData } = useContext(subApiContext);
   
   const [subItems,setSubItems] = useState(subCategory);
 
@@ -136,6 +136,26 @@ export default function SubCategory() {
   </div>
     </div>
     </div>
+=======
+  useEffect(() => {
+    getSubData(params);
+  }, [getSubData, params]);
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3">
+          <Sidebar />
+        </div>
+        <div className="col-md-9">
+          <div className="row p-3 g-3">
+            {subCategory
+              ? subCategory.map((item) => (
+                  <CardItem key={item.id} item={item} params={params} />
+                ))
+              : null}
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

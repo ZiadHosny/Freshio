@@ -1,20 +1,17 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { dataApiContext } from '../context/ApiContext';
-import Sidebar from "../shared/sidebar/Sidebar";
-import "./Category.css";
+import Sidebar from '../shared/sidebar/Sidebar';
+import './Category.css';
 import CardItem from '../shared/CardItem';
 import { Skeleton } from '@mui/material';
 export default function Category() {
   let params = window.location.pathname;
-  let {category , getData} = useContext(dataApiContext);
-
+  let { category, getData } = useContext(dataApiContext);
 
   useEffect(() => {
-   
     getData(params);
   }, []);
-
 
   return (
         <div className='container-fluid'>
@@ -127,9 +124,5 @@ export default function Category() {
     }
       </div>
         </div>
-        </div>
-        </div>
-      )
-    
-  
+  );
 }

@@ -1,10 +1,10 @@
+
 import React, { useEffect } from 'react'
 import { createContext, useState} from "react";
 import axios from "axios";
-
 export let subApiContext = createContext([]);
-
 export default function SubCategoryContext(props) {
+
  
   const [subCategory, setSubCategory] = useState([]);
   const [categoryKey,setCategoryKey] = useState([]);
@@ -15,17 +15,14 @@ export default function SubCategoryContext(props) {
   let allKeys=[];
   
 
+
   async function getSubData(path) {
-
-    if (path == "/") {
-      
+    if (path === '/') {
       let { data } = await axios.get(
-        `https://freshfreshio.mocklab.io/home`
+        `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/home.json`
       );
-     setSubCategory(data);
-    }
-    else {
-
+      setSubCategory(data);
+    } else {
       let { data } = await axios.get(
         `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/${path}.json`
       );
@@ -86,14 +83,11 @@ const filterByBrand=(e)=>{
     });
     console.log(filteredBrand);
     setSubCategory(filteredBrand);
+
   }
 }
-
-
  
   return (
     <subApiContext.Provider value={{ subCategory ,getSubData , categoryKey ,filterSale,filterSubItem,filterByBrand }}>{props.children}</subApiContext.Provider>
   )
 }
-
-

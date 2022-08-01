@@ -5,6 +5,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { ModalContextProvider } from './context/ModalContext';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
+import ScrollArrow from './components/scrollArrow/ScrollArrow';
 import Modal from './components/modal/Modal';
 import ProdectedRoute from './components/ProdectedRoute';
 import Home from './pages/Home';
@@ -23,56 +24,75 @@ import LowCarb from './pages/LowCarb';
 import SubCategoryContext from './context/SubCategoryContext';
 import Meals from './pages/Meals';
 import { FavoritesProvider } from './context/FavoritesContext';
-
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
   return (
     <AuthContextProvider>
-      <ModalContextProvider>
-        <FavoritesProvider>
-          <Navbar />
-        </FavoritesProvider>
-        <Modal />
-      </ModalContextProvider>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/home" element={<Home />} />
-        <Route path="chicken" element={<Chicken />} />
-        <Route path="supplements" element={<Supplements />} />
-        <Route path="snacks" element={<Snacks />} />
-        <Route path="fruits" element={<Fruit />} />
-        <Route path="keto" element={<Keto />} />
-        <Route path="vegetables" element={<Vegetables />} />
-        <Route path="lowcarb" element={<SubCategoryContext><LowCarb /></SubCategoryContext>} />
-        <Route path="meals" element={<SubCategoryContext><Meals/></SubCategoryContext>} />
-        <Route path="contact" element={<Contact />} />
+      <CartContextProvider>
+        <ModalContextProvider>
+          <FavoritesProvider>
+            <Navbar />
+          </FavoritesProvider>
+          <Modal />
+        </ModalContextProvider>
+        <ScrollArrow />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />} />
 
-        <Route path="account" element={<Account />} />
-        <Route path="details" element={<Details />}>
-          <Route path=":category" element={<Details />}>
-            <Route path=":id" element={<Details />} />
+          <Route path="chicken" element={<Chicken />} />
+          <Route path="supplements" element={<Supplements />} />
+          <Route path="snacks" element={<Snacks />} />
+          <Route path="fruits" element={<Fruit />} />
+          <Route path="keto" element={<Keto />} />
+          <Route path="vegetables" element={<Vegetables />} />
+          <Route
+            path="lowcarb"
+            element={
+              <SubCategoryContext>
+                <LowCarb />
+              </SubCategoryContext>
+            }
+          />
+          <Route
+            path="meals"
+            element={
+              <SubCategoryContext>
+                <Meals />
+              </SubCategoryContext>
+            }
+          />
+          <Route path="contact" element={<Contact />} />
+          <Route path="account" element={<Account />} />
+          <Route path="details" element={<Details />}>
+            <Route path=":category" element={<Details />}>
+              <Route path=":id" element={<Details />} />
+            </Route>
           </Route>
-        </Route>
-        <Route
-          path="favoritesList"
-          element={
-            <ProdectedRoute>
-              <FavoritesProvider>
-                <FavoritesList />
-              </FavoritesProvider>
-            </ProdectedRoute>
-          }
-        />
-        <Route
-          path="cartList"
-          element={
-            <ProdectedRoute>
-              <CartList />
-            </ProdectedRoute>
-          }
-        />
-      </Routes>
-      <Footer />
+          <Route
+            path="favoritesList"
+            element={
+              <ProdectedRoute>
+                <FavoritesProvider>
+                  <FavoritesList />
+                </FavoritesProvider>
+              </ProdectedRoute>
+            }
+          />
+          <Route
+            path="cartList"
+            element={
+              <ProdectedRoute>
+                <CartContextProvider>
+                  <CartList />
+                </CartContextProvider>
+              </ProdectedRoute>
+            }
+          />
+        </Routes>
+        <Footer />
+      </CartContextProvider>
     </AuthContextProvider>
   );
 }
