@@ -139,6 +139,7 @@ const Navbar = () => {
                         <GiBroccoli className="icon-style" />
                         Vegan
                       </Link>
+
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link to="/lowcarb" className="text-color">

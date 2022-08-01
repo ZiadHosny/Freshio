@@ -45,13 +45,13 @@ const Section = ({title, data}) => {
   function filterItem(e) {
    if (e.target.name === 'all') {
        setItems(data);
-  
+
     }else{
       const updatedItems = data.filter((elem) => {
         return elem.category === e.target.name;
       });
       setItems(updatedItems);
-    
+
     }
   }
 
