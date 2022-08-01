@@ -1,32 +1,137 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useContext } from 'react';
 import { subApiContext } from '../context/SubCategoryContext';
-import Sidebar from "../shared/sidebar/Sidebar";
+import SubSidebar from "./sidebar/SubSidebar";
 import "./Category.css";
 import CardItem from './CardItem';
+import { Skeleton } from '@mui/material';
+import { BsExclamationSquare } from 'react-icons/bs';
 
 export default function SubCategory() {
   let params = window.location.pathname;
   let {subCategory , getSubData} = useContext(subApiContext);
 
-  useEffect(()=>{
+  
+  const [subItems,setSubItems] = useState(subCategory);
 
-    getSubData(params)
-    console.log(subCategory)
-  }, [])
+
+  useEffect(()=>{
+    getSubData(params);
+  }, []);
+  useEffect(()=>{
+    setSubItems(subCategory);
+  },[subCategory]);
   return (
     <div className='container-fluid'>
     <div className='row'>
     <div className='col-md-3'>
-      <Sidebar/>
+      <SubSidebar />
     </div>
-    <div className='col-md-9'>
+    <div className='col-md-9 text-center'>
     <div className='row p-3 g-3'>
- { subCategory ? 
- subCategory.map((item)=> (
-    <CardItem key={item.id} item={item} params={params} />
- ))   :
-console.log(subCategory)
+ { 
+ subItems
+  ? 
+  subItems.map((item,i)=> (
+    <CardItem key={i} item={item} params={params} />
+ ))   
+ :
+ <>
+ <div className="row m-5">
+  <div className="col-md-3">
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+
+  </div>
+  <div className="col-md-3">
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+
+  </div>
+  <div className="col-md-3">
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+
+  </div>
+  <div className="col-md-3">
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+    <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" width={210} height={118} />
+    </div>
+
+  </div>
+ </div>
+ </>
 }
   </div>
     </div>

@@ -84,10 +84,19 @@ export default function CardItem({ item, params }) {
         <img src={item.image} className='w-75 d-block m-auto img-height ' />
         <h5 className='text-height '>{item.title}</h5>
         <h5>Rate Item :</h5>
-        <Stack spacing={1}>
-      <Rating name="half-rating" defaultValue={3} precision={0.5} />
-    </Stack>
-        <h5>{item.price} EGP</h5>
+        <Stack className='text-center' spacing={1}>
+          <Rating name="half-rating" defaultValue={3} precision={0.5} />
+        </Stack>
+    {
+      item.sale
+      ?
+      <div className='d-flex justify-content-center'>
+        <h5 className='text-decoration-line-through mx-2'>{item.price} EGP</h5>
+        <h5>{ Math.floor(item.price *0.8)} EGP</h5>
+      </div>
+      :
+      <h5 className='text-center'>{item.price} EGP</h5>
+    }
         <button
           type="button"
           className="btn btn-outline-success d-block w-75 m-auto my-4"

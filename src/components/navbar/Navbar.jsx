@@ -135,7 +135,7 @@ const Navbar = () => {
                       </Link>
                       </MenuItem>
                       <MenuItem onClick={handleClose}>
-                        <Link to='/lowcarb' className='text-color'>
+                        <Link to='/lowCarb' className='text-color'>
                           <GiSugarCane className="icon-style" />
                           Low Carb
                         </Link>
