@@ -27,7 +27,7 @@ export default function SubCategoryContext(props) {
       });
 
       setSubCategory(allProduct);
-      console.log(allProduct);
+ 
     }
   }
 

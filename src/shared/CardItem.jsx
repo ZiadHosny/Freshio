@@ -14,33 +14,13 @@ import { db } from '../firebase';
 export default function CardItem({ item, params }) {
   const [isFav, setIsFav] = useState(false);
   let { setitem } = useContext(DetailsContext);
-  const { setToCart } = useContext(CartContext);
+  const { addToCartInFirebase } = useContext(CartContext);
 
   const { user } = UserAuth();
   const itemID = doc(db, 'users', `${user?.email}`);
 
-  const addToCart = async () => {
-    if (user?.email) {
-      try {
-        let dataFromDB = await getDoc(itemID);
-        let allInCart = dataFromDB.data().inCart;
-        const result = allInCart.find((e) => {
-          return item.id !== e.id;
-        });
-
-        if (result) {
-        } else {
-          item['quantity'] = 1;
-          allInCart.push(item);
-        }
-
-        await updateDoc(itemID, { inCart: allInCart });
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      alert('please log in first');
-    }
+  const addToCart = () => {
+    addToCartInFirebase(item);
   };
 
   const saveItem = async () => {

@@ -25,7 +25,7 @@ export default function Category() {
               ? category.map((item) => (
                   <CardItem key={item.id} item={item} params={params} />
                 ))
-              : console.log(category)}
+              : null}
           </div>
         </div>
       </div>
