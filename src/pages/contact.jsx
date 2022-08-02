@@ -19,7 +19,7 @@ const Contact = () => {
     }
     const handleSubmit=(e) =>{
         e.preventDefault();
-     
+        console.log(data);
       }
   return (
     <div className="mt-5 container-lg">
