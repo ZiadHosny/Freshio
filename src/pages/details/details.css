@@ -1,6 +1,16 @@
-.addBtn{
-    /* background-color: #80B500; */
+.ContainerModal {
+  display: flex;
+  opacity: 1;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 50%;
+  transform: translate(-50%) scale(1);
+  transition: opacity 200ms ease-in-out 100ms, transform 500ms ease-in-out 0ms;
+  border-radius: 10px;
+  padding: 40px;
 }
-.link:hover{
-    text-decoration: underline;
+
+.link:hover {
+  text-decoration: underline;
 }

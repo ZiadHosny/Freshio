@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { BsHeart } from 'react-icons/bs';
 import { BsHeartFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+
 import { DetailsContext } from '../context/DetailsContext';
 import { CartContext } from '../context/CartContext';
 import Rating from '@mui/material/Rating';
@@ -10,8 +10,10 @@ import Stack from '@mui/material/Stack';
 import { UserAuth } from '../context/AuthContext';
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { ModalContext } from '../context/ModalContext';
 
 export default function CardItem({ item, params }) {
+  const { setModal } = ModalContext();
   const [isFav, setIsFav] = useState(false);
   let { setitem } = useContext(DetailsContext);
   const { addToCartInFirebase } = useContext(CartContext);
@@ -68,51 +70,62 @@ export default function CardItem({ item, params }) {
     });
   }, [find]);
 
-  return (
-      <div className="border rounded p-3">
-        <div className="d-flex justify-content-between">
-          <Link
-            to={`/details${params}/${item.id}`}
-            onClick={() => setitem(item)}
-          >
-            <HiOutlineArrowsExpand className="fs-3 mt-1 icon-color" />
-          </Link>
-          <div onClick={saveItem}>
-            {isFav ? (
-              <BsHeartFill className="fs-3 mt-1 icon-color" />
-            ) : (
-              <BsHeart className="fs-3 mt-1 icon-color" />
-            )}
-          </div>
-        </div>
-        <img
-          src={item.image}
-          className="w-75 d-block m-auto img-height "
-          alt="img"
-        />
-        <h5 className="text-height ">{item.title}</h5>
-        <h5>Rate Item :</h5>
-        <Stack className='text-center' spacing={1}>
-          <Rating name="half-rating" defaultValue={3} precision={0.5} />
-        </Stack>
-    {
-      item.sale
-      ?
-      <div className='d-flex justify-content-center'>
-        <h5 className='text-decoration-line-through mx-2'>{item.price} EGP</h5>
-        <h5>{ Math.floor(item.price *0.8)} EGP</h5>
-      </div>
-      :
-      <h5 className='text-center'>{item.price} EGP</h5>
-    }
+  const viewDetails = () => {
+    setModal('details');
+    setitem(item);
+  };
 
-        <button
-          type="button"
-          className="btn btn-outline-success d-block w-75 m-auto my-4"
-          onClick={addToCart}
-        >
-          Add to Cart
-        </button>
+  return (
+    <div className="border rounded p-3">
+      <div className="d-flex justify-content-between">
+        <HiOutlineArrowsExpand
+          style={{ cursor: 'pointer' }}
+          onClick={() => viewDetails()}
+          className="fs-3 mt-1 icon-color"
+        />
+
+        <div onClick={saveItem}>
+          {isFav ? (
+            <BsHeartFill
+              style={{ cursor: 'pointer' }}
+              className="fs-3 mt-1 icon-color"
+            />
+          ) : (
+            <BsHeart
+              style={{ cursor: 'pointer' }}
+              className="fs-3 mt-1 icon-color"
+            />
+          )}
+        </div>
       </div>
+      <img
+        src={item.image}
+        className="w-75 d-block m-auto img-height "
+        alt="img"
+      />
+      <h5 className="text-height ">{item.title}</h5>
+      <h5>Rate Item :</h5>
+      <Stack className="text-center" spacing={1}>
+        <Rating name="half-rating" defaultValue={3} precision={0.5} />
+      </Stack>
+      {item.sale ? (
+        <div className="d-flex justify-content-center">
+          <h5 className="text-decoration-line-through mx-2">
+            {item.price} EGP
+          </h5>
+          <h5>{Math.floor(item.price * 0.8)} EGP</h5>
+        </div>
+      ) : (
+        <h5 className="text-center">{item.price} EGP</h5>
+      )}
+
+      <button
+        type="button"
+        className="btn btn-outline-success d-block w-75 m-auto my-4"
+        onClick={addToCart}
+      >
+        Add to Cart
+      </button>
+    </div>
   );
 }
