@@ -286,13 +286,6 @@ const Navbar = () => {
               <Link to="/home" className="bt-style">
                 Home
               </Link>
-              <Link to="/shop" className="bt-style">
-                Shop
-              </Link>
-              <Link to="/page" className="bt-style">
-                Page
-              </Link>
-
               <Link to="/contact" className="bt-style">
                 Contact
               </Link>

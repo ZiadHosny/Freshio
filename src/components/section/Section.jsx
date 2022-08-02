@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Card from '../card/card';
+import CardItem from '../../shared/CardItem';
 import '../feedBack/FeedBack.css';
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+function SampleNextArrow({ onClick }) {
   return <div className="arrow-left" onClick={onClick} />;
 }
 
@@ -15,19 +14,19 @@ function SamplePrevArrow(props) {
   return <div className="arrow-right" onClick={onClick} />;
 }
 //to reset product in random order
-function randomArrayShuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
+// function randomArrayShuffle(array) {
+//   var currentIndex = array.length,
+//     temporaryValue,
+//     randomIndex;
+//   while (0 !== currentIndex) {
+//     randomIndex = Math.floor(Math.random() * currentIndex);
+//     currentIndex -= 1;
+//     temporaryValue = array[currentIndex];
+//     array[currentIndex] = array[randomIndex];
+//     array[randomIndex] = temporaryValue;
+//   }
+//   return array;
+// }
 
 const Section = ({ title, data }) => {
   const [items, setItems] = useState(data);
@@ -55,7 +54,7 @@ const Section = ({ title, data }) => {
     cssEase: 'linear',
     pauseOnHover: true,
 
-    nextArrow: <SampleNextArrow />,
+    nextArrow: <SampleNextArrow  />,
     prevArrow: <SamplePrevArrow />,
 
     responsive: [
@@ -93,7 +92,6 @@ const Section = ({ title, data }) => {
     <div className="container-lg my-5">
       <div className="container-lg text-center d-md-flex justify-content-between mb-4">
         <div>
-          {/* <h1 className='container-lg p-0 fw-bolder'>Featured Products</h1> */}
           <h1 className="container-lg p-0 fw-bolder">{title}</h1>
         </div>
         {title === 'Featured Products' ? (
@@ -146,17 +144,8 @@ const Section = ({ title, data }) => {
       <div>
         <Slider {...settingss}>
           {items
-            ? items.map((item, i) => {
-                return (
-                  <Card
-                    key={i}
-                    title={item.title}
-                    category={item.category}
-                    price={item.price}
-                    url={item.image}
-                    amount={item.amount}
-                  />
-                );
+            ? items.map((item) => {
+                return <CardItem item={item} key={item.id} />;
               })
             : null}
         </Slider>
