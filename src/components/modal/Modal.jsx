@@ -4,6 +4,7 @@ import { ModalContext } from '../../context/ModalContext';
 import Login from '../../pages/auth/Login';
 import Signup from '../../pages/auth/Signup';
 import './Modal.css';
+import Details from '../../pages/details/Details';
 
 const dropIn = {
   hidden: {
@@ -47,13 +48,19 @@ const Modal = () => {
               e.stopPropagation();
             }}
           />
-        ) : (
+        ) : modal === 'signUp' ? (
           <Signup
             onClick={(e) => {
               e.stopPropagation();
             }}
           />
-        )}
+        ) : modal === 'details' ? (
+          <Details
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          />
+        ) : null}
       </motion.div>
     </Backdrop>
   ) : null;

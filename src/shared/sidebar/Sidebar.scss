@@ -1,5 +1,3 @@
-
-
 $sidebar-bg-color: #f1f1f1 !default;
 $submenu-bg-color: #565353 !default;
 $icon-bg-color: #323232 !default;
@@ -20,16 +18,8 @@ $breakpoint-lg: 992px !default;
 $breakpoint-xl: 1200px !default;
 $breakpoint-xxl: 1600px !default;
 
-
-.icon-bg 
-{
-    color: white
+.icon-bg {
+  color: white;
 }
-
-
-
-
-
-
 
 @import '~react-pro-sidebar/dist/scss/styles.scss';
