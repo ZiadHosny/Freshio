@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import FavoritesList from './pages/FavoritesList';
 import CartList from './pages/CartList';
 import Chicken from './pages/Chicken';
+import Vegan from './pages/Vegan';
 import Account from './pages/auth/Account';
 import Keto from './pages/Keto';
 import Vegetables from './pages/Vegetables';
@@ -27,6 +28,9 @@ import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
 import LowCarb from './pages/LowCarb';
 import Meals from './pages/Meals';
+import Search from './pages/Search';
+import Meat from './pages/Meat';
+import Bakery from './pages/Bakery';
 
 function App() {
   return (
@@ -37,20 +41,40 @@ function App() {
             <Navbar />
           </FavoritesProvider>
           <Modal />
-
           <ScrollArrow />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/account" element={<Account />} />
 
             <Route path="chicken" element={<Chicken />} />
-            <Route path="supplements" element={<Supplements />} />
-            <Route path="snacks" element={<Snacks />} />
-            <Route path="fruits" element={<Fruit />} />
-            <Route path="keto" element={<Keto />} />
-            <Route path="vegetables" element={<Vegetables />} />
+            <Route path="/supplements" element={<Supplements />} />
+            <Route path="/snacks" element={<Snacks />} />
+            <Route path="/fruit" element={<Fruit />} />
+            <Route path="/keto" element={<Keto />} />
+
+            <Route path="/vegetables" element={<Vegetables />} />
+
+            <Route path="/search/:id" element={<Search />} />
             <Route
-              path="lowcarb"
+              path="/meat"
+              element={
+                <SubCategoryContext>
+                  <Meat />
+                </SubCategoryContext>
+              }
+            />
+            <Route
+              path="/bakery"
+              element={
+                <SubCategoryContext>
+                  <Bakery />
+                </SubCategoryContext>
+              }
+            />
+            <Route
+              path="/lowcarb"
               element={
                 <SubCategoryContext>
                   <LowCarb />
@@ -58,17 +82,23 @@ function App() {
               }
             />
             <Route
-              path="meals"
+              path="/vegan"
+              element={
+                <SubCategoryContext>
+                  <Vegan />
+                </SubCategoryContext>
+              }
+            />
+            <Route
+              path="/meals"
               element={
                 <SubCategoryContext>
                   <Meals />
                 </SubCategoryContext>
               }
             />
-            <Route path="contact" element={<Contact />} />
-            <Route path="account" element={<Account />} />
             <Route
-              path="favoritesList"
+              path="/favoritesList"
               element={
                 <ProdectedRoute>
                   <FavoritesProvider>
@@ -78,12 +108,10 @@ function App() {
               }
             />
             <Route
-              path="cartList"
+              path="/cartList"
               element={
                 <ProdectedRoute>
-                  <CartContextProvider>
-                    <CartList />
-                  </CartContextProvider>
+                  <CartList />
                 </ProdectedRoute>
               }
             />
