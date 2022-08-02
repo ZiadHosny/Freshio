@@ -40,7 +40,7 @@ export function CartContextProvider(props) {
     onSnapshot(itemID, (doc) => {
       setToCart(doc.data()?.inCart);
     });
-  }, [itemID, user.email]);
+  }, [itemID, user?.email]);
 
   return (
     <CartContext.Provider
