@@ -27,10 +27,12 @@ import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
 import LowCarb from './pages/LowCarb';
 import Meals from './pages/Meals';
+import Chat from './components/Chat/Chat'
 
 function App() {
   return (
     <AuthContextProvider>
+      <Chat />
       <ModalContextProvider>
         <CartContextProvider>
           <FavoritesProvider>
