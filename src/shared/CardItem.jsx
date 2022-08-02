@@ -69,7 +69,6 @@ export default function CardItem({ item, params }) {
   }, [find]);
 
   return (
-    <div className=" col-md-3">
       <div className="border rounded p-3">
         <div className="d-flex justify-content-between">
           <Link
@@ -115,6 +114,5 @@ export default function CardItem({ item, params }) {
           Add to Cart
         </button>
       </div>
-    </div>
   );
 }

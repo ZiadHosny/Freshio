@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext} from 'react';
 import "./Sidebar.scss";
 import { subApiContext } from '../../context/SubCategoryContext';
-import { ProSidebar, SidebarHeader, SidebarContent } from 'react-pro-sidebar';
-import logo from '../../assets/logo.svg';
+import { ProSidebar, SidebarContent } from 'react-pro-sidebar';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -15,29 +14,16 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-const Account = () => {
+const SubSidebar = () => {
 
   const [value, setValue] = React.useState([20, 37]);
-  const handleChange = (event, newValue) => {
+  const handleChange = ( newValue) => {
     setValue(newValue);
   };
   let params = window.location.pathname;
-  let {subCategory ,filterSale,categoryKey,filterSubItem,filterByBrand} = useContext(subApiContext);
+  let {filterSale,categoryKey,filterSubItem,filterByBrand} = useContext(subApiContext);
 
 
-  const filterBrand = (e)=>{
-    console.log(e.target.value);
-      subCategory = subCategory.filter((item)=>{
-        if(item.brand===e.target.value)
-        {
-          return item;
-        }
-    })
-  //  console.log(subCategory);
-  }
-  
-
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   return  (
   
@@ -66,8 +52,8 @@ const Account = () => {
               <>
                <FormControlLabel  style={{marginLeft:10}} value='All' control={<Radio />} label='All' />
                {
-                 categoryKey.map((item)=>(
-                   <FormControlLabel  style={{marginLeft:10}} value={item} control={<Radio />} label={item} />
+                 categoryKey.map((item,i)=>(
+                   <FormControlLabel key={i} style={{marginLeft:10}} value={item} control={<Radio />} label={item} />
                  ))
                } 
               </>     
@@ -128,4 +114,4 @@ const Account = () => {
   )
   
 };
-export default Account;
+export default SubSidebar;

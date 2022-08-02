@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import "./Sidebar.scss";
-import { subApiContext } from '../../context/SubCategoryContext';
 import { ProSidebar, SidebarHeader, SidebarContent } from 'react-pro-sidebar';
 import logo from '../../assets/logo.svg';
 import Checkbox from '@mui/material/Checkbox';
@@ -15,43 +14,14 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-const Account = () => {
+const Sidebar = () => {
 
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  let params = window.location.pathname;
 
-
-//   let saleItems=[];
-//   const filterSale =(e)=>{
-//     console.log('1',subCategory);
-//     saleItems = subCategory.filter((item)=>{
-//     if(e.target.checked)
-//     {
-//           if(item.sale)
-//           {
-//             return item;
-//           }
-//     }
-//   })
-//       console.log('2',saleItems);
-// }
-    //   const filterBrand = (e)=>{
-    //     console.log(e.target.value);
-    //       subCategory = subCategory.filter((item)=>{
-    //         if(item.brand===e.target.value)
-    //         {
-    //           return item;
-    //         }
-    //     })
-    //   //  console.log(subCategory);
-    //   }
-  
-
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   return  (
   
@@ -99,4 +69,4 @@ const Account = () => {
   )
   
 };
-export default Account;
+export default Sidebar;
