@@ -6,10 +6,12 @@ export default function SubCategoryContext(props) {
   const [subCategory, setSubCategory] = useState([]);
   const [categoryKey, setCategoryKey] = useState([]);
   const [allItems, setAllItems] = useState([]);
+  const [maxMinPrice, setMaxMinPrice] = useState([]);
 
   let allCategory = [];
   let allProduct = [];
   let allKeys = [];
+  let price = [];
 
   async function getSubData(path) {
     if (path === '/') {
@@ -31,9 +33,83 @@ export default function SubCategoryContext(props) {
       setSubCategory(allProduct);
       setAllItems(allProduct);
       setCategoryKey([...allKeys]);
+      price=maxMinPriceFilter(allProduct);
+      setMaxMinPrice(price);
     }
   }
 
+  //Filter max , min price from Array
+  const maxMinPriceFilter=(arr)=>
+  {
+    let priceArray = [];
+    let maxPrice=0,minPrice=15000;
+    for (let i = 0; i < arr.length-1; i++) {
+      if(arr[i].price<minPrice)
+      {
+        minPrice=arr[i].price;
+      }
+      if(arr[i].price>maxPrice)
+      {
+        maxPrice=arr[i].price;
+      }
+
+    } 
+    priceArray.push(minPrice);
+    priceArray.push(maxPrice);
+    return priceArray;
+  }
+  //Filter Array From High to low Price or viceversa
+  const highToLowBubbleSort=(arr)=>{
+    let swapped;
+   
+      do{
+        swapped = true;
+        
+        for (let i = 0; i < arr.length-1; i++) {
+              if((arr[i].price<arr[i+1].price))
+                {
+                  let temp = arr[i];
+                  arr[i]=arr[i+1];
+                  arr[i+1]=temp;
+                  swapped=false;
+                } 
+                
+        }
+        
+      }
+      while(!swapped); 
+     return arr;
+  }
+  const lowToHighBubbleSort=(arr)=>{
+    let swapped;
+    do{
+      swapped = true; 
+      for (let i = 0; i < arr.length-1; i++) {
+            if((arr[i].price > arr[i+1].price))
+              {
+                let temp = arr[i+1];
+                arr[i+1]=arr[i];
+                arr[i]=temp;
+                swapped=false;
+              } 
+      }
+    }
+    while(!swapped);
+    
+  }
+
+  const highToLowFilter=(e)=>{
+    if(e.target.value === 'highToLow'){
+      setSubCategory(highToLowBubbleSort(subCategory));
+    }
+    else
+    {
+      setSubCategory(lowToHighBubbleSort(subCategory));
+    }
+  
+  }
+
+  //Filter on Sale Product
   const filterSale = (e) => {
     let saleItems = [];
     if (e.target.checked) {
@@ -47,6 +123,8 @@ export default function SubCategoryContext(props) {
     }
     setSubCategory(saleItems);
   };
+
+  //Filter Category by its SubCategory
   const filterSubItem = (e) => {
     let updatedSubItems = [];
     if (e.target.value === 'All') {
@@ -59,18 +137,6 @@ export default function SubCategoryContext(props) {
     }
   };
 
-  const filterByBrand = (e) => {
-    let filteredBrand = [];
-    if (e.target.value === 'All') {
-      setSubCategory(allItems);
-    } else {
-      filteredBrand = allItems.filter((elem) => {
-        return elem.brand === e.target.value;
-      });
-      console.log(filteredBrand);
-      setSubCategory(filteredBrand);
-    }
-  };
 
   return (
     <subApiContext.Provider
@@ -80,7 +146,7 @@ export default function SubCategoryContext(props) {
         categoryKey,
         filterSale,
         filterSubItem,
-        filterByBrand,
+        highToLowFilter,maxMinPrice,setSubCategory,allItems
       }}
     >
       {props.children}
