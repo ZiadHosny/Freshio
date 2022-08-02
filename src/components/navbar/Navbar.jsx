@@ -10,8 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import { Button, Stack } from '@mui/material';
+import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
 import { Link } from 'react-router-dom';
 import ReorderIcon from '@mui/icons-material/Reorder';
+
 import { TbMeat } from 'react-icons/tb';
 import {
   GiTomato,
@@ -119,7 +121,7 @@ const Navbar = () => {
                       </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
-                      <Link to="/fruits" className="text-color">
+                      <Link to="/fruit" className="text-color">
                         <GiFruitTree className="icon-style" />
                         Fruits
                       </Link>
@@ -139,7 +141,6 @@ const Navbar = () => {
                         <GiBroccoli className="icon-style" />
                         Vegan
                       </Link>
-
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link to="/lowcarb" className="text-color">
@@ -149,6 +150,12 @@ const Navbar = () => {
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link to="/supplements" className="text-color">
+                        <GiStrongMan className="icon-style" />
+                        Supplements
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to="/bakery" className="text-color">
                         <GiStrongMan className="icon-style" />
                         Supplements
                       </Link>
@@ -221,14 +228,14 @@ const Navbar = () => {
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                          <Link to="/fruits" className="text-color">
+                          <Link to="/fruit" className="text-color">
                             <GiFruitTree className="icon-style" />
                             Fruits
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                           <Link to="/meat" className="text-color">
-                            <GiBroccoli className="icon-style" />
+                            <TbMeat className="icon-style" />
                             Meat
                           </Link>
                         </MenuItem>
@@ -254,6 +261,15 @@ const Navbar = () => {
                             Supplements
                           </Link>
                         </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          <Link to="/bakery" className="text-color">
+                            <BreakfastDiningIcon
+                              fontSize="20"
+                              className="icon-style"
+                            />
+                            Bakery
+                          </Link>
+                        </MenuItem>
                       </div>
                     </div>
                   </div>
@@ -276,9 +292,7 @@ const Navbar = () => {
               <Link to="/page" className="bt-style">
                 Page
               </Link>
-              <Link to="/blog" className="bt-style">
-                Bolg
-              </Link>
+
               <Link to="/contact" className="bt-style">
                 Contact
               </Link>

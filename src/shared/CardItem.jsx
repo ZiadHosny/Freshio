@@ -12,7 +12,7 @@ import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { ModalContext } from '../context/ModalContext';
 
-export default function CardItem({ item, params }) {
+export default function CardItem({ item }) {
   const { setModal } = ModalContext();
   const [isFav, setIsFav] = useState(false);
   let { setitem } = useContext(DetailsContext);
@@ -75,6 +75,14 @@ export default function CardItem({ item, params }) {
     setitem(item);
   };
 
+  const truncateString = (str, num) => {
+    if (str.length > num) {
+      return str.slice(0, num) + '...';
+    } else {
+      return str;
+    }
+  };
+
   return (
     <div className="border rounded p-3">
       <div className="d-flex justify-content-between">
@@ -103,8 +111,10 @@ export default function CardItem({ item, params }) {
         className="w-75 d-block m-auto img-height "
         alt="img"
       />
-      <h5 className="text-height ">{item.title}</h5>
-      <h5>Rate Item :</h5>
+      <h5 className="text-height text-center">
+        {truncateString(item.title, 30)}
+      </h5>
+      <h5>Rate Product :</h5>
       <Stack className="text-center" spacing={1}>
         <Rating name="half-rating" defaultValue={3} precision={0.5} />
       </Stack>

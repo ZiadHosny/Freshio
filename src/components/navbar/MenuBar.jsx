@@ -14,17 +14,19 @@ import { UserAuth } from '../../context/AuthContext';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { BiSearchAlt } from 'react-icons/bi';
+
 import './MenuBar.css';
 import logo from '../../assets/logo.svg';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
+import Search from './Search';
 
 const MenuBar = () => {
   let { cart } = useContext(CartContext);
   const { favoritesItems } = useContext(FavoritesContext);
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
+
 
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -51,6 +53,7 @@ const MenuBar = () => {
     logOut();
   };
 
+
   return (
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
@@ -59,15 +62,7 @@ const MenuBar = () => {
         </Link>
       </div>
 
-      <div className="box pe-5">
-        <input type="checkbox" id="check" />
-        <div className="search-box">
-          <input type="text" placeholder="Type here..." />
-          <label htmlFor="check" className="icon">
-            <BiSearchAlt />
-          </label>
-        </div>
-      </div>
+      <Search />
 
       <div className="d-flex">
         <Box sx={{ flexGrow: 0 }}>
