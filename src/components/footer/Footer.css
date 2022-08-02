@@ -8,11 +8,8 @@ footer {
 
 .footer-bg {
   background-color: #658f00;
-  /* background-image: linear-gradient(326deg, rgb(111, 2, 2) 0%, #180000 50%); */
   background-image: url(https://demo.casethemes.net/organio/wp-content/uploads/2021/07/h7-bg-footer.png);
   background-size: cover;
-  /* position: absolute;
-  bottom: 0px; */
 }
 
 a {
@@ -47,7 +44,7 @@ a {
     display: flex;
     justify-content: center;
   }
-  .social_container{
+  .social_container {
     display: flex;
     justify-content: center;
   }

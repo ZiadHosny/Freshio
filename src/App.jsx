@@ -29,7 +29,7 @@ import Fruit from './pages/Fruit';
 import LowCarb from './pages/LowCarb';
 import Meals from './pages/Meals';
 
-import Chat from './components/Chat/Chat'
+import Chat from './components/Chat/Chat';
 
 import Search from './pages/Search';
 import Meat from './pages/Meat';
@@ -37,13 +37,13 @@ import Bakery from './pages/Bakery';
 function App() {
   return (
     <AuthContextProvider>
-      <Chat />
       <ModalContextProvider>
         <CartContextProvider>
           <FavoritesProvider>
             <Navbar />
           </FavoritesProvider>
           <Modal />
+          <Chat />
           <ScrollArrow />
           <Routes>
             <Route path="/" element={<Home />}></Route>

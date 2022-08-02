@@ -3,7 +3,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaFacebook } from 'react-icons/fa';
 import { BsTwitter, BsInstagram, BsTelephone } from 'react-icons/bs';
-import logo from "../../assets/logo.svg"
+import logo from '../../assets/logo.svg';
 
 export const Footer = () => {
   return (
@@ -13,9 +13,9 @@ export const Footer = () => {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-              <img src={logo} className="w-50" alt="/" />
+                <img src={logo} className="w-50" alt="/" />
               </h6>
-              <div className='phone_container'>
+              <div className="phone_container">
                 <div className="phone d-flex text-center ">
                   <div className="phoneIcon d-flex justify-content-center align-items-center">
                     <BsTelephone />
@@ -27,13 +27,10 @@ export const Footer = () => {
                 </div>
               </div>
               <div className="adress mt-3">
-                <p className='fw-bold'>our adress</p>
-                <p>
-                  570 8th Ave,Alexandria, Egypt
-                </p>
+                <p className="fw-bold">our adress</p>
+                <p>570 8th Ave,Alexandria, Egypt</p>
               </div>
-              <div className='social_container mt-3 '>
-
+              <div className="social_container mt-3 ">
                 <div className="social d-flex  ">
                   <div className="socialIcon d-flex m-1 justify-content-center align-items-center">
                     <FaFacebook />

@@ -1,15 +1,15 @@
 import React from 'react';
-const Card = ({url, price, title, category, amount}) => {
+const Card = ({ url, price, title, category, amount }) => {
   return (
     <>
       <div className="bg-white card mx-2">
-        <div className='imageContainer'>
-            <img src={url} className="image card-img-top p-3" alt="img" />
+        <div className="imageContainer">
+          <img src={url} className="image card-img-top p-3" alt="img" />
         </div>
         <div className="card-body">
           <h5 className="card-title heading">{title}</h5>
           <h6 className="card-category">{category}</h6>
-          <div className='d-flex justify-content-between mr-3'>
+          <div className="d-flex justify-content-between mr-3">
             <p className="card-price">{price} EG</p>
             <p>Amount: {amount}</p>
           </div>
@@ -30,7 +30,3 @@ const Card = ({url, price, title, category, amount}) => {
 };
 
 export default Card;
-
-
-
-
