@@ -33,27 +33,29 @@ const CartList = () => {
         <p className="col-2 fw-bold">Sub total</p>
       </div>
       {cartProduct.map((item, index) => (
-
-        <div className="row py-3 d-flex flex-row align-items-center border-bottom" key={index}>
-          <div className="col-6">
-            <div className="row">
-              <div className="col-3"><img src="https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg" className="w-100 " alt="/" /></div>
-              <p className="col-6 ">product title</p>
-              <div className="col-3  d-flex flex-row align-items-end">
-                <MdDeleteForever size={20} color="red" />
-                <p className="mb-0">Remove</p>
+        <div className="border-bottom">
+          <div className="row py-3 d-flex flex-row align-items-center " key={index}>
+            <div className="col-6">
+              <div className="row">
+                <div className="col-3"><img src="https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg" className="w-100 " alt="/" /></div>
+                <p className="col-6 ">product title</p>
+                
               </div>
             </div>
+            <p className="col-2 ">50  EGB</p>
+            <div className="col-2 d-flex flex-row ">
+              <AiFillPlusCircle size={30} />
+              <p className="px-2 ">5</p>
+              <AiFillMinusCircle size={30} />
+            </div>
+            <p className="col-2">
+              500 EGB
+            </p>
           </div>
-          <p className="col-2 ">50  EGB</p>
-          <div className="col-2 d-flex flex-row ">
-            <AiFillPlusCircle size={30} />
-            <p className="px-2 ">5</p>
-            <AiFillMinusCircle size={30} />
-          </div>
-          <p className="col-2">
-            500 EGB
-          </p>
+          <div className="  d-flex flex-row align-items-end justify-content-end py-2">
+                  <MdDeleteForever size={20} color="red" />
+                  <p className="mb-0">Remove</p>
+                </div>
         </div>
       ))}
       <div className="d-flex flex-row align-items-center justify-content-between">
