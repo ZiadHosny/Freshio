@@ -26,7 +26,7 @@ export default function SubCategory() {
         <div className="col-md-3">
           <SubSidebar />
         </div>
-        <div className="col-md-9 text-center">
+        <div className="col-md-9">
           <div className="row p-3 g-3">
             {subItems ? (
               subItems.map((item, i) => (
