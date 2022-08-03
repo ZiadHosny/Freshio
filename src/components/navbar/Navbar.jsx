@@ -283,7 +283,7 @@ const Navbar = () => {
               direction="row"
               spacing={2}
             >
-              <Link to="/home" className="bt-style">
+              <Link to="/" className="bt-style">
                 Home
               </Link>
               <Link to="/contact" className="bt-style">
