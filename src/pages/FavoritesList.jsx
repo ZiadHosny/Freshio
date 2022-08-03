@@ -16,7 +16,7 @@ const FavoritesList = () => {
   return (
     <div className="container">
       <div className="row p-4">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="d-flex shadow py-4">
             <Stack className="col-md-6" direction="row" spacing={2}>
               <Avatar
@@ -58,7 +58,7 @@ const FavoritesList = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-8 shadow">
+        <div className="col-md-8 offset-md-1 shadow">
           <h2>My Favorite</h2>
 
           <div className="row p-3 gy-3">

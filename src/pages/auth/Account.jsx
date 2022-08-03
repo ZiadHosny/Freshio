@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillCartFill } from "react-icons/bs";
 import { BsHeartFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export default function Account() {
   return (
@@ -28,16 +29,18 @@ export default function Account() {
               <h5 className='col-md-10'>User Profile</h5>
             </div>
 
-            <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center my-4'>
+           <Link style={{color:"#0a472e"}} to={'/cartList'}> <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center my-4'>
               <BsFillCartFill className='col-md-2' />
               <h5 className='col-md-10'>My Cart</h5>
             </div>
+            </Link>
 
 
-            <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center'>
+            <Link style={{color:"#0a472e"}} to={'/favoritesList'}>  <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center'>
               <BsHeartFill className='col-md-2' />
               <h5 className='col-md-10'>My Favorites</h5>
             </div>
+            </Link>
 
           </div>
 

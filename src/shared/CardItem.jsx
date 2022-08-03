@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { BsHeart } from 'react-icons/bs';
 import { BsHeartFill } from 'react-icons/bs';
-
 import { DetailsContext } from '../context/DetailsContext';
 import { CartContext } from '../context/CartContext';
 import Rating from '@mui/material/Rating';
@@ -114,10 +113,18 @@ export default function CardItem({ item }) {
       <h5 className="text-height text-center">
         {truncateString(item.title, 30)}
       </h5>
-      <h5>Rate Product :</h5>
+
+      <div className='d-flex justify-content-center'>
+      <h5 className='me-2'>Rate :</h5>
       <Stack className="text-center" spacing={1}>
         <Rating name="half-rating" defaultValue={3} precision={0.5} />
       </Stack>
+      </div>
+
+    <div className='d-flex my-2 justify-content-center'>
+      <h5 className=' me-2 '>Calories : </h5>
+      <h5 style={{color:"#658f00"}}>{item.calories} Kcal</h5>
+      </div>
       {item.sale ? (
         <div className="d-flex justify-content-center">
           <h5 className="text-decoration-line-through mx-2">
@@ -126,7 +133,7 @@ export default function CardItem({ item }) {
           <h5>{Math.floor(item.price * 0.8)} EGP</h5>
         </div>
       ) : (
-        <h5 className="text-center">{item.price} EGP</h5>
+        <h5  className="text-center">{item.price} EGP</h5>
       )}
 
       <button
