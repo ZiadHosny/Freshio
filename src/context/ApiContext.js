@@ -7,10 +7,10 @@ export let dataApiContext = createContext([]);
 export default function ApiContext(props) {
   const [allItems, setAllItems] = useState([]);
   const [maxMinPrice, setMaxMinPrice] = useState([]);
-  const [category, setCategory] = useState(null);
-  const [brandArray , setBrandArray] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [brandArray, setBrandArray] = useState([]);
   let price = [];
-  let brand ;
+  let brand;
 
   async function getData(path) {
     if (path === '/') {
@@ -25,12 +25,10 @@ export default function ApiContext(props) {
 
       setCategory(data);
       setAllItems(data);
-      price=maxMinPriceFilter(data);
+      price = maxMinPriceFilter(data);
       setMaxMinPrice(price);
       brand = brandName(data);
-      setBrandArray(brand)
-      
-    
+      setBrandArray(brand);
     }
   }
 
@@ -48,63 +46,61 @@ export default function ApiContext(props) {
     setCategory(saleItems);
   };
 
-  const maxMinPriceFilter=(arr)=>
-  {
-    let maxPrice=0,minPrice=15000;
-    for (let i = 0; i < arr.length-1; i++) {
-      if(arr[i].price<minPrice)
-      {
-        minPrice=arr[i].price;
+  const maxMinPriceFilter = (arr) => {
+    let maxPrice = 0,
+      minPrice = 15000;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i].price < minPrice) {
+        minPrice = arr[i].price;
       }
-      if(arr[i].price>maxPrice)
-      {
-        maxPrice=arr[i].price;
+      if (arr[i].price > maxPrice) {
+        maxPrice = arr[i].price;
       }
+    }
+    return [minPrice, maxPrice];
+  };
 
-    } 
-    return [minPrice , maxPrice];
-  }
-
-
-  function brandName(allBrand){
+  function brandName(allBrand) {
     let localBrand = [];
-    allBrand.forEach((element)=>{
-      if(localBrand.indexOf(element.brand) === -1 ) {
+    allBrand.forEach((element) => {
+      if (localBrand.indexOf(element.brand) === -1) {
         localBrand.push(element.brand);
       }
-    })
+    });
 
-    return localBrand
+    return localBrand;
   }
 
-  function filterBrand (e) {
+  function filterBrand(e) {
     let brandItem = [];
- 
-    if(e.target.value === "All") {
 
-      setCategory(allItems)
-
-
-    }
-
-    else {
-      brandItem = allItems.filter((element)=>{
-
-        if( element.brand == e.target.value ) 
-        {
-          return element
+    if (e.target.value === 'All') {
+      setCategory(allItems);
+    } else {
+      // eslint-disable-next-line array-callback-return
+      brandItem = allItems.filter((element) => {
+        if (element.brand === e.target.value) {
+          return element;
         }
-    
-      })
-     
-      setCategory(brandItem)
+      });
 
+      setCategory(brandItem);
     }
-   
   }
 
   return (
-    <dataApiContext.Provider value={{ category,maxMinPrice,allItems , brandArray , getData ,filterSale,setCategory ,filterBrand  }}>
+    <dataApiContext.Provider
+      value={{
+        category,
+        maxMinPrice,
+        allItems,
+        brandArray,
+        getData,
+        filterSale,
+        setCategory,
+        filterBrand,
+      }}
+    >
       {props.children}
     </dataApiContext.Provider>
   );

@@ -23,6 +23,7 @@ import Snacks from './pages/Snacks';
 import Fruit from './pages/Fruit';
 import LowCarb from './pages/LowCarb';
 import Meals from './pages/Meals';
+import Vegan from './pages/Vegan';
 import Chat from './components/Chat/Chat';
 import Search from './pages/Search';
 import Meat from './pages/Meat';

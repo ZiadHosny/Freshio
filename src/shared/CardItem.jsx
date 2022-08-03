@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { BsHeart } from 'react-icons/bs';
 import { BsHeartFill } from 'react-icons/bs';

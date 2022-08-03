@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc,  } from 'firebase/firestore';
 import React, { createContext, useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { UserAuth } from './AuthContext';

@@ -12,26 +12,25 @@ export default function Category() {
 
   useEffect(() => {
     getData(params);
-  }, []);
+  }, [getData, params]);
 
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-3">
-          <Drawer/>
+          <Drawer />
         </div>
         <div className="col-md-9">
           <div className="row p-3 g-3">
-            {category.length !==0 || !category
-            
-            ? (
+            {' '}
+            {!category || category.length !== 0 ? (
               category.map((item) => (
                 <div key={item.id} className="col-lg-3 col-md-4">
                   <CardItem item={item} params={params} />
                 </div>
               ))
             ) : (
-              <Loading/>
+              <Loading />
             )}
           </div>
         </div>

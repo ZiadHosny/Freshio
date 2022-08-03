@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { BsFillPersonFill } from 'react-icons/bs';
@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 export default function Account() {
   const { userData } = useContext(AccountContext);
-
 
   return userData ? (
     <div className="container">
@@ -42,7 +41,6 @@ export default function Account() {
               <h5 className="col-md-10">User Profile</h5>
             </div>
 
-
             <div
               style={{ marginLeft: 5, fontSize: 25 }}
               className="d-flex align-items-center my-4"
@@ -50,90 +48,99 @@ export default function Account() {
               <BsFillCartFill className="col-md-2" />
               <h5 className="col-md-10">My Cart</h5>
 
-           <Link style={{color:"#0a472e"}} to={'/cartList'}> <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center my-4'>
-              <BsFillCartFill className='col-md-2' />
-              <h5 className='col-md-10'>My Cart</h5>
-            </div>
-            </Link>
+              <Link style={{ color: '#0a472e' }} to={'/cartList'}>
+                {' '}
+                <div
+                  style={{ marginLeft: 5, fontSize: 25 }}
+                  className="d-flex align-items-center my-4"
+                >
+                  <BsFillCartFill className="col-md-2" />
+                  <h5 className="col-md-10">My Cart</h5>
+                </div>
+              </Link>
 
-            <div
-              style={{ marginLeft: 5, fontSize: 25 }}
-              className="d-flex align-items-center"
-            >
-              <BsHeartFill className="col-md-2" />
-              <h5 className="col-md-10">My Favorites</h5>
-            </div>
+              <div
+                style={{ marginLeft: 5, fontSize: 25 }}
+                className="d-flex align-items-center"
+              >
+                <BsHeartFill className="col-md-2" />
+                <h5 className="col-md-10">My Favorites</h5>
+              </div>
 
-
-            <Link style={{color:"#0a472e"}} to={'/favoritesList'}>  <div style={{ marginLeft: 5, fontSize: 25 }} className='d-flex align-items-center'>
-              <BsHeartFill className='col-md-2' />
-              <h5 className='col-md-10'>My Favorites</h5>
+              <Link style={{ color: '#0a472e' }} to={'/favoritesList'}>
+                {' '}
+                <div
+                  style={{ marginLeft: 5, fontSize: 25 }}
+                  className="d-flex align-items-center"
+                >
+                  <BsHeartFill className="col-md-2" />
+                  <h5 className="col-md-10">My Favorites</h5>
+                </div>
+              </Link>
             </div>
-            </Link>
           </div>
-        </div>
 
-        <div className="col-md-8 offset-md-1">
-          <div className="p-3 shadow">
-            <h1>Personal Information</h1>
-            <div>
-              <label htmlFor="firstName" className="form-label">
-                First Name :
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                className="form-control"
-                placeholder="First Name"
-                value={userData.firstName}
-              
-                required
-              />
-            </div>
+          <div className="col-md-8 offset-md-1">
+            <div className="p-3 shadow">
+              <h1>Personal Information</h1>
+              <div>
+                <label htmlFor="firstName" className="form-label">
+                  First Name :
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  className="form-control"
+                  placeholder="First Name"
+                  value={userData.firstName}
+                  required
+                />
+              </div>
 
-            <div>
-              <label htmlFor="lastName" className="form-label">
-                Last Name :
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                className="form-control"
-                placeholder="Last Name"
-                value={userData.firstName}
-                required
-              />
-            </div>
-            <div className="mt-3">
-              <label htmlFor="email" className="form-label">
-                Email Address :
-              </label>
-              <input
-                type="text"
-                name="email"
-                className="form-control"
-                placeholder="Email Address"
-                value={userData.email}
-                required
-              />
-            </div>
-            <div className="mt-3">
-              <label htmlFor="password" className="form-label">
-                Password :
-              </label>
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                placeholder="Password"
-                value={userData.password}
-                required
-              />
-            </div>
+              <div>
+                <label htmlFor="lastName" className="form-label">
+                  Last Name :
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  className="form-control"
+                  placeholder="Last Name"
+                  value={userData.firstName}
+                  required
+                />
+              </div>
+              <div className="mt-3">
+                <label htmlFor="email" className="form-label">
+                  Email Address :
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  className="form-control"
+                  placeholder="Email Address"
+                  value={userData.email}
+                  required
+                />
+              </div>
+              <div className="mt-3">
+                <label htmlFor="password" className="form-label">
+                  Password :
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={userData.password}
+                  required
+                />
+              </div>
 
-            <button type="button" className="btn btn-outline-success my-4">
-              Save Changes
-            </button>
+              <button type="button" className="btn btn-outline-success my-4">
+                Save Changes
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ export const NotFound = () => {
         </span>
         Back to home
       </button>
-      <img src={notFound} className="w-100 " />
+      <img src={notFound} className="w-100 " alt="/" />
     </div>
   );
 };
