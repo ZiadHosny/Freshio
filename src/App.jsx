@@ -35,6 +35,7 @@ import Search from './pages/Search';
 import Meat from './pages/Meat';
 import Bakery from './pages/Bakery';
 import NotFound from './pages/NotFound';
+import { AccountProvider } from './context/AccountContext';
 function App() {
   return (
     <AuthContextProvider>
@@ -50,16 +51,22 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/Freshio" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/account" element={<Account />} />
               <Route path="/chicken" element={<Chicken />} />
               <Route path="/supplements" element={<Supplements />} />
               <Route path="/snacks" element={<Snacks />} />
               <Route path="/fruit" element={<Fruit />} />
               <Route path="/keto" element={<Keto />} />
-
               <Route path="/vegetables" element={<Vegetables />} />
-
               <Route path="/search/:id" element={<Search />} />
+
+              <Route
+                path="/account"
+                element={
+                  <AccountProvider>
+                    <Account />
+                  </AccountProvider>
+                }
+              />
               <Route
                 path="/meat"
                 element={

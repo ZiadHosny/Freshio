@@ -28,9 +28,9 @@ export default function SignUp({ onClick }) {
   });
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ email, password, firstName, lastName }) => {
     try {
-      await signUp(data.email, data.password);
+      await signUp(email, password, firstName, lastName);
 
       setOpen(true);
       setTimeout(() => {
