@@ -42,85 +42,84 @@ function App() {
         <CartContextProvider>
           <FavoritesProvider>
             <Navbar />
-          </FavoritesProvider>
-          <Modal />
-          <Chat />
-          <ScrollArrow />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Freshio" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/chicken" element={<Chicken />} />
-            <Route path="/supplements" element={<Supplements />} />
-            <Route path="/snacks" element={<Snacks />} />
-            <Route path="/fruit" element={<Fruit />} />
-            <Route path="/keto" element={<Keto />} />
 
-            <Route path="/vegetables" element={<Vegetables />} />
+            <Modal />
+            <Chat />
+            <ScrollArrow />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Freshio" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/chicken" element={<Chicken />} />
+              <Route path="/supplements" element={<Supplements />} />
+              <Route path="/snacks" element={<Snacks />} />
+              <Route path="/fruit" element={<Fruit />} />
+              <Route path="/keto" element={<Keto />} />
 
-            <Route path="/search/:id" element={<Search />} />
-            <Route
-              path="/meat"
-              element={
-                <SubCategoryContext>
-                  <Meat />
-                </SubCategoryContext>
-              }
-            />
-            <Route
-              path="/bakery"
-              element={
-                <SubCategoryContext>
-                  <Bakery />
-                </SubCategoryContext>
-              }
-            />
-            <Route
-              path="/lowcarb"
-              element={
-                <SubCategoryContext>
-                  <LowCarb />
-                </SubCategoryContext>
-              }
-            />
-            <Route
-              path="/vegan"
-              element={
-                <SubCategoryContext>
-                  <Vegan />
-                </SubCategoryContext>
-              }
-            />
-            <Route
-              path="/meals"
-              element={
-                <SubCategoryContext>
-                  <Meals />
-                </SubCategoryContext>
-              }
-            />
-            <Route
-              path="/favoritesList"
-              element={
-                <ProdectedRoute>
-                  <FavoritesProvider>
+              <Route path="/vegetables" element={<Vegetables />} />
+
+              <Route path="/search/:id" element={<Search />} />
+              <Route
+                path="/meat"
+                element={
+                  <SubCategoryContext>
+                    <Meat />
+                  </SubCategoryContext>
+                }
+              />
+              <Route
+                path="/bakery"
+                element={
+                  <SubCategoryContext>
+                    <Bakery />
+                  </SubCategoryContext>
+                }
+              />
+              <Route
+                path="/lowcarb"
+                element={
+                  <SubCategoryContext>
+                    <LowCarb />
+                  </SubCategoryContext>
+                }
+              />
+              <Route
+                path="/vegan"
+                element={
+                  <SubCategoryContext>
+                    <Vegan />
+                  </SubCategoryContext>
+                }
+              />
+              <Route
+                path="/meals"
+                element={
+                  <SubCategoryContext>
+                    <Meals />
+                  </SubCategoryContext>
+                }
+              />
+              <Route
+                path="/favoritesList"
+                element={
+                  <ProdectedRoute>
                     <FavoritesList />
-                  </FavoritesProvider>
-                </ProdectedRoute>
-              }
-            />
-            <Route
-              path="/cartList"
-              element={
-                <ProdectedRoute>
-                  <CartList />
-                </ProdectedRoute>
-              }
-            />
-            <Route path='*' exact={true} element={<NotFound/>} />
-          </Routes>
-          <Footer />
+                  </ProdectedRoute>
+                }
+              />
+              <Route
+                path="/cartList"
+                element={
+                  <ProdectedRoute>
+                    <CartList />
+                  </ProdectedRoute>
+                }
+              />
+              <Route path="*" exact={true} element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </FavoritesProvider>
         </CartContextProvider>
       </ModalContextProvider>
     </AuthContextProvider>

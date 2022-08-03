@@ -7,68 +7,25 @@ import { DetailsContext } from '../context/DetailsContext';
 import { CartContext } from '../context/CartContext';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import { UserAuth } from '../context/AuthContext';
-import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 import { ModalContext } from '../context/ModalContext';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 export default function CardItem({ item }) {
   const { setModal } = ModalContext();
-  const [isFav, setIsFav] = useState(false);
-  let { setitem } = useContext(DetailsContext);
-  const { addToCartInFirebase } = useContext(CartContext);
 
-  const { user } = UserAuth();
-  const itemID = doc(db, 'users', `${user?.email}`);
+  let { setitem } = useContext(DetailsContext);
+  const { found, saveItem, isFav, setIsFav } = useContext(FavoritesContext);
+  const { addToCartInFirebase } = useContext(CartContext);
 
   const addToCart = () => {
     addToCartInFirebase(item);
   };
 
-  const saveItem = async () => {
-    if (user?.email) {
-      setIsFav(!isFav);
-
-      if (!isFav) {
-        await updateDoc(itemID, {
-          favorites: arrayUnion(item),
-        });
-      } else {
-        try {
-          let dataFromDB = await getDoc(itemID);
-          const result = dataFromDB.data().favorites.filter((e) => {
-            return item.id !== e.id;
-          });
-
-          await updateDoc(itemID, { favorites: result });
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    } else {
-      alert('please log in first');
-    }
-  };
-
-  const find = async () => {
-    if (user?.email) {
-      let dataFromDB = await getDoc(itemID);
-      let find = dataFromDB.data().favorites.find((e) => {
-        return e.id === item.id;
-      });
-      if (find) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  };
-
   useEffect(() => {
-    find().then((e) => {
+    found(item).then((e) => {
       setIsFav(e);
     });
-  }, [find]);
+  }, [found, item, setIsFav]);
 
   const viewDetails = () => {
     setModal('details');
