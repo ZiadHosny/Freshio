@@ -1,10 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { HiOutlineArrowsExpand } from 'react-icons/hi';
-import { ModalContext } from '../context/ModalContext';
-import { CartContext } from '../context/CartContext';
-import { DetailsContext } from '../context/DetailsContext';
+
 import CardItem from '../shared/CardItem';
 
 const Search = () => {

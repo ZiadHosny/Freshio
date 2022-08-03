@@ -11,7 +11,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return <div className="arrow-right" onClick={onClick} />;
 }
 
