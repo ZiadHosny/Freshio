@@ -34,6 +34,7 @@ import Chat from './components/Chat/Chat';
 import Search from './pages/Search';
 import Meat from './pages/Meat';
 import Bakery from './pages/Bakery';
+import NotFound from './pages/NotFound';
 function App() {
   return (
     <AuthContextProvider>
@@ -117,6 +118,7 @@ function App() {
                 </ProdectedRoute>
               }
             />
+            <Route path='*' exact={true} element={<NotFound/>} />
           </Routes>
           <Footer />
         </CartContextProvider>
