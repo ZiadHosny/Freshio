@@ -92,7 +92,7 @@ const Section = ({ title, data }) => {
     <div className="container-lg my-5">
       <div className="container-lg text-center d-md-flex justify-content-between mb-4">
         <div>
-          <h1 className="container-lg p-0 fw-bolder">{title}</h1>
+          <h1 className="container-lg p-0 fw-bolder cursor-pointer">{title}</h1>
         </div>
         {title === 'Featured Products' ? (
           <div>
@@ -145,7 +145,9 @@ const Section = ({ title, data }) => {
         <Slider {...settingss}>
           {items
             ? items.map((item) => {
-                return <CardItem item={item} key={item.id} />;
+              return<div className="p-2" key={item.id}>
+                 <CardItem item={item}  />
+              </div>
               })
             : null}
         </Slider>

@@ -12,7 +12,7 @@ const FavoritesList = () => {
   const { favoritesItems } = useContext(FavoritesContext);
   let params = window.location.pathname;
 
-  console.log(favoritesItems);
+ 
   return (
     <div className="container">
       <div className="row p-4">

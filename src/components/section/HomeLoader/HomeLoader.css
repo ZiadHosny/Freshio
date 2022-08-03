@@ -1,0 +1,16 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: whitesmoke;
+  z-index: 100000000000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.w-15 {
+  width: 15%;
+}

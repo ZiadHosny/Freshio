@@ -22,14 +22,16 @@ export default function Category() {
         </div>
         <div className="col-md-9">
           <div className="row p-3 g-3">
-            {category ? (
+            {category.length !==0 || !category
+            
+            ? (
               category.map((item) => (
                 <div key={item.id} className="col-lg-3 col-md-4">
                   <CardItem item={item} params={params} />
                 </div>
               ))
             ) : (
-              <Loading />
+              <Loading/>
             )}
           </div>
         </div>

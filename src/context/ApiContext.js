@@ -11,9 +11,6 @@ export default function ApiContext(props) {
   const [brandArray , setBrandArray] = useState([]);
   let price = [];
   let brand ;
-  
-
-
 
   async function getData(path) {
     if (path === '/') {
