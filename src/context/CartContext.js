@@ -36,6 +36,73 @@ export function CartContextProvider(props) {
     }
   };
 
+  const addOneMore = async (id) => {
+    try {
+      let dataFromDB = await getDoc(itemID);
+      let allInCart = dataFromDB.data().inCart;
+      const index = allInCart.findIndex((e) => {
+        return id === e.id;
+      });
+
+      allInCart[index].quantity += 1;
+      await updateDoc(itemID, { inCart: allInCart });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteOneMore = async (id) => {
+    try {
+      let dataFromDB = await getDoc(itemID);
+      let allInCart = dataFromDB.data().inCart;
+      const index = allInCart.findIndex((e) => {
+        return id === e.id;
+      });
+
+      if (allInCart[index].quantity > 0) {
+        allInCart[index].quantity -= 1;
+        await updateDoc(itemID, { inCart: allInCart });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteItem = async (id) => {
+    try {
+      let dataFromDB = await getDoc(itemID);
+      let allInCart = dataFromDB.data().inCart;
+      const index = allInCart.findIndex((e) => {
+        return id === e.id;
+      });
+
+      allInCart.splice(index, 1);
+      await updateDoc(itemID, { inCart: allInCart });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const totalPrice = () => {
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+
+    return totalPrice.toFixed(2);
+  };
+
+  const clearAll = async () => {
+    try {
+      let dataFromDB = await getDoc(itemID);
+      let allInCart = dataFromDB.data().inCart;
+      allInCart.splice(0, cart.length);
+      await updateDoc(itemID, { inCart: allInCart });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     onSnapshot(itemID, (doc) => {
       setToCart(doc.data()?.inCart);
@@ -48,6 +115,11 @@ export function CartContextProvider(props) {
         cart,
         setToCart,
         addToCartInFirebase,
+        addOneMore,
+        deleteOneMore,
+        deleteItem,
+        totalPrice,
+        clearAll,
       }}
     >
       {props.children}

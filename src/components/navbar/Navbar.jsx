@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -121,14 +121,18 @@ const Navbar = () => {
                       </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
-                      <Link to="/fruit" className="text-color">
+                      <Link
+                        to="/fruit"
+                        
+                        className="text-color"
+                      >
                         <GiFruitTree className="icon-style" />
                         Fruits
                       </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link to="/meat" className="text-color">
-                        <GiBroccoli className="icon-style" />
+                        <TbMeat className="icon-style" />
                         Meat
                       </Link>
                     </MenuItem>
@@ -156,8 +160,11 @@ const Navbar = () => {
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link to="/bakery" className="text-color">
-                        <GiStrongMan className="icon-style" />
-                        Supplements
+                        <BreakfastDiningIcon
+                          fontSize="20"
+                          className="icon-style"
+                        />
+                        Bakery
                       </Link>
                     </MenuItem>
                   </div>
@@ -277,12 +284,7 @@ const Navbar = () => {
               </div>
             </Stack>
 
-            <Stack
-              style={{ marginLeft: 'auto' }}
-              sx={{ display: { xs: 'none', lg: 'block' } }}
-              direction="row"
-              spacing={2}
-            >
+            <Stack style={{ marginLeft: 'auto' }} direction="row" spacing={2}>
               <Link to="/" className="bt-style">
                 Home
               </Link>
@@ -290,26 +292,6 @@ const Navbar = () => {
                 Contact
               </Link>
             </Stack>
-
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', lg: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                pointerEvents: 'none',
-              }}
-            >
-              Freshio
-            </Typography>
           </Toolbar>
         </Container>
       </AppBar>

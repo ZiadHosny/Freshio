@@ -50,26 +50,47 @@ export const Footer = () => {
 
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <p className="text-uppercase fw-bold mb-4 h4">links</p>
-              <p>
-                <Link to="/politics" className="text-reset">
-                  Politics
+              <div className="row">
+                <Link to="/" className="col-6 text-reset">
+                  Home
                 </Link>
-              </p>
-              <p>
-                <Link to="/sports" className="text-reset">
-                  Sports
+                <Link to="/contact" className="col-6 text-reset">
+                  Contact
                 </Link>
-              </p>
-              <p>
-                <Link to="/technology" className="text-reset">
-                  Technology
+                <Link to="/chicken" className="col-6 text-reset">
+                  Chicken
                 </Link>
-              </p>
-              <p>
-                <Link to="/business" className="text-reset">
-                  Business
+                <Link to="/snacks" className="col-6 text-reset">
+                  Snacks
                 </Link>
-              </p>
+                <Link to="/fruit" className="col-6 text-reset">
+                  Fruit
+                </Link>
+                <Link to="/keto" className="col-6 text-reset">
+                  Keto
+                </Link>
+                <Link to="/vegetables" className="col-6 text-reset">
+                  Vegetables
+                </Link>
+                <Link to="/meat" className="col-6 text-reset">
+                  Meat
+                </Link>
+                <Link to="/bakery" className="col-6 text-reset">
+                  Bakery
+                </Link>
+                <Link to="/lowcarb" className="col-6 text-reset">
+                  Lowcarb
+                </Link>
+                <Link to="/meals" className="col-6 text-reset">
+                  Meals
+                </Link>
+                <Link to="/vegan" className="col-6 text-reset">
+                  Vegan
+                </Link>
+                <Link to="/supplements" className="col-6 text-reset">
+                  Supplements
+                </Link>
+              </div>
             </div>
 
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -112,13 +133,13 @@ export const Footer = () => {
                 <p className="fw-bold mb-2 ">
                   Our 6 of the Best Organic Chocolates to Buy.
                 </p>
-                <p>March 17, 2021</p>
+                <p>August 6, 2022</p>
               </div>
               <div className="post">
                 <p className="fw-bold mb-2 mt-3 ">
                   Best guide to shopping for organic ingredients.
                 </p>
-                <p>March 17, 2021</p>
+                <p>March 17, 2022</p>
               </div>
             </div>
           </div>

@@ -1,30 +1,18 @@
 import { Container } from '@mui/system';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { MdDeleteForever } from 'react-icons/md';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 
-
-
 const CartList = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, addOneMore, deleteOneMore, deleteItem, totalPrice, clearAll } =
+    useContext(CartContext);
 
-  useEffect(() => {
-    console.log(cart);
-  }, []);
-
-  const [cartProduct, setcartProduct] = useState([
-    {
-      img: "https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg",
-      price: "20",
-    },
-    {
-      img: "https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg",
-      price: "20",
-    }
-  ]);
-
-  return (
+  return !cart || cart.length === 0 ? (
+    <div className="text-center p-5 m-5">
+      <h1 className="p-5 text-color">Cart Is Empty </h1>
+    </div>
+  ) : (
     <Container className="shadow">
       <div className="row px-2 border-bottom py-3">
         <p className="col-6 fw-bold">Item</p>
@@ -32,39 +20,56 @@ const CartList = () => {
         <p className="col-2 fw-bold ">Quantity</p>
         <p className="col-2 fw-bold">Sub total</p>
       </div>
-      {cartProduct.map((item, index) => (
-        <div className="border-bottom">
-          <div className="row py-3 d-flex flex-row align-items-center " key={index}>
+      {cart.map((item) => (
+        <div className="border-bottom" key={item.id}>
+          <div className="row py-3 d-flex flex-row align-items-center ">
             <div className="col-6">
-              <div className="row">
-                <div className="col-3"><img src="https://demo.casethemes.net/organio/wp-content/uploads/2021/03/organic3.jpg" className="w-100 " alt="/" /></div>
-                <p className="col-6 ">product title</p>
-                
+              <div className="row align-items-center">
+                <div className="col-3">
+                  <img src={item.image} className="w-100 " alt={item.id} />
+                </div>
+                <p className="col-6 ">{item.title}</p>
               </div>
             </div>
-            <p className="col-2 ">50  EGB</p>
+            <p className="col-2 ">{item.price} EGP</p>
             <div className="col-2 d-flex flex-row ">
-              <AiFillPlusCircle size={30} />
-              <p className="px-2 ">5</p>
-              <AiFillMinusCircle size={30} />
+              <AiFillPlusCircle
+                onClick={() => addOneMore(item.id)}
+                size={30}
+                className="text-color"
+                style={{ cursor: 'pointer' }}
+              />
+              <p className="px-2 text-bold fs-5">{item.quantity}</p>
+              <AiFillMinusCircle
+                onClick={() => deleteOneMore(item.id)}
+                size={30}
+                color="darkred"
+                style={{ cursor: 'pointer' }}
+              />
             </div>
             <p className="col-2">
-              500 EGB
+              {(item.price * item.quantity).toFixed(2)} EGP
             </p>
           </div>
-          <div className="  d-flex flex-row align-items-end justify-content-end py-2">
-                  <MdDeleteForever size={20} color="red" />
-                  <p className="mb-0">Remove</p>
-                </div>
+          <div
+            onClick={() => deleteItem(item.id)}
+            style={{ cursor: 'pointer' }}
+            className=" d-flex flex-row align-items-end justify-content-end py-2"
+          >
+            <MdDeleteForever size={20} color="red" />
+            <p className="mb-0">Remove</p>
+          </div>
         </div>
       ))}
       <div className="d-flex flex-row align-items-center justify-content-between">
-        <div className=" py-2">Total price: 500 EGP</div>
-        <button className="btn btn-outline-danger addBtn px-5 my-3 mx-3">
+        <h2 className="text-bold py-2">Total price: {totalPrice()} EGP</h2>
+        <button
+          className="btn btn-outline-danger addBtn px-5 my-3 mx-3"
+          onClick={clearAll}
+        >
           Clear cart
         </button>
       </div>
-
     </Container>
   );
 };

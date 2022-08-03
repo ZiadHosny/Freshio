@@ -46,12 +46,11 @@ function App() {
           <Chat />
           <ScrollArrow />
           <Routes>
-            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<Home />} />
             <Route path="/Freshio" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/account" element={<Account />} />
-
-            <Route path="chicken" element={<Chicken />} />
+            <Route path="/chicken" element={<Chicken />} />
             <Route path="/supplements" element={<Supplements />} />
             <Route path="/snacks" element={<Snacks />} />
             <Route path="/fruit" element={<Fruit />} />
