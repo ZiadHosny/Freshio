@@ -2,8 +2,8 @@
   display: flex;
   opacity: 1;
   position: absolute;
-  width: 80%;
-  height: 80%;
+  width: 95%;
+  height: 95%;
   left: 50%;
   transform: translate(-50%) scale(1);
   transition: opacity 200ms ease-in-out 100ms, transform 500ms ease-in-out 0ms;
