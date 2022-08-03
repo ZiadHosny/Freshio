@@ -5,7 +5,7 @@ import axios from 'axios';
 export let dataApiContext = createContext([]);
 
 export default function ApiContext(props) {
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState([]);
 
   async function getData(path) {
     if (path === '/') {

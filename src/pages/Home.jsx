@@ -4,8 +4,9 @@ import DealOfTheDay from '../components/dealOfTheDay/DealOfTheDay';
 import Section from '../components/section/Section';
 import AdCard from '../components/adCard/AdCard';
 import FeedBack from '../components/feedBack/FeedBack';
-
+import HomeCategory from '../components/section/HomeCategory';
 import axios from 'axios';
+import HomeLoader from '../components/section/HomeLoader/HomeLoader';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -20,22 +21,25 @@ const Home = () => {
   }, []);
 
   return (
+    
     <div>
-      <Header />
-      <DealOfTheDay />
+      {
+        products.categories
+        ?
+        <div>
+          
+          <Header />
+          <HomeCategory title='Categories' data={products.categories}/>
+          <Section title="Featured Products" data={products.allCategory} />
+          <Section title="Top Products" data={products.topProducts} />
+          <Section title="New Arrival" data={products.topArrival} />
+          <FeedBack />
 
-      {products ? (
-        <Section title="Featured Products" data={products.allCategory} />
-      ) : (
-        <p>Loading...</p>
-      )}
-      <Section title="Top Products" data={products.topProducts} />
+        </div>
+        :
+        <HomeLoader/>
+      }
 
-      <AdCard />
-
-      <Section title="New Arrival" data={products.topArrival} />
-
-      <FeedBack />
     </div>
   );
 };

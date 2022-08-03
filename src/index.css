@@ -20,3 +20,24 @@ body {
 .bg-color {
   background-color: #0a472e !important;
 }
+.hover-effect
+{
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.hover-effect:hover
+{
+  transform: translateY(-2%);
+}
+
+.h-img
+{
+  height: 300px;
+  transition: all 0.3s;
+}
+.h-img:hover
+{
+  transform: scale(1.02);
+}
+
+
