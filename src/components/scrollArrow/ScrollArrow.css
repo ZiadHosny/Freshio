@@ -1,16 +1,15 @@
 .scrollTop {
   position: fixed;
   width: 100%;
-  bottom: 20px;
-  align-items: center;
+  bottom: 100px;
+  left: 46.5%;
   height: 20px;
-  justify-content: center;
   z-index: 1000;
   cursor: pointer;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
-  opacity: 0.5;
   color: #0a472e;
+  opacity: 0.6;
 }
 
 .scrollTop:hover {

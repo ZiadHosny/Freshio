@@ -84,7 +84,7 @@ export default function CardItem({ item }) {
   };
 
   return (
-    <div className="border rounded p-3">
+    <div className="border rounded p-3 ">
       <div className="d-flex justify-content-between">
         <HiOutlineArrowsExpand
           style={{ cursor: 'pointer' }}
