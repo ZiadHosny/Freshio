@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { subApiContext } from '../context/SubCategoryContext';
-import SubSidebar from './sidebar/SubSidebar';
 import './Category.css';
 import CardItem from './CardItem';
 import Loading from './Loading';
+import SubDrawer from './sidebar/SubDrawer';
 
 export default function SubCategory() {
   let params = window.location.pathname;
@@ -16,7 +16,7 @@ export default function SubCategory() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-3">
-          <SubSidebar />
+          <SubDrawer />
         </div>
         <div className="col-md-9">
           <div className="row p-3 g-3">

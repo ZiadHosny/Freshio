@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createContext, useState } from 'react';
 import axios from 'axios';
 export let subApiContext = createContext([]);
@@ -7,11 +7,13 @@ export default function SubCategoryContext(props) {
   const [categoryKey, setCategoryKey] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [maxMinPrice, setMaxMinPrice] = useState([]);
+  const [brandArray , setBrandArray] = useState([]);
 
   let allCategory = [];
   let allProduct = [];
   let allKeys = [];
   let price = [];
+  let brand ;
 
   async function getSubData(path) {
     if (path === '/') {
@@ -35,13 +37,14 @@ export default function SubCategoryContext(props) {
       setAllItems(allProduct);
       setCategoryKey([...allKeys]);
       setMaxMinPrice(price);
+      brand = brandName(allProduct);
+      setBrandArray(brand)
     }
   }
 
   //Filter max , min price from Array
   const maxMinPriceFilter=(arr)=>
   {
-    let priceArray = [];
     let maxPrice=0,minPrice=15000;
     for (let i = 0; i < arr.length-1; i++) {
       if(arr[i].price<minPrice)
@@ -54,9 +57,7 @@ export default function SubCategoryContext(props) {
       }
 
     } 
-    priceArray.push(minPrice);
-    priceArray.push(maxPrice);
-    return priceArray;
+    return [minPrice , maxPrice];
   }
   //Filter Array From High to low Price or viceversa
   const highToLowBubbleSort=(arr)=>{
@@ -124,6 +125,48 @@ export default function SubCategoryContext(props) {
     setSubCategory(saleItems);
   };
 
+
+
+  function brandName(allBrand){
+    let localBrand = [];
+    allBrand.forEach((element)=>{
+      if(localBrand.indexOf(element.brand) === -1 ) {
+        localBrand.push(element.brand);
+      }
+    })
+
+    return localBrand
+  }
+
+
+  function filterBrand (e) {
+    let brandItem = [];
+ 
+    if(e.target.value === "All") {
+
+      setSubCategory(allItems)
+
+
+    }
+
+    else {
+      brandItem = allItems.filter((element)=>{
+
+        if( element.brand == e.target.value ) 
+        {
+          return element
+        }
+    
+      })
+     
+      setSubCategory(brandItem)
+
+    }
+   
+  }
+
+
+
   //Filter Category by its SubCategory
   const filterSubItem = (e) => {
     let updatedSubItems = [];
@@ -142,11 +185,15 @@ export default function SubCategoryContext(props) {
     <subApiContext.Provider
       value={{
         subCategory,
-        getSubData,
+        brandArray,
+        maxMinPrice,
+        allItems,
         categoryKey,
+        getSubData,
         filterSale,
         filterSubItem,
-        highToLowFilter,maxMinPrice,setSubCategory,allItems
+        filterBrand,
+        highToLowFilter,setSubCategory,
       }}
     >
       {props.children}

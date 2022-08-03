@@ -1,23 +1,16 @@
 import React, { useContext, useState } from 'react';
 import './Sidebar.scss';
 import { subApiContext } from '../../context/SubCategoryContext';
-import { ProSidebar, SidebarContent } from 'react-pro-sidebar';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { FormControl, Radio, RadioGroup } from '@mui/material';
 import {Slider} from '@mui/material';
 
-
-
-
-
-
-const SubSidebar = () => {
+export default function Drawer() {
   let params = window.location.pathname;
-  let { filterSale, categoryKey, filterSubItem,highToLowFilter,maxMinPrice,subCategory,setSubCategory,allItems } = useContext(subApiContext);
+  let { filterSale, categoryKey, filterSubItem,highToLowFilter,maxMinPrice, brandArray,setSubCategory,allItems , filterBrand} = useContext(subApiContext);
   const [price,setPrice] = useState([1,100])
-  let step=20;
   let filterPrice=[];
   const updatePrice=((e,data)=>{
    filterPrice =  allItems.filter((item)=>{
@@ -26,25 +19,26 @@ const SubSidebar = () => {
    setSubCategory(filterPrice);
     setPrice(data);
   })
- 
-
   return (
-    <ProSidebar breakPoint="sm" toggled="true" className="sideBar-bg">
-      <h2 className="text-center my-3">{params.replace('/', '')}</h2>
-      <SidebarContent>
-        <FormGroup>
-          <h5 style={{ marginTop: 10, textAlign: 'center', color: '#0a472e' }}>
+    <div className='container-fluid'>
+    <div style={{color:"#0a472e"}} className='row py-3'>
+
+      <div className='border rounded py-4'>
+      <h2 className="text-center text-capitalize">{params.replace('/', '')}</h2>
+      <FormGroup>
+          <h5 style={{ marginTop: 10, color: '#0a472e' }}>
             Filter By Sale
           </h5>
           <FormControlLabel
             style={{ marginLeft: 10 }}
             onClick={filterSale}
             control={<Checkbox />}
-            label="onSale"
+            label="On Sale"
           />
         </FormGroup>
+
         <div>
-          <h5 style={{ marginTop: 10, textAlign: 'center', color: '#0a472e' }}>
+          <h5 className='text-capitalize' style={{ marginTop: 10, color: '#0a472e' }}>
             {params.replace('/', '')} Categories
           </h5>
 
@@ -78,10 +72,50 @@ const SubSidebar = () => {
               )}
             </RadioGroup>
           </FormControl>
-        </div>
 
-        <div>
-          <h5 style={{ marginTop: 10, textAlign: 'center', color: '#0a472e' }}>
+
+          <h5 className='text-capitalize' style={{ marginTop: 10, color: '#0a472e' }}>
+            {params.replace('/', '')} Brand
+          </h5>
+
+          <FormControl>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              onClick={filterBrand}
+              defaultValue="All"
+            >
+              {brandArray.length > 1 ? (
+                <>
+                  <FormControlLabel
+                    style={{ marginLeft: 10 }}
+                    value="All"
+                    control={<Radio />}
+                    label="All"
+                  />
+                  { brandArray.map((item, i) => (
+                    <FormControlLabel
+                      key={i}
+                      style={{ marginLeft: 10 }}
+                      value={item}
+                      control={<Radio />}
+                      label={item}
+                    />
+                  ))}
+                </>
+              ) : (
+                <FormControlLabel
+                      style={{ marginLeft: 10 }}
+                      value={brandArray[0]}
+                      control={<Radio />}
+                      label={brandArray[0]}
+                    />
+              )}
+            </RadioGroup>
+          </FormControl>
+
+          <div>
+          <h5 style={{ marginTop: 10, color: '#0a472e' }}>
             Filter By price
           </h5>
           <FormControl>
@@ -95,20 +129,22 @@ const SubSidebar = () => {
                 style={{ marginLeft: 10 }}
                 value="highToLow"
                 control={<Radio />}
-                label="highToLow"
+                label="High To Low"
               />
               <FormControlLabel
                 style={{ marginLeft: 10 }}
                 value="lowToHigh"
                 control={<Radio />}
-                label="lowToHigh"
+                label="Low To High"
               />
             </RadioGroup>
           </FormControl>
         </div>
-          
+        </div>
+
+            
         <div>
-          <h5 style={{ textAlign: 'center', color: '#0a472e' }}>Filter by price</h5>
+          <h5 style={{ color: '#0a472e' }}>Filter by price</h5>
           <div className="p-4">
              <Slider
              min={maxMinPrice[0]}
@@ -119,12 +155,13 @@ const SubSidebar = () => {
            
              />
               
-
           </div>
         </div>
+      </div>
 
-      </SidebarContent>
-    </ProSidebar>
-  );
-};
-export default SubSidebar;
+
+    </div>
+
+  </div>
+  )
+}
