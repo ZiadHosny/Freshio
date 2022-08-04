@@ -1,20 +1,18 @@
 #favorite-head::after {
-    content: '';
-    position: absolute;
-    width: 210px;
-    height: 5px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    background-color: var(--main-color);
-    transition: 0.8s all;
-    border-radius: 3px;
+  content: '';
+  position: absolute;
+  width: 210px;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  background-color: var(--main-color);
+  transition: 0.8s all;
+  border-radius: 3px;
 }
 
 #favorite-head {
-   
-    position: relative;
-    padding: 16px 0px;
-    transition: 0.4s all;
-    
+  position: relative;
+  padding: 16px 0px;
+  transition: 0.4s all;
 }

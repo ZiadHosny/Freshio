@@ -33,51 +33,23 @@ export default function Account() {
           </div>
 
           <div className=" py-5 my-5 shadow">
-            <div
-              style={{ marginLeft: 5, fontSize: 25 }}
-              className="d-flex align-items-center"
+            <Link
+              to="/account"
+              style={{ fontSize: 35 }}
+              className="btn btn-outline-success d-block w-75 m-auto  d-flex align-items-center mb-2"
             >
               <BsFillPersonFill className="col-md-2" />
-              <h5 className="col-md-10">User Profile</h5>
-            </div>
+              <h4 className="col-md-10">User Profile</h4>
+            </Link>
 
-            <div
-              style={{ marginLeft: 5, fontSize: 25 }}
-              className="d-flex align-items-center my-4"
+            <Link
+              to="/cartList"
+              style={{ fontSize: 35 }}
+              className="btn btn-outline-success d-block w-75 m-auto  d-flex align-items-center "
             >
               <BsFillCartFill className="col-md-2" />
-              <h5 className="col-md-10">My Cart</h5>
-
-              <Link style={{ color: '#0a472e' }} to={'/cartList'}>
-                {' '}
-                <div
-                  style={{ marginLeft: 5, fontSize: 25 }}
-                  className="d-flex align-items-center my-4"
-                >
-                  <BsFillCartFill className="col-md-2" />
-                  <h5 className="col-md-10">My Cart</h5>
-                </div>
-              </Link>
-
-              <div
-                style={{ marginLeft: 5, fontSize: 25 }}
-                className="d-flex align-items-center"
-              >
-                <BsHeartFill className="col-md-2" />
-                <h5 className="col-md-10">My Favorites</h5>
-              </div>
-
-              <Link style={{ color: '#0a472e' }} to={'/favoritesList'}>
-                {' '}
-                <div
-                  style={{ marginLeft: 5, fontSize: 25 }}
-                  className="d-flex align-items-center"
-                >
-                  <BsHeartFill className="col-md-2" />
-                  <h5 className="col-md-10">My Favorites</h5>
-                </div>
-              </Link>
-            </div>
+              <h4 className="col-md-10">My Cart</h4>
+            </Link>
           </div>
         </div>
         <div className="col-md-8 offset-md-1">

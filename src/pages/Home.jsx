@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/header/Header';
-import DealOfTheDay from '../components/dealOfTheDay/DealOfTheDay';
 import Section from '../components/section/Section';
-import AdCard from '../components/adCard/AdCard';
+
 import FeedBack from '../components/feedBack/FeedBack';
 import HomeCategory from '../components/section/HomeCategory';
 import axios from 'axios';
