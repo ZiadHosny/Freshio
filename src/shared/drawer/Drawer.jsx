@@ -10,7 +10,7 @@ import { FormControl, Radio, RadioGroup } from '@mui/material';
 
 export default function Drawer() {
     let params = window.location.pathname;
-    let { filterSale , maxMinPrice , setCategory , allItems ,  brandArray , filterBrand} = useContext(dataApiContext);
+    let { filterSale , maxMinPrice , setCategory , allItems ,  brandArray , filterBrand,maxMinCalory} = useContext(dataApiContext);
     const [price,setPrice] = useState([1,9000]);
     let filterPrice=[];
     const updatePrice=((e,data)=>{
@@ -20,15 +20,29 @@ export default function Drawer() {
       setCategory(filterPrice);
        setPrice(data);
      })
+
+     const [calories,setCalories] = useState([1,8000]);
+     let filterCalories=[];
+     const searchCalories=((e,data)=>{
+       filterCalories=allItems.filter((item)=>{
+         return item.calories >=data[0] && item.calories <= data[1]
+       })
+       setCategory(filterCalories);
+       setCalories(data);
+     })
     
   return (
-    <div className='container-fluid'>
+<div className='container-fluid'>
  <div style={{color:"#0a472e"}} className='row border my-3 rounded py-3'>
+
     <div className='rounded py-4'>
-    <h2 className="text-center text-capitalize">{params.replace('/', '')}</h2>
+    <h2 className="text-capitalize">{params.replace('/', '')} Category</h2>
+    <hr />
+    </div>
+    <div>
     <FormGroup>
-          <h5 style={{ marginTop: 10, color: '#0a472e' }}>
-            Filter By Sale
+          <h5 className='mb-4' style={{  color: '#0a472e' }}>
+            onSale Products
           </h5>
           <FormControlLabel
             style={{ marginLeft: 10 }}
@@ -36,16 +50,49 @@ export default function Drawer() {
             control={<Checkbox />}
             label="On Sale"
           />
-        </FormGroup>
+    </FormGroup>
+    <hr />
+    </div>
+    <div >
+    <h5 className='my-4' style={{ color: '#0a472e' }}>Price Filter</h5>
+    <div>
+    <h6 className='my-3'>Range : EGP {maxMinPrice[0]} - {maxMinPrice[1]}</h6>
+    <div className="p-3">
+      <Slider
+      min={maxMinPrice[0]}
+      max={maxMinPrice[1]}
+      value={price}
+      onChange={updatePrice}
+      valueLabelDisplay="auto"
+      />
+
+    </div>
+    </div>
+    <hr />
     </div>
 
     <div>
-          <h5 className='text-capitalize' style={{ marginTop: 10, color: '#0a472e' }}>
+    <h5 className='my-4' style={{ color: '#0a472e' }}>Calories Filter</h5>
+    <h6 className='my-3'>Range : Kcal {maxMinCalory[0]} - {maxMinCalory[1]}</h6>
+    <div className="p-3">
+    <Slider
+    min={maxMinCalory[0]}
+    max={maxMinCalory[1]}
+    value={calories}
+    onChange={searchCalories}
+    valueLabelDisplay="auto"
+    />
+    </div>
+    <hr />
+    </div>
+
+    <div>
+    <h5 className='text-capitalize my-3' style={{  color: '#0a472e' }}>
             {params.replace('/', '')} Brand
           </h5>
 
           <FormControl>
-             <RadioGroup
+              <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
               defaultValue="All"
@@ -79,22 +126,10 @@ export default function Drawer() {
               )}
             </RadioGroup> 
           </FormControl>
-
-<div>
-          <h5 style={{ textAlign: 'center', color: '#0a472e' }}>Filter by price</h5>
-          <div className="p-4">
-             <Slider
-             min={maxMinPrice[0]}
-             max={maxMinPrice[1]}
-             value={price}
-             onChange={updatePrice}
-             valueLabelDisplay="auto"
-             />
-          </div>
-         </div>
-        </div>
-      </div>
+          <hr />
     </div>
+  </div>
+</div>
     
   )
 }

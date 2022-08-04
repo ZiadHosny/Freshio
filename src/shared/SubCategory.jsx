@@ -22,7 +22,7 @@ export default function SubCategory() {
           <div className="row p-3 g-3">
           {!subCategory || subCategory.length !== 0 ? (
               subCategory.map((item) => (
-                <div key={item.id} className="col-lg-3 col-md-4">
+                <div key={item.id} className="col-xl-3 col-lg-4 col-sm-6">
                   <CardItem item={item} params={params} />
                 </div>
               ))

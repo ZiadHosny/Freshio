@@ -7,12 +7,14 @@ export default function SubCategoryContext(props) {
   const [categoryKey, setCategoryKey] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [maxMinPrice, setMaxMinPrice] = useState([]);
+  const [maxMinCalory, setMaxMinCalory] = useState([]);
   const [brandArray , setBrandArray] = useState([]);
 
   let allCategory = [];
   let allProduct = [];
   let allKeys = [];
   let price = [];
+  let calories=[];
   let brand ;
 
   async function getSubData(path) {
@@ -37,9 +39,27 @@ export default function SubCategoryContext(props) {
       setCategoryKey([...allKeys]);
       price=maxMinPriceFilter(allProduct);
       setMaxMinPrice(price);
+      calories=maxMinCaloryFilter(allProduct);
+      setMaxMinCalory(calories);
       brand = brandName(allProduct);
       setBrandArray(brand)
     }
+  }
+
+  //Filter max , min Calories from Array
+  const maxMinCaloryFilter=(arr)=>{
+    let maxCalory=0,minCalory=15000;
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[i].calories<minCalory)
+      {
+        minCalory=arr[i].calories;
+      } 
+      if(arr[i].calories>maxCalory)
+      {
+        maxCalory=arr[i].calories;
+      } 
+    }
+    return [minCalory,maxCalory];
   }
 
   //Filter max , min price from Array
@@ -126,7 +146,7 @@ export default function SubCategoryContext(props) {
   };
 
 
-
+//Function of Filter Array By Brand Name
   function brandName(allBrand){
     let localBrand = [];
     allBrand.forEach((element)=>{
@@ -138,7 +158,7 @@ export default function SubCategoryContext(props) {
     return localBrand
   }
 
-
+//Filter By Brand Name
   function filterBrand (e) {
     let brandItem = [];
  
@@ -164,9 +184,6 @@ export default function SubCategoryContext(props) {
     }
    
   }
-
-
-
   //Filter Category by its SubCategory
   const filterSubItem = (e) => {
     let updatedSubItems = [];
@@ -181,6 +198,8 @@ export default function SubCategoryContext(props) {
   };
 
 
+
+
   return (
     <subApiContext.Provider
       value={{
@@ -193,7 +212,7 @@ export default function SubCategoryContext(props) {
         filterSale,
         filterSubItem,
         filterBrand,
-        highToLowFilter,setSubCategory,
+        highToLowFilter,setSubCategory,maxMinCalory
       }}
     >
       {props.children}
