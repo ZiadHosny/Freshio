@@ -6,10 +6,12 @@ export let dataApiContext = createContext([]);
 
 export default function ApiContext(props) {
   const [allItems, setAllItems] = useState([]);
-  const [maxMinPrice, setMaxMinPrice] = useState([]);
   const [category, setCategory] = useState([]);
   const [brandArray, setBrandArray] = useState([]);
+  const [maxMinPrice, setMaxMinPrice] = useState([]);
+  const [maxMinCalory, setMaxMinCalory] = useState([]);
   let price = [];
+  let calories=[];
   let brand;
 
   async function getData(path) {
@@ -26,26 +28,31 @@ export default function ApiContext(props) {
       setCategory(data);
       setAllItems(data);
       price = maxMinPriceFilter(data);
+      calories = maxMinCaloryFilter(data);
+      setMaxMinCalory(calories);
       setMaxMinPrice(price);
       brand = brandName(data);
       setBrandArray(brand);
     }
   }
 
-  const filterSale = (e) => {
-    let saleItems = [];
-    if (e.target.checked) {
-      saleItems = category.filter((item) => {
-        if (item.sale) {
-          return item;
-        }
-      });
-    } else {
-      saleItems = [...allItems];
+  //Filter max , min Calories from Array
+  const maxMinCaloryFilter=(arr)=>{
+    let maxCalory=0,minCalory=15000;
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[i].calories<minCalory)
+      {
+        minCalory=arr[i].calories;
+      } 
+      if(arr[i].calories>maxCalory)
+      {
+        maxCalory=arr[i].calories;
+      } 
     }
-    setCategory(saleItems);
-  };
+    return [minCalory,maxCalory];
+  }
 
+  //Filter max , min price from Array
   const maxMinPriceFilter = (arr) => {
     let maxPrice = 0,
       minPrice = 15000;
@@ -59,7 +66,7 @@ export default function ApiContext(props) {
     }
     return [minPrice, maxPrice];
   };
-
+  //Function of Filter Array By Brand Name
   function brandName(allBrand) {
     let localBrand = [];
     allBrand.forEach((element) => {
@@ -70,7 +77,21 @@ export default function ApiContext(props) {
 
     return localBrand;
   }
-
+    //Filter on Sale Product
+    const filterSale = (e) => {
+      let saleItems = [];
+      if (e.target.checked) {
+        saleItems = category.filter((item) => {
+          if (item.sale) {
+            return item;
+          }
+        });
+      } else {
+        saleItems = [...allItems];
+      }
+      setCategory(saleItems);
+    };  
+   //Filter By Brand Name
   function filterBrand(e) {
     let brandItem = [];
 
@@ -99,6 +120,7 @@ export default function ApiContext(props) {
         filterSale,
         setCategory,
         filterBrand,
+        maxMinCalory
       }}
     >
       {props.children}
