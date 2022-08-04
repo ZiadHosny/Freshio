@@ -79,68 +79,67 @@ export default function Account() {
               </Link>
             </div>
           </div>
-
-          <div className="col-md-8 offset-md-1">
-            <div className="p-3 shadow">
-              <h1>Personal Information</h1>
-              <div>
-                <label htmlFor="firstName" className="form-label">
-                  First Name :
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  className="form-control"
-                  placeholder="First Name"
-                  value={userData.firstName}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="lastName" className="form-label">
-                  Last Name :
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  className="form-control"
-                  placeholder="Last Name"
-                  value={userData.firstName}
-                  required
-                />
-              </div>
-              <div className="mt-3">
-                <label htmlFor="email" className="form-label">
-                  Email Address :
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  className="form-control"
-                  placeholder="Email Address"
-                  value={userData.email}
-                  required
-                />
-              </div>
-              <div className="mt-3">
-                <label htmlFor="password" className="form-label">
-                  Password :
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={userData.password}
-                  required
-                />
-              </div>
-
-              <button type="button" className="btn btn-outline-success my-4">
-                Save Changes
-              </button>
+        </div>
+        <div className="col-md-8 offset-md-1">
+          <div className="p-3 shadow">
+            <h1>Personal Information</h1>
+            <div>
+              <label htmlFor="firstName" className="form-label">
+                First Name :
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                className="form-control"
+                placeholder="First Name"
+                value={userData.firstName}
+                required
+              />
             </div>
+
+            <div>
+              <label htmlFor="lastName" className="form-label">
+                Last Name :
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                className="form-control"
+                placeholder="Last Name"
+                value={userData.firstName}
+                required
+              />
+            </div>
+            <div className="mt-3">
+              <label htmlFor="email" className="form-label">
+                Email Address :
+              </label>
+              <input
+                type="text"
+                name="email"
+                className="form-control"
+                placeholder="Email Address"
+                value={userData.email}
+                required
+              />
+            </div>
+            <div className="mt-3">
+              <label htmlFor="password" className="form-label">
+                Password :
+              </label>
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                placeholder="Password"
+                value={userData.password}
+                required
+              />
+            </div>
+
+            <button type="button" className="btn btn-outline-success my-4">
+              Save Changes
+            </button>
           </div>
         </div>
       </div>

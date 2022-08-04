@@ -4,7 +4,7 @@ import { dataApiContext } from '../context/ApiContext';
 import './Category.css';
 import CardItem from '../shared/CardItem';
 import Loading from './Loading';
-import Drawer from './Drawer';
+import Drawer from './drawer/Drawer';
 
 export default function Category() {
   let params = window.location.pathname;

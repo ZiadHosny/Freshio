@@ -4,14 +4,14 @@ import { subApiContext } from '../context/SubCategoryContext';
 import './Category.css';
 import CardItem from './CardItem';
 import Loading from './Loading';
-import SubDrawer from './sidebar/SubDrawer';
+import SubDrawer from './drawer/SubDrawer';
 
 export default function SubCategory() {
   let params = window.location.pathname;
   let { subCategory, getSubData } = useContext(subApiContext);
   useEffect(() => {
     getSubData(params);
-  }, []);
+  }, [getSubData, params]);
   return (
     <div className="container-fluid">
       <div className="row">

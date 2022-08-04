@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import './Sidebar.scss';
 import { subApiContext } from '../../context/SubCategoryContext';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';

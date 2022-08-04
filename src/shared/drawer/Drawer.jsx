@@ -1,9 +1,9 @@
 import React , {useContext , useState}from 'react';
-import '../shared/sidebar/Sidebar.scss';
+
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { dataApiContext } from '../context/ApiContext';
+import { dataApiContext } from '../../context/ApiContext';
 import Slider from '@mui/material/Slider';
 import { FormControl, Radio, RadioGroup } from '@mui/material';
 

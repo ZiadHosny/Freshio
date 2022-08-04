@@ -68,12 +68,12 @@ const Details = ({ onClick }) => {
                 <p className="col-6">Weight : {item.ProductData.weight}</p>
               </div>
             </>
-          ) : (
+          ) : item.body ? (
             <>
               <p className="h5 mt-4 fw-bold">Description</p>
               <p>{truncateString(item.body, 360)}</p>
             </>
-          )}
+          ) : null}
 
           <button
             className="btn btn-outline-success addBtn px-3 my-3  font-weight-bold"
