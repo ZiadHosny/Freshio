@@ -9,12 +9,13 @@ import {Slider} from '@mui/material';
 export default function Drawer() {
   let params = window.location.pathname;
   let { filterSale,maxMinPrice, categoryKey, filterSubItem,highToLowFilter, brandArray,setSubCategory,allItems , filterBrand} = useContext(subApiContext);
-  const [price,setPrice] = useState([1,1000]);
+  const [price,setPrice] = useState([1,8000]);
   let filterPrice=[];
   const updatePrice=((e,data)=>{
    filterPrice =  allItems.filter((item)=>{
     return item.price >= data[0] && item.price <= data[1]
    })
+   console.log(maxMinPrice);
    setSubCategory(filterPrice);
     setPrice(data);
   })
@@ -151,7 +152,7 @@ export default function Drawer() {
              value={price}
              onChange={updatePrice}
              valueLabelDisplay="auto"
-             />             
+             />            
           </div>
         </div>
       </div>
