@@ -89,18 +89,11 @@ export default function Drawer() {
              value={price}
              onChange={updatePrice}
              valueLabelDisplay="auto"
-           
              />
-              
-
           </div>
+         </div>
         </div>
-        </div>
-
-
-
-
- </div>
+      </div>
     </div>
     
   )
