@@ -11,7 +11,7 @@ import { FormControl, Radio, RadioGroup } from '@mui/material';
 export default function Drawer() {
     let params = window.location.pathname;
     let { filterSale , maxMinPrice , setCategory , allItems ,  brandArray , filterBrand} = useContext(dataApiContext);
-    const [price,setPrice] = useState([1,1000]);
+    const [price,setPrice] = useState([1,9000]);
     let filterPrice=[];
     const updatePrice=((e,data)=>{
       filterPrice =  allItems.filter((item)=>{

@@ -28,7 +28,6 @@ export default function SubCategoryContext(props) {
 
       allKeys = Object.keys(data);
       allCategory = Object.values(data);
-      price=maxMinPriceFilter(allProduct);
       allCategory.forEach((item) => {
         allProduct.push(...item);
       });
@@ -36,6 +35,7 @@ export default function SubCategoryContext(props) {
       setSubCategory(allProduct);
       setAllItems(allProduct);
       setCategoryKey([...allKeys]);
+      price=maxMinPriceFilter(allProduct);
       setMaxMinPrice(price);
       brand = brandName(allProduct);
       setBrandArray(brand)
