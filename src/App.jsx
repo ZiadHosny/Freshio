@@ -38,7 +38,7 @@ function App() {
           <FavoritesProvider>
             <Navbar />
             <Modal />
-            <Chat />
+            {/* <Chat /> */}
             <ScrollArrow />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -104,7 +104,9 @@ function App() {
                 path="/favoritesList"
                 element={
                   <ProdectedRoute>
-                    <FavoritesList />
+                    <AccountProvider>
+                      <FavoritesList />
+                    </AccountProvider>
                   </ProdectedRoute>
                 }
               />

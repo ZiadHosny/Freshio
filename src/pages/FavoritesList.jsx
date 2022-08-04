@@ -1,74 +1,69 @@
 import React, { useContext } from 'react';
 import CardItem from '../shared/CardItem';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BsFillCartFill } from 'react-icons/bs';
-import { BsHeartFill } from 'react-icons/bs';
 
 import { FavoritesContext } from '../context/FavoritesContext';
+import { AccountContext } from '../context/AccountContext';
+import { Link } from 'react-router-dom';
 
 const FavoritesList = () => {
   const { favoritesItems } = useContext(FavoritesContext);
-  let params = window.location.pathname;
+  const { userData } = useContext(AccountContext);
 
- 
   return (
     <div className="container">
       <div className="row p-4">
         <div className="col-md-3">
-          <div className="d-flex shadow py-4">
-            <Stack className="col-md-6" direction="row" spacing={2}>
-              <Avatar
-                style={{ width: 100, height: 100, fontSize: 50 }}
-                sx={{ bgcolor: '#0a472e' }}
-              >
-                KH
-              </Avatar>
-            </Stack>
+          <div className="d-flex justify-content-between  shadow py-4 px-1">
+            <Avatar
+              style={{ width: 100, height: 100, fontSize: 50 }}
+              sx={{ bgcolor: '#0a472e' }}
+            >
+              {userData.firstName?.slice(0, 1).toUpperCase()}
+              {userData.lastName?.slice(0, 1).toUpperCase()}
+            </Avatar>
 
-            <div className="col-md-6 d-flex align-items-center ">
-              <h1>khaled</h1>
-            </div>
+            <h1 className="col-md-6 fs-5 d-flex align-items-center ">
+              {userData.firstName} {userData.lastName}
+            </h1>
           </div>
 
           <div className=" py-5 my-5 shadow">
-            <div
-              style={{ marginLeft: 5, fontSize: 35 }}
-              className="d-flex align-items-center"
+            <Link
+              to="/account"
+              style={{ fontSize: 35 }}
+              className="btn btn-outline-success d-block w-75 m-auto  d-flex align-items-center mb-2"
             >
               <BsFillPersonFill className="col-md-2" />
               <h4 className="col-md-10">User Profile</h4>
-            </div>
+            </Link>
 
-            <div
-              style={{ marginLeft: 5, fontSize: 35 }}
-              className="d-flex align-items-center my-4"
+            <Link
+              to="/cartList"
+              style={{ fontSize: 35 }}
+              className="btn btn-outline-success d-block w-75 m-auto  d-flex align-items-center "
             >
               <BsFillCartFill className="col-md-2" />
               <h4 className="col-md-10">My Cart</h4>
-            </div>
-
-            <div
-              style={{ marginLeft: 5, fontSize: 35 }}
-              className="d-flex align-items-center"
-            >
-              <BsHeartFill className="col-md-2" />
-              <h4 className="col-md-10">My Favorites</h4>
-            </div>
+            </Link>
           </div>
         </div>
-        <div className="col-md-8 offset-md-1 shadow">
-          <h2>My Favorite</h2>
+        <div className="col-md-8  offset-md-1 shadow">
+          <h2 className="text-center">My Favorite</h2>
 
           <div className="row p-3 gy-3">
-            {favoritesItems
-              ? favoritesItems.map((item, index) => (
-                  <div key={index} className="col-md-6">
-                    <CardItem item={item} params={params} />
-                  </div>
-                ))
-              : ''}
+            {favoritesItems ? (
+              favoritesItems.map((item, index) => (
+                <div key={index} className="col-md-6">
+                  <CardItem item={item} />
+                </div>
+              ))
+            ) : (
+              <div>You didn't adding any Items</div>
+            )}
           </div>
         </div>
       </div>

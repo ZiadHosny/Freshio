@@ -13,9 +13,8 @@ import { ModalContext } from './ModalContext';
 export let FavoritesContext = createContext([]);
 
 export const FavoritesProvider = (props) => {
-  const [isFav, setIsFav] = useState(false);
   const { user } = UserAuth();
-  const { setModal } = ModalContext();
+
   const itemID = doc(db, 'users', `${user?.email}`);
 
   const [favoritesItems, setFavoritesItems] = useState([]);
@@ -26,6 +25,8 @@ export const FavoritesProvider = (props) => {
       let find = dataFromDB.data().favorites.find((e) => {
         return e.id === item.id;
       });
+
+      console.log(find);
       if (find) {
         return true;
       } else {
@@ -34,28 +35,25 @@ export const FavoritesProvider = (props) => {
     }
   };
 
-  const saveItem = async (item) => {
-    if (user?.email) {
-      setIsFav(!isFav);
-
-      if (!isFav) {
-        await updateDoc(itemID, {
-          favorites: arrayUnion(item),
-        });
-      } else {
-        try {
-          let dataFromDB = await getDoc(itemID);
-          const result = dataFromDB.data().favorites.filter((e) => {
-            return item.id !== e.id;
-          });
-
-          await updateDoc(itemID, { favorites: result });
-        } catch (error) {
-          console.log(error);
-        }
-      }
+  const saveItem = async (item, isFav) => {
+    let data = await getDoc(itemID);
+    let dataFromDB = data.data().favorites;
+    if (!isFav) {
+      dataFromDB.push(item);
+      await updateDoc(itemID, {
+        favorites: dataFromDB,
+      });
     } else {
-      setModal('login');
+      console.log('item');
+      try {
+        const result = dataFromDB.filter((e) => {
+          return item.id !== e.id;
+        });
+
+        await updateDoc(itemID, { favorites: result });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -63,11 +61,10 @@ export const FavoritesProvider = (props) => {
     onSnapshot(itemID, (doc) => {
       setFavoritesItems(doc.data()?.favorites);
     });
-  }, [itemID, user?.email]);
+  }, [itemID]);
+
   return (
-    <FavoritesContext.Provider
-      value={{ favoritesItems, found, saveItem, isFav, setIsFav }}
-    >
+    <FavoritesContext.Provider value={{ favoritesItems, found, saveItem }}>
       {props.children}
     </FavoritesContext.Provider>
   );

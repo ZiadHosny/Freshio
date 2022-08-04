@@ -25,7 +25,7 @@ export default function Category() {
             {!category || category.length !== 0 ? (
               category.map((item) => (
                 <div key={item.id} className="col-lg-3 col-md-4">
-                  <CardItem item={item} params={params} />
+                  <CardItem item={item} />
                 </div>
               ))
             ) : (
