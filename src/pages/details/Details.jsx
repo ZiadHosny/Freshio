@@ -91,6 +91,13 @@ const Details = ({ onClick }) => {
                 />
               )}
               <span className="ps-2 fs-20 link">Add To Favorites</span>
+              
+          <button
+            className="btn btn-outline-success addBtn px-3 m-3  font-weight-bold"
+            onClick={addToCart}
+          >
+            Add To Cart <BsCart className="ms-2 fs-4" />
+          </button>
             </div>
           </div>
           {item.ProductData ? (
@@ -113,14 +120,10 @@ const Details = ({ onClick }) => {
                 {truncateString(item.body, 300)}
               </p>
             </>
-          ) : null}
 
-          <button
-            className="btn btn-outline-success addBtn px-3 my-3  font-weight-bold"
-            onClick={addToCart}
-          >
-            Add To Cart <BsCart className="ms-2 fs-4" />
-          </button>
+          ) 
+          :null}
+
         </div>
       </div>
     </Container>
