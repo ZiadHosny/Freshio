@@ -8,7 +8,7 @@ import {Slider} from '@mui/material';
 
 export default function Drawer() {
   let params = window.location.pathname;
-  let { filterSale,maxMinPrice, categoryKey, filterSubItem,highToLowFilter, brandArray,setSubCategory,allItems , filterBrand , maxMinCalory} = useContext(subApiContext);
+  let { filterSale,maxMinPrice, categoryKey, filterSubItem, brandArray,setSubCategory,allItems , filterBrand , maxMinCalory} = useContext(subApiContext);
   const [price,setPrice] = useState([1,8000]);
   let filterPrice=[];
   const searchPrice=((e,data)=>{
@@ -162,32 +162,7 @@ export default function Drawer() {
           <hr />
       </div>
 
-      {/* <div>
-          <h5 style={{ marginTop: 10, color: '#0a472e' }}>
-            Filter By price
-          </h5>
-          <FormControl>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              name="radio-buttons-group"
-              onClick={highToLowFilter}
-             
-            >
-              <FormControlLabel
-                style={{ marginLeft: 10 }}
-                value="highToLow"
-                control={<Radio />}
-                label="High To Low"
-              />
-              <FormControlLabel
-                style={{ marginLeft: 10 }}
-                value="lowToHigh"
-                control={<Radio />}
-                label="Low To High"
-              />
-            </RadioGroup>
-          </FormControl>
-      </div> */}
+      
       
 
 

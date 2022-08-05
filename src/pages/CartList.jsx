@@ -66,12 +66,11 @@ const CartList = () => {
       ))}
       <div className="d-flex flex-row align-items-center justify-content-between">
         <h2>
-          <span>Buy Now : </span>
           <button
             onClick={() => setModal('buyNow')}
-            className=" btn btn-outline-success fs-3 text-bold p-2 "
+            className=" btn btn-outline-success fs-5 text-bold p-2 "
           >
-            Total price: {totalPrice()} EGP
+            Order Now : {totalPrice()} EGP
           </button>
         </h2>
 
