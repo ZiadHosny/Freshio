@@ -88,16 +88,17 @@ export function CartContextProvider(props) {
     cart.forEach((item) => {
       totalPrice += item.price * item.quantity;
     });
-
     return totalPrice.toFixed(2);
   };
 
   const clearAll = async () => {
     try {
-      let dataFromDB = await getDoc(itemID);
-      let allInCart = dataFromDB.data().inCart;
-      allInCart.splice(0, cart.length);
-      await updateDoc(itemID, { inCart: allInCart });
+      setTimeout(async () => {
+        let dataFromDB = await getDoc(itemID);
+        let allInCart = dataFromDB.data().inCart;
+        allInCart.splice(0, cart.length);
+        await updateDoc(itemID, { inCart: allInCart });
+      }, 3000);
     } catch (error) {
       console.log(error);
     }

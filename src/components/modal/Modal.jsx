@@ -5,6 +5,7 @@ import Login from '../../pages/auth/Login';
 import Signup from '../../pages/auth/Signup';
 import './Modal.css';
 import Details from '../../pages/details/Details';
+import BuyNow from '../buy now/BuyNow';
 
 const dropIn = {
   hidden: {
@@ -56,6 +57,12 @@ const Modal = () => {
           />
         ) : modal === 'details' ? (
           <Details
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          />
+        ) : modal === 'buyNow' ? (
+          <BuyNow
             onClick={(e) => {
               e.stopPropagation();
             }}

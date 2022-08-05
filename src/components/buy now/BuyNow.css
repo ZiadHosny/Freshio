@@ -1,11 +1,12 @@
-.ContainerModal {
-  display: block;
+.BuyNowModal {
+  display: flex;
   opacity: 1;
   position: absolute;
-  background-color: #fff;
+  width: 50%;
+  height: 50%;
   left: 50%;
-  height: 90%;
   transform: translate(-50%) scale(1);
   transition: opacity 200ms ease-in-out 100ms, transform 500ms ease-in-out 0ms;
   border-radius: 10px;
+  padding: 20px;
 }

@@ -1,16 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Details.css';
-import { BsHeart, BsCart } from 'react-icons/bs';
+import { BsHeart, BsCart, BsHeartFill } from 'react-icons/bs';
 import { DetailsContext } from '../../context/DetailsContext';
 import { Container } from '@mui/material';
 import { CartContext } from '../../context/CartContext';
+import { FavoritesContext } from '../../context/FavoritesContext';
+import { UserAuth } from '../../context/AuthContext';
+import { ModalContext } from '../../context/ModalContext';
 
 const Details = ({ onClick }) => {
+  const [isFav, setIsFav] = useState(false);
   let { item } = useContext(DetailsContext);
+  const { saveItem } = useContext(FavoritesContext);
   const { addToCartInFirebase } = useContext(CartContext);
+  const { user } = UserAuth();
+  const { setModal } = ModalContext();
 
   const addToCart = () => {
     addToCartInFirebase(item);
+  };
+
+  const saveItemInContext = () => {
+    if (user?.email) {
+      saveItem(item, isFav);
+      setIsFav(!isFav);
+    } else {
+      setModal('login');
+    }
   };
 
   const truncateString = (str, num) => {
@@ -22,14 +38,24 @@ const Details = ({ onClick }) => {
   };
 
   return (
-    <Container className="ContainerModal" onClick={onClick}>
+    <Container className="DetailsModal" onClick={onClick}>
       <div className="row border shadow  rounded p-2 h-100">
-        <div className="col-md-4 h-100">
-          <img src={item.image} className="w-100 h-50" alt="/" />
-          <img src={item.nutrition} className="w-100 h-50" alt={item.title} />
+        <div className="col-4 h-100">
+          {item.nutrition ? (
+            <>
+              <img src={item.image} className="w-100 h-50" alt="/" />
+              <img
+                src={item.nutrition}
+                className="w-100 h-50"
+                alt={item.title}
+              />
+            </>
+          ) : (
+            <img src={item.image} className="w-100 h-50" alt="/" />
+          )}
         </div>
 
-        <div className="col-md-7 ml-5  offset-md-1 col-12">
+        <div className="col-7 ml-5">
           <p className="h2 fw-bold mb-4">{item.title}</p>
           <div className="d-flex justify-content-between">
             {item.sale ? (
@@ -52,8 +78,20 @@ const Details = ({ onClick }) => {
           </div>
 
           <div className="mt-3">
-            <BsHeart className=" fs-3" />
-            <span className="ps-2 fs-20 link">Add To Favorites</span>
+            <div onClick={saveItemInContext}>
+              {isFav ? (
+                <BsHeartFill
+                  style={{ cursor: 'pointer' }}
+                  className="fs-3 mt-1 icon-color"
+                />
+              ) : (
+                <BsHeart
+                  style={{ cursor: 'pointer' }}
+                  className="fs-3 mt-1 icon-color"
+                />
+              )}
+              <span className="ps-2 fs-20 link">Add To Favorites</span>
+            </div>
           </div>
           {item.ProductData ? (
             <>
@@ -71,7 +109,9 @@ const Details = ({ onClick }) => {
           ) : item.body ? (
             <>
               <p className="h5 mt-4 fw-bold">Description</p>
-              <p>{truncateString(item.body, 360)}</p>
+              <p style={{ height: '100px' }}>
+                {truncateString(item.body, 300)}
+              </p>
             </>
           ) : null}
 

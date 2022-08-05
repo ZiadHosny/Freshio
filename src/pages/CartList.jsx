@@ -3,10 +3,13 @@ import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { MdDeleteForever } from 'react-icons/md';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import { ModalContext } from '../context/ModalContext';
 
 const CartList = () => {
   const { cart, addOneMore, deleteOneMore, deleteItem, totalPrice, clearAll } =
     useContext(CartContext);
+
+  const { setModal } = ModalContext();
 
   return !cart || cart.length === 0 ? (
     <div className="text-center p-5 m-5">
@@ -62,9 +65,18 @@ const CartList = () => {
         </div>
       ))}
       <div className="d-flex flex-row align-items-center justify-content-between">
-        <h2 className="text-bold py-2">Total price: {totalPrice()} EGP</h2>
+        <h2>
+          <span>Buy Now : </span>
+          <button
+            onClick={() => setModal('buyNow')}
+            className=" btn btn-outline-success fs-3 text-bold p-2 "
+          >
+            Total price: {totalPrice()} EGP
+          </button>
+        </h2>
+
         <button
-          className="btn btn-outline-danger addBtn px-5 my-3 mx-3"
+          className="btn btn-outline-danger addBtn  px-5 my-3 mx-3"
           onClick={clearAll}
         >
           Clear cart
