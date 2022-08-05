@@ -4,16 +4,29 @@ import { CartContext } from '../context/CartContext';
 import { MdDeleteForever } from 'react-icons/md';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 import { ModalContext } from '../context/ModalContext';
+import { BsCartX } from 'react-icons/bs';
+import { Link } from "react-router-dom";
+import { IoMdArrowRoundBack } from 'react-icons/io';
+
 
 const CartList = () => {
   const { cart, addOneMore, deleteOneMore, deleteItem, totalPrice, clearAll } =
     useContext(CartContext);
 
   const { setModal } = ModalContext();
+    
 
   return !cart || cart.length === 0 ? (
     <div className="text-center p-5 m-5">
-      <h1 className="p-5 text-color">Cart Is Empty </h1>
+      <h1 className="p-5 text-color">Cart Is Empty  <BsCartX /></h1>
+      <Link to="/"
+        className="btn btn-outline-success addBtn px-2 my-3 "
+      >
+        <span className="px-2">
+          <IoMdArrowRoundBack />
+        </span>
+        Back to home
+      </Link>
     </div>
   ) : (
     <Container className="shadow">

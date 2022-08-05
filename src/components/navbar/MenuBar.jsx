@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -8,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ModalContext } from '../../context/ModalContext';
 import { UserAuth } from '../../context/AuthContext';
 
@@ -26,6 +25,8 @@ const MenuBar = () => {
   const { favoritesItems } = useContext(FavoritesContext);
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
+  const navigate = useNavigate();
+  
 
 
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -51,6 +52,7 @@ const MenuBar = () => {
   const handleLogout = () => {
     handleCloseUserMenu();
     logOut();
+    navigate("/")
   };
 
 
