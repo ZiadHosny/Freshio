@@ -42,17 +42,17 @@ function App() {
             <ScrollArrow />
             <Routes>
               <Route path="/Freshio" element={<Home />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/chicken" element={<Chicken />} />
-              <Route path="/supplements" element={<Supplements />} />
-              <Route path="/snacks" element={<Snacks />} />
-              <Route path="/fruit" element={<Fruit />} />
-              <Route path="/keto" element={<Keto />} />
-              <Route path="/vegetables" element={<Vegetables />} />
-              <Route path="/search/:id" element={<Search />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="chicken" element={<Chicken />} />
+              <Route path="supplements" element={<Supplements />} />
+              <Route path="snacks" element={<Snacks />} />
+              <Route path="fruit" element={<Fruit />} />
+              <Route path="keto" element={<Keto />} />
+              <Route path="vegetables" element={<Vegetables />} />
+              <Route path="search/:id" element={<Search />} />
 
               <Route
-                path="/account"
+                path="account"
                 element={
                   <AccountProvider>
                     <Account />
@@ -60,7 +60,7 @@ function App() {
                 }
               />
               <Route
-                path="/meat"
+                path="meat"
                 element={
                   <SubCategoryContext>
                     <Meat />
@@ -68,7 +68,7 @@ function App() {
                 }
               />
               <Route
-                path="/bakery"
+                path="bakery"
                 element={
                   <SubCategoryContext>
                     <Bakery />
@@ -76,7 +76,7 @@ function App() {
                 }
               />
               <Route
-                path="/lowcarb"
+                path="lowcarb"
                 element={
                   <SubCategoryContext>
                     <LowCarb />
@@ -84,7 +84,7 @@ function App() {
                 }
               />
               <Route
-                path="/vegan"
+                path="vegan"
                 element={
                   <SubCategoryContext>
                     <Vegan />
@@ -92,7 +92,7 @@ function App() {
                 }
               />
               <Route
-                path="/meals"
+                path="meals"
                 element={
                   <SubCategoryContext>
                     <Meals />
@@ -100,7 +100,7 @@ function App() {
                 }
               />
               <Route
-                path="/favoritesList"
+                path="favoritesList"
                 element={
                   <ProdectedRoute>
                     <AccountProvider>
@@ -110,7 +110,7 @@ function App() {
                 }
               />
               <Route
-                path="/cartList"
+                path="cartList"
                 element={
                   <ProdectedRoute>
                     <CartList />
