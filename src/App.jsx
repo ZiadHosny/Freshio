@@ -41,7 +41,6 @@ function App() {
             <Chat />
             <ScrollArrow />
             <Routes>
-              <Route path="/" element={<Home />} />
               <Route path="/Freshio" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/chicken" element={<Chicken />} />
