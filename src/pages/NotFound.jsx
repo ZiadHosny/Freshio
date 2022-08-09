@@ -6,7 +6,7 @@ import notFound from '../assets/232.jpg';
 export const NotFound = () => {
   let navigate = useNavigate();
   const navigateHome = () => {
-    navigate('/');
+    navigate('/Freshio');
   };
   return (
     <div className="container erourContainer ">

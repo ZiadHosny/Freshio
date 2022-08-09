@@ -15,7 +15,7 @@ export default function ApiContext(props) {
   let brand;
 
   async function getData(path) {
-    if (path === '/') {
+    if (path === '/Freshio') {
       let { data } = await axios.get(
         `https://healthy-food-ed8b5-default-rtdb.firebaseio.com/home.json`
       );
