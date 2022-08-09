@@ -26,8 +26,6 @@ const MenuBar = () => {
   const { setModal } = ModalContext();
   const { user, logOut } = UserAuth();
   const navigate = useNavigate();
-  
-
 
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -52,14 +50,13 @@ const MenuBar = () => {
   const handleLogout = () => {
     handleCloseUserMenu();
     logOut();
-    navigate("/")
+    navigate('/');
   };
-
 
   return (
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
-        <Link to="/">
+        <Link to="/Freshio">
           <img src={logo} className="w-50" alt="/" />
         </Link>
       </div>
