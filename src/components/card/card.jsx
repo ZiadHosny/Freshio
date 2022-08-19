@@ -14,13 +14,15 @@ const Card = ({ url, price, title, category, amount }) => {
             <p>Amount: {amount}</p>
           </div>
           <div className="pb-3">
-            <a type="button">
+            <a href="/" type="button">
               <span className="text-warning">Add to favourite</span>
             </a>
           </div>
 
-          <a className="btn btn-secondary p-2 mb-1 d-block mx-auto">Details</a>
-          <a type="button" className="btn btn-success d-block mx-auto">
+          <a href="/" className="btn btn-secondary p-2 mb-1 d-block mx-auto">
+            Details
+          </a>
+          <a href="/" type="button" className="btn btn-success d-block mx-auto">
             Add to Cart
           </a>
         </div>

@@ -6,7 +6,7 @@ const Copyright = () => {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link className="text-color" to={'/Freshio'}>
+      <Link className="text-color" to={'/'}>
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}

@@ -36,7 +36,7 @@ export default function SignIn({ onClick }) {
       setOpen(true);
       setTimeout(() => {
         setModal('');
-        navigate('/Freshio');
+        navigate('/');
       }, 1000);
     } catch (error) {
       setSnackData({ msg: error.message, severity: 'error' });

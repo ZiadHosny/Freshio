@@ -3,12 +3,12 @@ import {
   getDoc,
   onSnapshot,
   updateDoc,
-  arrayUnion,
+
 } from 'firebase/firestore';
 import React, { useEffect, createContext, useState } from 'react';
 import { db } from '../firebase';
 import { UserAuth } from './AuthContext';
-import { ModalContext } from './ModalContext';
+
 
 export let FavoritesContext = createContext([]);
 
@@ -26,7 +26,7 @@ export const FavoritesProvider = (props) => {
         return e.id === item.id;
       });
 
-      console.log(find);
+  
       if (find) {
         return true;
       } else {
@@ -44,7 +44,7 @@ export const FavoritesProvider = (props) => {
         favorites: dataFromDB,
       });
     } else {
-      console.log('item');
+    
       try {
         const result = dataFromDB.filter((e) => {
           return item.id !== e.id;
@@ -52,7 +52,7 @@ export const FavoritesProvider = (props) => {
 
         await updateDoc(itemID, { favorites: result });
       } catch (error) {
-        console.log(error);
+   
       }
     }
   };

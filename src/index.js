@@ -10,7 +10,7 @@ import { DetailsProvider } from './context/DetailsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/Freshio'>
     <ThemeProvider theme={theme}>
       <ApiContext>
         <DetailsProvider>

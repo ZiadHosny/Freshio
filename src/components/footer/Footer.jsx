@@ -51,10 +51,10 @@ export const Footer = () => {
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <p className="text-uppercase fw-bold mb-4 h4">links</p>
               <div className="row">
-                <Link to="/Freshio'" className="col-6 text-reset">
+                <Link to="/" className="col-6 text-reset">
                   Home
                 </Link>
-                <Link to="contact" className="col-6 text-reset">
+                <Link to="/contact" className="col-6 text-reset">
                   Contact
                 </Link>
                 <Link to="/chicken" className="col-6 text-reset">

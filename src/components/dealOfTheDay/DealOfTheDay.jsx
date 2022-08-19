@@ -23,7 +23,7 @@ const DealOfTheDay = () => {
           <div className="col-md-6">
             <p className="best">Best Price For You</p>
             <h2>DEAL OF THE DAY</h2>
-            <Link className="link" to={'/Freshio'}>
+            <Link className="link" to={'/'}>
               Roasted corn
             </Link>
             <div className="sale">

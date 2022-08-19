@@ -56,7 +56,7 @@ const MenuBar = () => {
   return (
     <div className="d-flex my-2 justify-content-around align-items-center ">
       <div>
-        <Link to="/Freshio">
+        <Link to="/">
           <img src={logo} className="w-50" alt="/" />
         </Link>
       </div>
@@ -128,7 +128,7 @@ const MenuBar = () => {
 
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open Cart">
-            <Link to="cartList">
+            <Link to="/cartList">
               <IconButton sx={{ p: 0 }}>
                 <ShoppingCartIcon
                   className="count-parent"
@@ -141,7 +141,7 @@ const MenuBar = () => {
         </Box>
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open Favorites">
-            <Link to="favoritesList">
+            <Link to="/favoritesList">
               <IconButton sx={{ p: 0 }}>
                 <FavoriteIcon style={{ color: '#0a472e', fontSize: 40 }} />
                 <div className="wish-count">

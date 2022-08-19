@@ -5,7 +5,6 @@ import { FaCcVisa } from 'react-icons/fa';
 import { MdOutlineDeliveryDining } from 'react-icons/md';
 import { CartContext } from '../../context/CartContext';
 import { ModalContext } from '../../context/ModalContext';
-import { useForm, Controller } from "react-hook-form";
 import './BuyNow.css';
 
 const BuyNow = ({ onClick }) => {
@@ -14,8 +13,6 @@ const BuyNow = ({ onClick }) => {
   const [address, setAddress] = useState('');
   const [card, setCard] = useState('');
   const { clearAll } = useContext(CartContext);
-
-  const { visaCard, handleSubmit, formState: { errors },control,watch } = useForm();
 
   const buyNow = () => {
     if (card && address) {

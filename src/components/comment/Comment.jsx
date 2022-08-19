@@ -1,19 +1,16 @@
 import React from 'react';
 
 const Comment = ({ url, name, hours }) => {
-  // const url = "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp";
   return (
     <>
       <div className="d-flex flex-start mt-4 mx-2">
-        <a className="me-3" href="#">
-          <img
-            className="rounded-circle shadow-1-strong mt-3"
-            src={url}
-            alt="avatar"
-            width="65"
-            height="65"
-          />
-        </a>
+        <img
+          className="me-3 rounded-circle shadow-1-strong mt-3"
+          src={url}
+          alt="avatar"
+          width="65"
+          height="65"
+        />
         <div className="flex-grow-1 flex-shrink-1">
           <div>
             <div className="d-flex justify-content-between align-items-center">
