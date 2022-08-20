@@ -27,8 +27,7 @@
     "react-slick": "^0.29.0",
     "react-spring": "^8.0.5",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^5.3.5"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useEffect, useState } from 'react';
 import Header from '../components/header/Header';
 import Section from '../components/section/Section';
@@ -41,3 +43,6 @@ const Home = () => {
 };
 
 export default Home;
+
+/*eslint-disable */
+
